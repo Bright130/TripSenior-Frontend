@@ -5,9 +5,11 @@ import Tripname from './tripname';
 import Component_1 from './component_1';
 import Suggestcustom from './suggestcustom';
 import './customize.css';
+import TimeTable from './timetable';
 
 
 export default class Customize extends React.Component {
+
   render() {
     return (
       <div className="customize-customize-7">
@@ -25,11 +27,13 @@ export default class Customize extends React.Component {
                   </div>
               </div>
               <div className="customize-tripname_instance_2">
-                  <Tripname name={"Summer Trip"} /> 
+                  <Tripname name={"MyTrip"} /> 
               </div>
           </div>
           <div className="customize-2">
-              <div className="customize-rectangle_4" /> 
+              <div className="customize-rectangle_4" >
+               <TimeTable/>
+              </div>
           </div>
           <div className="customize-3">
               <div className="customize-buddy_basket_-8">
