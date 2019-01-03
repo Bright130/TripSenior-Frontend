@@ -88,10 +88,11 @@
 }
 
 .customize-rectangle_4 {
-    width: 1200px;
-    height: 222px;
+    width: 102%;
+    height: 180px;
     flex-shrink: 0;
     background: rgb(238, 238, 238);
+    overflow: scroll;
 }
 
 .customize-3 {
@@ -120,7 +121,7 @@
 .customize-visited_places_-9 {
     width: 233px;
     flex-shrink: 0;
-    margin-left: 485px;
+    margin-left: 55%;
     font-family: Cavorting;
     color: rgb(85, 73, 69);
     font-size: 44px;
@@ -145,6 +146,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 2px;
+    width: 60%;
 }
 
 .customize-4-0-0 {
@@ -153,10 +155,11 @@
 }
 
 .customize-rectangle_5 {
-    width: 725px;
+    width: 100%;
     height: 68px;
     flex-shrink: 0;
     background: rgb(238, 238, 238);
+    overflow-x: scroll;
 }
 
 .customize-4-0-1 {
@@ -187,6 +190,7 @@
     flex-direction: column;
     margin-left: 9px;
     padding-bottom: 27px;
+    width: 41%;
 }
 
 .customize-4-1-0 {
@@ -197,6 +201,7 @@
 .customize-rectangle_6 {
     display: flex;
     flex-direction: column;
+    overflow-x: scroll;
     padding-top: 14px;
     padding-bottom: 15px;
     background: rgb(238, 238, 238);
@@ -238,10 +243,10 @@
 }
 
 .customize-rectangle_7 {
-    width: 1200px;
+    width: 102%;
     height: 150px;
     flex-shrink: 0;
-    overflow: scroll;
+    overflow-x: scroll;
     position: relative;
     background: rgb(238, 238, 238);
 }

@@ -54,13 +54,13 @@ export default class Customize extends React.Component {
                   <div className="customize-4-1-0">
                       <div className="customize-rectangle_6">
                           <div className="customize-4-1-0-0-0">
-                              <div className="customize-component_1">
+                              <div className="customize-component_1_">
                                   <Component_1 /> 
                               </div>
                               <div className="customize-component_1_">
                                   <Component_1 /> 
                               </div>
-                              <div className="customize-component_1_i">
+                              <div className="customize-component_1_">
                                   <Component_1 /> 
                               </div>
                           </div>

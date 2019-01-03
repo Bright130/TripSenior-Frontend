@@ -6,21 +6,19 @@ import DestinationDrop from './destination';
 import NationDrop from './nationality';
 import StylePop from './styleselect';
 import DatePop from './datepick';
-import { Link } from 'react-router-dom'
+import PropTypes from "prop-types";
+import { Button } from 'semantic-ui-react';
 
 export default class Startpanel extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showComponent: false,
-      };
-    this._onButtonClick = this._onButtonClick.bind(this);
     }
-    
-    _onButtonClick() {
-      this.setState({
-        showComponent: true,
-      });
+    static contextTypes = {
+        router: PropTypes.object
+      }
+
+    changeRoute = () => {
+        this.context.router.history.push('/trip-custom');
     }
 
   render() {
@@ -138,7 +136,7 @@ export default class Startpanel extends React.Component {
                       <div className="startpanel-0-1-0-15">
                           <div className="startpanel-0-1-0-15-0" /> 
                           <div className="startpanel-0-1-0-15-1">
-                              <div className="startpanel-startbutton-0" onClick={this.state.showComponent && <Customize />}>
+                              <div className="startpanel-startbutton-0" onClick={this.changeRoute} >
                                   <div className="startpanel-0-1-0-15-1-0-0">
                                       <div className="startpanel-start_plan_-2" >
                                       Start Plan</div>
