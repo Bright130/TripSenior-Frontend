@@ -1,18 +1,48 @@
-import React from 'react'
-import { Dropdown } from 'semantic-ui-react'
+import React from "react";
+import { Dropdown } from "semantic-ui-react";
 
-const provinceOptions = [
-    {
-      text: 'Chonburi',
-      value: 'chonburi',
-    },
-    {
-      text: 'Songkhla',
-      value: 'songkhla',
-    }]
+const loadAPI = uri => {
+  return new Promise(function(resolve, reject) {
+    fetch(uri)
+      .then(result => {
+        result
+          .json()
+          .then(json => {
+            resolve(json);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      })
+
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
+
+const provinceOptions = () => {
+  let ret = [];
+  loadAPI(" http://127.0.0.1:5000/provinces").then(result => {
+    result.forEach(function(ele) {
+      ret.push({
+        text: ele,
+        value: ele
+      });
+    });
+  });
+  // console.log(ret);
+  return ret;
+};
 
 const DestinationDrop = () => (
-  <Dropdown placeholder='Destination' fluid selection options={provinceOptions} className='borderless'/>
-)
+  <Dropdown
+    placeholder="Destination"
+    fluid
+    selection
+    options={provinceOptions()}
+    className="borderless"
+  />
+);
 
-export default DestinationDrop
+export default DestinationDrop;
