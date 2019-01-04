@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Homepage from './pagedraw/homepage'
-import Summarypage from './pagedraw/summarypage'
-import Customize from './pagedraw/customize'
+import Homepage from './pagedraw/home/homepage'
+import Summarypage from './pagedraw/summary/summarypage'
+import Customize from './pagedraw/customize/customize'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/es/createBrowserHistory';
-import LoginPage from './pagedraw/LoginPage';
 
 const history = createBrowserHistory()
 
@@ -17,6 +16,7 @@ class App extends Component {
         <div>
           <Route exact path="/" component={Homepage} />
           <Route path="/trip-custom" component={Customize} />
+          <Route path="/summary" component={Summarypage} />
         </div>
       </Router>
     );
