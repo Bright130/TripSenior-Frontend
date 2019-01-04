@@ -8,63 +8,90 @@ export default class Signup extends React.Component {
     return (
       <div className="signup-signup-8">
           <div className="signup-0">
-              <div className="signup-0-0">
-                  <div className="signup-0-0-0">
-                      <div className="signup-sign_up_-9">Sign up</div>
-                  </div>
-                  <div className="signup-0-0-1">
-                      <div className="signup-rectangle_1">
-                          <div className="signup-0-0-1-0-0">
-                              <img src="https://ucarecdn.com/b4fa332d-84d5-462e-ae9b-14fb94011b5b/" className="signup-image_1" /> 
+              <div className="signup-0-0" /> 
+              <div className="signup-0-1">
+                  <div className="signup-0-1-0">
+                      <div className="signup-rectangle_14">
+                          <div className="signup-0-1-0-0-0">
+                              <div className="signup-0-1-0-0-0-0" /> 
+                              <div className="signup-sign_up_-9">Sign up</div>
+                              <div className="signup-0-1-0-0-0-2" /> 
                           </div>
-                      </div>
-                  </div>
-                  <div className="signup-0-0-2">
-                      <div className="signup-rectangle_11">
-                          <div className="signup-0-0-2-0-0">
-                              <img src="https://ucarecdn.com/22a2362d-7d99-41e7-83de-133f769bd692/" className="signup-image_11" /> 
+                          <div className="signup-0-1-0-0-1">
+                              <div className="signup-0-1-0-0-1-0" /> 
+                              <div className="signup-rectangle_1">
+                                  <div className="signup-0-1-0-0-1-1-0">
+                                      <img src="https://ucarecdn.com/b4fa332d-84d5-462e-ae9b-14fb94011b5b/" className="signup-image_1" /> 
+                                  </div>
+                              </div>
+                              <div className="signup-0-1-0-0-1-2" /> 
                           </div>
-                      </div>
-                  </div>
-                  <div className="signup-0-0-3">
-                      <div className="signup-rectangle_11-3">
-                          <div className="signup-0-0-3-0-0">
-                              <img src="https://ucarecdn.com/1b6e533f-7f8c-4f98-af80-399813e876b9/" className="signup-image_11-0" /> 
+                          <div className="signup-0-1-0-0-2">
+                              <div className="signup-0-1-0-0-2-0" /> 
+                              <div className="signup-rectangle_11">
+                                  <div className="signup-0-1-0-0-2-1-0">
+                                      <img src="https://ucarecdn.com/22a2362d-7d99-41e7-83de-133f769bd692/" className="signup-image_11" /> 
+                                  </div>
+                              </div>
+                              <div className="signup-0-1-0-0-2-2" /> 
                           </div>
-                      </div>
-                  </div>
-                  <div className="signup-0-0-4">
-                      <div className="signup-rectangle_11-9">
-                          <div className="signup-0-0-4-0-0">
-                              <img src="https://ucarecdn.com/1b6e533f-7f8c-4f98-af80-399813e876b9/" className="signup-image_11-7" /> 
+                          <div className="signup-0-1-0-0-3">
+                              <div className="signup-0-1-0-0-3-0" /> 
+                              <div className="signup-rectangle_11-3">
+                                  <div className="signup-0-1-0-0-3-1-0">
+                                      <img src="https://ucarecdn.com/1b6e533f-7f8c-4f98-af80-399813e876b9/" className="signup-image_11-0" /> 
+                                  </div>
+                              </div>
+                              <div className="signup-0-1-0-0-3-2" /> 
                           </div>
-                      </div>
-                  </div>
-                  <div className="signup-0-0-5">
-                      <div className="signup-rectangle_12">
-                          <div className="signup-0-0-5-0-0">
-                              <div className="signup-sign_up_-1">Sign up</div>
+                          <div className="signup-0-1-0-0-4">
+                              <div className="signup-0-1-0-0-4-0" /> 
+                              <div className="signup-rectangle_11-9">
+                                  <div className="signup-0-1-0-0-4-1-0">
+                                      <img src="https://ucarecdn.com/1b6e533f-7f8c-4f98-af80-399813e876b9/" className="signup-image_11-7" /> 
+                                  </div>
+                              </div>
+                              <div className="signup-0-1-0-0-4-2" /> 
                           </div>
+                          <div className="signup-0-1-0-0-5">
+                              <div className="signup-0-1-0-0-5-0" /> 
+                              <div className="signup-rectangle_12">
+                                  <div className="signup-0-1-0-0-5-1-0">
+                                      <div className="signup-sign_up_-1">Sign up</div>
+                                  </div>
+                              </div>
+                              <div className="signup-0-1-0-0-5-2" /> 
+                          </div>
+                          <div className="signup-0-1-0-0-6" /> 
                       </div>
                   </div>
               </div>
+              <div className="signup-0-2" /> 
               <div className="signup-rectangle_10">
-                  <div className="signup-0-1-0">
+                  <div className="signup-0-3-0">
+                      <div className="signup-0-3-0-0" /> 
                       <div className="signup-welcome_back_-1">Welcome Back!</div>
+                      <div className="signup-0-3-0-2" /> 
                   </div>
-                  <div className="signup-0-1-1">
+                  <div className="signup-0-3-1">
+                      <div className="signup-0-3-1-0" /> 
                       <div className="signup-please_sign_in_to_keep_connect_with_us_-2">
                           Please sign in to keep connect with us
                       </div>
+                      <div className="signup-0-3-1-2" /> 
                   </div>
-                  <div className="signup-0-1-2">
+                  <div className="signup-0-3-2">
+                      <div className="signup-0-3-2-0" /> 
                       <div className="signup-rectangle_12-0">
-                          <div className="signup-0-1-2-0-0">
+                          <div className="signup-0-3-2-1-0">
                               <div className="signup-sign_in_-1">Sign in</div>
                           </div>
                       </div>
+                      <div className="signup-0-3-2-2" /> 
                   </div>
+                  <div className="signup-0-3-3" /> 
               </div>
+              <div className="signup-0-4" /> 
           </div>
       </div>
     );

@@ -8,49 +8,68 @@ export default class Signin extends React.Component {
     return (
       <div className="signin-signin-3">
           <div className="signin-0">
+              <div className="signin-0-0" /> 
               <div className="signin-rectangle_10">
-                  <div className="signin-0-0-0">
+                  <div className="signin-0-1-0">
+                      <div className="signin-0-1-0-0" /> 
                       <div className="signin-hello_friend_-7">Hello,Friend</div>
+                      <div className="signin-0-1-0-2" /> 
                   </div>
-                  <div className="signin-0-0-1">
+                  <div className="signin-0-1-1">
+                      <div className="signin-0-1-1-0" /> 
                       <div className="signin-please_sign_up_to_use_all_our_features_-3">
                           Please sign up to use all our features
                       </div>
+                      <div className="signin-0-1-1-2" /> 
                   </div>
-                  <div className="signin-0-0-2">
+                  <div className="signin-0-1-2">
+                      <div className="signin-0-1-2-0" /> 
                       <div className="signin-rectangle_1">
-                          <div className="signin-0-0-2-0-0">
+                          <div className="signin-0-1-2-1-0">
                               <div className="signin-sign_up_-0">Sign up</div>
                           </div>
                       </div>
+                      <div className="signin-0-1-2-2" /> 
                   </div>
+                  <div className="signin-0-1-3" /> 
               </div>
-              <div className="signin-0-1">
-                  <div className="signin-0-1-0">
+              <div className="signin-0-2" /> 
+              <div className="signin-rectangle_13">
+                  <div className="signin-0-3-0">
+                      <div className="signin-0-3-0-0" /> 
                       <div className="signin-sign_in_-8">Sign in</div>
+                      <div className="signin-0-3-0-2" /> 
                   </div>
-                  <div className="signin-0-1-1">
+                  <div className="signin-0-3-1">
+                      <div className="signin-0-3-1-0" /> 
                       <div className="signin-rectangle_11">
-                          <div className="signin-0-1-1-0-0">
+                          <div className="signin-0-3-1-1-0">
                               <img src="https://ucarecdn.com/b4fa332d-84d5-462e-ae9b-14fb94011b5b/" className="signin-image_1" /> 
                           </div>
                       </div>
+                      <div className="signin-0-3-1-2" /> 
                   </div>
-                  <div className="signin-0-1-2">
+                  <div className="signin-0-3-2">
+                      <div className="signin-0-3-2-0" /> 
                       <div className="signin-rectangle_11-1">
-                          <div className="signin-0-1-2-0-0">
+                          <div className="signin-0-3-2-1-0">
                               <img src="https://ucarecdn.com/1b6e533f-7f8c-4f98-af80-399813e876b9/" className="signin-image_11" /> 
                           </div>
                       </div>
+                      <div className="signin-0-3-2-2" /> 
                   </div>
-                  <div className="signin-0-1-3">
+                  <div className="signin-0-3-3">
+                      <div className="signin-0-3-3-0" /> 
                       <div className="signin-rectangle_12">
-                          <div className="signin-0-1-3-0-0">
+                          <div className="signin-0-3-3-1-0">
                               <div className="signin-sign_in_-5">Sign in</div>
                           </div>
                       </div>
+                      <div className="signin-0-3-3-2" /> 
                   </div>
+                  <div className="signin-0-3-4" /> 
               </div>
+              <div className="signin-0-4" /> 
           </div>
       </div>
     );
