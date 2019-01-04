@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import Homepage from './pagedraw/homepage'
 import Summarypage from './pagedraw/summarypage'
@@ -16,7 +15,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={LoginPage} />
+          <Route exact path="/" component={Homepage} />
           <Route path="/trip-custom" component={Customize} />
         </div>
       </Router>
