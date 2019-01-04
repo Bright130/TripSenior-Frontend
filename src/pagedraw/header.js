@@ -2,6 +2,9 @@
 import React from 'react';
 import './header.css';
 import Sticky from 'react-stickynode'
+import Signup from './signup'
+import Signin from './signin'
+import { Button, Modal } from 'semantic-ui-react'
 
 export default class Header extends React.Component {
   render() {
@@ -29,14 +32,18 @@ export default class Header extends React.Component {
                       </div>
                       <div className="header-line-3" /> 
                       <div className="header-1-3-1-2">
-                          <div className="header-1-3-1-2-0">
-                              <div className="header-sign_up_-5">Sign Up</div>
+                          <div className="header-1-3-1-2-0 ">
+                                <Modal trigger={<Button>Sign Up</Button>} className="header-sign_up_-5 scrolling" basic >
+                                <Signup/>
+                                </Modal>
                           </div>
                       </div>
                       <div className="header-line-4" /> 
                       <div className="header-1-3-1-4">
                           <div className="header-1-3-1-4-0">
-                              <div className="header-sign_in_-9">Sign In</div>
+                                <Modal trigger={<Button>Sign In</Button>} className="header-sign_in_-9 scrolling" basic >
+                                <Signin/>
+                                </Modal>
                           </div>
                       </div>
                   </div>
