@@ -368,6 +368,10 @@
     background-repeat: no-repeat;
 }
 
+.ui.rating .active.icon {
+    color: rgb(229, 57, 53);
+}
+
 * {
     box-sizing: border-box;
 }
