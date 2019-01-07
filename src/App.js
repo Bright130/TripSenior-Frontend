@@ -17,16 +17,6 @@ class App extends Component {
           <Route path="/place/:id" component={Detailpage} />
           <Route path="/trip-custom" component={Customize} />
           <Route path="/summary" component={Summarypage} />
-          <Route
-            path="/p/:id"
-            render={() => (
-              <p>
-                {" "}
-                I want this text to show up for all routes other than '/',
-                '/products' and '/category'{" "}
-              </p>
-            )}
-          />
         </div>
       </Router>
     );

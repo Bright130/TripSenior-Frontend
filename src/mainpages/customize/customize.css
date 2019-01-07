@@ -26,6 +26,7 @@
     flex-grow: 1;
     flex-basis: 0px;
     min-height: fit-content;
+    max-height: fit-content;
 }
 
 .customize-0-0 {
