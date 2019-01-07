@@ -15,9 +15,10 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={Detailpage} />
+          <Route exact path="/" component={Homepage} />
           <Route path="/trip-custom" component={Customize} />
           <Route path="/summary" component={Summarypage} />
+          <Route path="/detail" component={Detailpage} />
         </div>
       </Router>
     );

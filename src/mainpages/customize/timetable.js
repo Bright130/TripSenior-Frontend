@@ -14,19 +14,19 @@ const groups = [{ id: 1, title: 'Day1' }, { id: 2, title: 'Day2' }, { id: 3, tit
 
 const defaultHeaderLabelFormats =
  {
-   yearShort: '[Assigen Time Slot]',
-   yearLong: '[Assigen Time Slot]',
-   monthShort: '[Assigen Time Slot]',
-   monthMedium: '[Assigen Time Slot]',
-   monthMediumLong: '[Assigen Time Slot]',
-   monthLong: '[Assigen Time Slot]',
-   dayShort: '[Assigen Time Slot]',
-   dayLong: '[Assigen Time Slot]',
-   hourShort: '[Assigen Time Slot]',
-   hourMedium: '[Assigen Time Slot]',
-   hourMediumLong: '[Assigen Time Slot]',
-   hourLong: '[Assigen Time Slot]',
-   time: '[Assigen Time Slot]'
+   yearShort: '[Assign Time Slot]',
+   yearLong: '[Assign Time Slot]',
+   monthShort: '[Assign Time Slot]',
+   monthMedium: '[Assign Time Slot]',
+   monthMediumLong: '[Assign Time Slot]',
+   monthLong: '[Assign Time Slot]',
+   dayShort: '[Assign Time Slot]',
+   dayLong: '[Assign Time Slot]',
+   hourShort: '[Assign Time Slot]',
+   hourMedium: '[Assign Time Slot]',
+   hourMediumLong: '[Assign Time Slot]',
+   hourLong: '[Assign Time Slot]',
+   time: '[Assign Time Slot]'
  }
 
 const defaultSubHeaderLabelFormats =
@@ -48,24 +48,18 @@ const timeSteps = {
 
 const items = [
     {
-        id: 1,
-        group: 1,
-        title: 'Random title',
-        start_time: moment().startOf('day').add(7,'hour'),
-        end_time: moment().startOf('day').add(9,'hour'),
-        canMove: true,
-        canResize: true,
-        canChangeGroup: true,
-        style: {
-          backgroundColor: 'fuchsia'
-        },
-        itemProps: {
-          // these optional attributes are passed to the root <div /> of each item as <div {...itemProps} />
-          'data-custom-attribute': 'Random content',
-          'aria-hidden': true,
-          onDoubleClick: () => { console.log('You clicked double!') }
-        }
-      },
+      id: 1,
+      group: 1,
+      title: 'Random title',
+      start_time: moment().startOf('day').add(7,'hour'),
+      end_time: moment().startOf('day').add(9,'hour'),
+      itemProps: {
+        // these optional attributes are passed to the root <div /> of each item as <div {...itemProps} />
+        'data-custom-attribute': 'Random content',
+        'aria-hidden': true,
+        onDoubleClick: () => { console.log('You clicked double!') }
+      }
+    },
   {
     id: 2,
     group: 2,
@@ -81,12 +75,64 @@ const items = [
     end_time: moment().startOf('day').add(16,'hour')
   }
 ]
+
+const defaultTimeStart = moment().startOf('day').add(5,'hour')
+const defaultTimeEnd = moment().endOf('day')
+
 export default class TimeTable extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      groups,
+      items,
+      defaultTimeStart,
+      defaultTimeEnd
+    };
+  }
+
+  handleItemMove = (itemId, dragTime, newGroupOrder) => {
+    const { items, groups } = this.state;
+
+    const group = groups[newGroupOrder];
+
+    this.setState({
+      items: items.map(item =>
+        item.id === itemId
+          ? Object.assign({}, item, {
+              start_time: dragTime,
+              end_time: dragTime + (item.end_time - item.start_time),
+              group: group.id
+            })
+          : item
+      )
+    });
+
+    console.log("Moved", itemId, dragTime, newGroupOrder);
+  };
+
+  handleItemResize = (itemId, time, edge) => {
+    const { items } = this.state;
+
+    this.setState({
+      items: items.map(item =>
+        item.id === itemId
+          ? Object.assign({}, item, {
+              start_time: edge === "left" ? time : item.start_time,
+              end_time: edge === "left" ? item.end_time : time
+            })
+          : item
+      )
+    });
+
+    console.log("Resized", itemId, time, edge);
+  };
+
     render() {
       return (
             <Timeline
-            groups={groups}
-            items={items}
+            groups={this.state.groups}
+            items={this.state.items}
             timeSteps={timeSteps}
             dragSnap= {dragSnap}
             sidebarContent = {<p>Trip Days</p>}
@@ -94,12 +140,19 @@ export default class TimeTable extends React.Component {
             defaultTimeEnd={moment().add(12, 'hour')}
             minZoom={60 * 60 * 1000 * 24}
             maxZoom={60 * 60 * 1000 * 24}
-            defaultTimeStart={moment().startOf('day').add(5,'hour')}
-            defaultTimeEnd={moment().endOf('day')}
-            visibleTimeStart={moment().startOf('day').add(5,'hour')}
-            visibleTimeEnd={moment().endOf('day')}
+            defaultTimeStart={this.state.defaultTimeStart}
+            defaultTimeEnd={this.state.defaultTimeEnd}
+            visibleTimeStart={this.state.defaultTimeStart}
+            visibleTimeEnd={this.state.defaultTimeEnd}
             headerLabelFormats={defaultHeaderLabelFormats}
             subHeaderLabelFormats={defaultSubHeaderLabelFormats}
+            canResize={'both'}
+            canMove={true}
+            canChangeGroup={true}
+            lineHeight={45}
+            onItemMove={this.handleItemMove}
+            onItemResize={this.handleItemResize}
+            stackItems={true}
             />
       )
     }
