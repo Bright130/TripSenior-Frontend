@@ -1,5 +1,6 @@
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
+import './nationality.css'
 
 const loadAPI = uri => {
   return new Promise(function(resolve, reject) {
@@ -38,8 +39,7 @@ const provinceOptions = () => {
 const DestinationDrop = () => (
   <Dropdown
     placeholder="Destination"
-    fluid
-    selection
+    search selection fluid
     options={provinceOptions()}
     className="borderless"
   />
