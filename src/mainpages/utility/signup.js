@@ -37,32 +37,76 @@ export default class Signup extends React.Component {
                           </div>
                           <div className="signup-0-1-0-0-3">
                               <div className="signup-0-1-0-0-3-0" /> 
-                              <div className="signup-rectangle_11-3">
+                              <div className="signup-rectangle_11-5">
                                   <div className="signup-0-1-0-0-3-1-0">
-                                      <img src="https://ucarecdn.com/1b6e533f-7f8c-4f98-af80-399813e876b9/" className="signup-image_11-0" /> 
+                                      <div className="signup-0-1-0-0-3-1-0-0" /> 
+                                      <div className="signup-rectangle_11-3">
+                                          <div className="signup-0-1-0-0-3-1-0-1-0">
+                                              <img src="https://ucarecdn.com/e858f205-45fb-4b0b-acdf-3b3d1d9aa299/" className="signup-image_11-6" /> 
+                                          </div>
+                                      </div>
+                                      <div className="signup-0-1-0-0-3-1-0-2" /> 
                                   </div>
                               </div>
                               <div className="signup-0-1-0-0-3-2" /> 
                           </div>
                           <div className="signup-0-1-0-0-4">
                               <div className="signup-0-1-0-0-4-0" /> 
-                              <div className="signup-rectangle_11-9">
+                              <div className="signup-rectangle_11-99">
                                   <div className="signup-0-1-0-0-4-1-0">
-                                      <img src="https://ucarecdn.com/1b6e533f-7f8c-4f98-af80-399813e876b9/" className="signup-image_11-7" /> 
+                                      <div className="signup-0-1-0-0-4-1-0-0" /> 
+                                      <div className="signup-rectangle_11-9">
+                                          <div className="signup-0-1-0-0-4-1-0-1-0">
+                                              <img src="https://ucarecdn.com/1f029b8c-ca8d-451d-bd0f-c4decd736bc7/" className="signup-image_11-9" /> 
+                                          </div>
+                                      </div>
+                                      <div className="signup-0-1-0-0-4-1-0-2" /> 
                                   </div>
                               </div>
                               <div className="signup-0-1-0-0-4-2" /> 
                           </div>
                           <div className="signup-0-1-0-0-5">
                               <div className="signup-0-1-0-0-5-0" /> 
-                              <div className="signup-rectangle_12">
+                              <div className="signup-rectangle_11-4">
                                   <div className="signup-0-1-0-0-5-1-0">
-                                      <div className="signup-sign_up_-1">Sign up</div>
+                                      <div className="signup-image_11-7">
+                                          <div className="signup-0-1-0-0-5-1-0-0-0">
+                                              <img src="https://ucarecdn.com/1b6e533f-7f8c-4f98-af80-399813e876b9/" className="signup-image_11-0" /> 
+                                          </div>
+                                      </div>
                                   </div>
                               </div>
                               <div className="signup-0-1-0-0-5-2" /> 
                           </div>
-                          <div className="signup-0-1-0-0-6" /> 
+                          <div className="signup-0-1-0-0-6">
+                              <div className="signup-0-1-0-0-6-0" /> 
+                              <div className="signup-rectangle_11-90">
+                                  <div className="signup-0-1-0-0-6-1-0">
+                                      <div className="signup-0-1-0-0-6-1-0-0" /> 
+                                      <div className="signup-rectangle_11-7">
+                                          <div className="signup-0-1-0-0-6-1-0-1-0">
+                                              <div className="signup-image_11-4">
+                                                  <div className="signup-0-1-0-0-6-1-0-1-0-0-0">
+                                                      <img src="https://ucarecdn.com/1b6e533f-7f8c-4f98-af80-399813e876b9/" className="signup-image_11-02" /> 
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div className="signup-0-1-0-0-6-1-0-2" /> 
+                                  </div>
+                              </div>
+                              <div className="signup-0-1-0-0-6-2" /> 
+                          </div>
+                          <div className="signup-0-1-0-0-7">
+                              <div className="signup-0-1-0-0-7-0" /> 
+                              <div className="signup-rectangle_12">
+                                  <div className="signup-0-1-0-0-7-1-0">
+                                      <div className="signup-sign_up_-1">Sign up</div>
+                                  </div>
+                              </div>
+                              <div className="signup-0-1-0-0-7-2" /> 
+                          </div>
+                          <div className="signup-0-1-0-0-8" /> 
                       </div>
                   </div>
               </div>
