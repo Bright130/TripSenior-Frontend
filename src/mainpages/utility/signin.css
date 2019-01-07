@@ -251,8 +251,10 @@
 .signin-0-3-1-1-0 {
     display: flex;
     flex-shrink: 0;
-    padding-left: 23px;
-    padding-right: 392.00000000000006px;
+    padding-left: 10%;
+    padding-right: 10%;
+    background: transparent;
+    border: none;
 }
 
 .signin-image_1 {
@@ -295,8 +297,6 @@
 .signin-0-3-2-1-0 {
     display: flex;
     flex-shrink: 0;
-    padding-left: 23px;
-    padding-right: 392.00000000000006px;
 }
 
 .signin-image_11 {
@@ -338,6 +338,10 @@
     flex-shrink: 0;
     padding-left: 42px;
     padding-right: 42px;
+    background: rgb(0, 166, 153);
+    border-radius: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .signin-sign_in_-5 {
@@ -372,6 +376,23 @@
     height: 0px;
     flex-grow: 0;
     flex-basis: 0px;
+}
+
+.outer {
+    width: 100%;
+}
+
+.ui.icon.input>input {
+    background: none;
+    border:none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Ikaros-Regular'
+}
+
+.ui[class*="left icon"].input>input {
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 * {

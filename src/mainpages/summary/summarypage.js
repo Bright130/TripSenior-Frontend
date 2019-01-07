@@ -34,7 +34,7 @@ export default class Summarypage extends React.Component {
                               <div className="summarypage-2-0-0-0-0-0">
                                   <div className="summarypage-2-0-0-0-0-0-0">
                                       <div className="summarypage-dec_-9">
-                                          { this.props.month }
+                                          { 'Dec' }
                                       </div>
                                   </div>
                               </div>
