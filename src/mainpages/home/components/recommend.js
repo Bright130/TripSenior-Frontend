@@ -51,12 +51,12 @@ export default class Recommend extends React.Component {
                           </div>
                       </div>
                       <div className="recommend-1-0-0-1">
-                          <div className="recommend-place-8">
+                          <div className="recommend-place-1">
                               { this.props.place }
                           </div>
                           <div className="recommend-1-0-0-1-1">
                               <div className="recommend-1-0-0-1-1-0">
-                                  <div className="recommend-province-6">
+                                  <div className="recommend-province-1">
                                       { this.props.province }
                                   </div>
                               </div>
@@ -79,12 +79,12 @@ export default class Recommend extends React.Component {
                   </div>
               </div>
               <div className="recommend-2-1">
-                  <div className="recommend-place-10">
+                  <div className="recommend-place-1">
                       { this.props.place }
                   </div>
                   <div className="recommend-2-1-1">
                       <div className="recommend-2-1-1-0">
-                          <div className="recommend-province-4">
+                          <div className="recommend-province-1">
                               { this.props.province }
                           </div>
                       </div>
