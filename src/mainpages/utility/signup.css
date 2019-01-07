@@ -498,6 +498,10 @@
     flex-shrink: 0;
     padding-left: 42px;
     padding-right: 42px;
+    border-radius: 40px;
+    background: rgb(0, 166, 153);
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .signup-sign_up_-1 {
@@ -670,6 +674,40 @@
     height: 0px;
     flex-grow: 0;
     flex-basis: 0px;
+}
+
+.ui[class*="left icon"].input>input{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.ui.icon.input>input {
+    background: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Ikaros-Regular';
+}
+
+.ui.input{
+    padding: initial;
+}
+
+.ui.icon.button, .ui.icon.buttons .button{
+    padding: initial;
+}
+
+.ui.labeled.icon.button>.icon, .ui.labeled.icon.buttons>.button>.icon{
+    background: none;
+}
+
+.ui.labeled.icon.button>.icon:after, .ui.labeled.icon.button>.icon:before, .ui.labeled.icon.buttons>.button>.icon:after, .ui.labeled.icon.buttons>.button>.icon:before{
+    width: 90%
+}
+
+.ui.button.floating.labeled.dropdown.signup-0-1-0-0-2-1-0.icon{
+    padding-left: 13% !important;
+    font-size: 16px;
 }
 
 * {
