@@ -5,8 +5,10 @@ import Sticky from "react-stickynode";
 import Signup from "./signup";
 import Signin from "./signin";
 import { Button, Modal } from "semantic-ui-react";
+import PropTypes from "prop-types";
 
 function getBar(reactComponent) {
+
   if (localStorage.getItem("token") != null)
     return (
       <div className="header-utils-7">
@@ -73,6 +75,13 @@ export default class Header extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  static contextTypes = {
+    router: PropTypes.object
+  };
+  changeRoute = () => {
+    this.context.router.history.push("/");
+  };
+
   handleSubmit(evt) {
     evt.preventDefault();
 
@@ -90,7 +99,7 @@ export default class Header extends React.Component {
             <div className="header-1-1">
               <div className="header-1-1-0" />
               <div className="header-1-1-1">
-                <div className="header-tripnotize_-2">Tripnotize</div>
+                <div className="header-tripnotize_-2" onClick={this.changeRoute}>Tripnotize</div>
               </div>
               <div className="header-1-1-2" />
             </div>
