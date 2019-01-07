@@ -68,9 +68,7 @@ export default class Recommendplace extends React.Component {
               province={this.state.place1["province"]}
               img_src={this.state.place1["img"]}
               style={this.state.place1["style"]}
-              img_rate={
-                "https://ucarecdn.com/6ca3a5f2-ab9d-43a5-b068-01f18b19acae/"
-              }
+              img_rate={'1'}
             />
           </div>
           <div className="recommendplace-1-2" />
@@ -80,9 +78,7 @@ export default class Recommendplace extends React.Component {
               province={this.state.place2["province"]}
               img_src={this.state.place2["img"]}
               style={this.state.place2["style"]}
-              img_rate={
-                "https://ucarecdn.com/6ca3a5f2-ab9d-43a5-b068-01f18b19acae/"
-              }
+              img_rate={'2'}
             />
           </div>
           <div className="recommendplace-1-4" />
@@ -92,9 +88,7 @@ export default class Recommendplace extends React.Component {
               province={this.state.place3["province"]}
               img_src={this.state.place3["img"]}
               style={this.state.place3["style"]}
-              img_rate={
-                "https://ucarecdn.com/6ca3a5f2-ab9d-43a5-b068-01f18b19acae/"
-              }
+              img_rate={'3'}
             />
           </div>
           <div className="recommendplace-1-6" />
@@ -104,9 +98,7 @@ export default class Recommendplace extends React.Component {
               province={this.state.place4["province"]}
               img_src={this.state.place4["img"]}
               style={this.state.place4["style"]}
-              img_rate={
-                "https://ucarecdn.com/6ca3a5f2-ab9d-43a5-b068-01f18b19acae/"
-              }
+              img_rate={'4'}
             />
           </div>
           <div className="recommendplace-1-8" />

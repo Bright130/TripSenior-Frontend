@@ -2,6 +2,8 @@
 import React from 'react';
 import Styletag from './styletag';
 import './recommend.css';
+import { Rating } from 'semantic-ui-react'
+
 
 
 export default class Recommend extends React.Component {
@@ -32,7 +34,7 @@ export default class Recommend extends React.Component {
                       </div>
                   </div>
                   <div className="recommend-0-0-2">
-                      <div className="recommend-rating-4" style={{"backgroundImage": ("url('"+(this.props.img_rate)+"')")}} /> 
+                      <Rating defaultRating={this.props.img_rate} maxRating={5} disabled size='massive'/>
                   </div>
               </div>
           : null}
@@ -61,7 +63,7 @@ export default class Recommend extends React.Component {
                           </div>
                       </div>
                       <div className="recommend-1-0-0-2">
-                          <div className="recommend-rating-0" style={{"backgroundImage": ("url('"+(this.props.img_rate)+"')")}} /> 
+                      <Rating defaultRating={this.props.img_rate} maxRating={5} disabled size='massive' /> 
                       </div>
                   </div>
               </div>
@@ -89,7 +91,7 @@ export default class Recommend extends React.Component {
                   </div>
               </div>
               <div className="recommend-2-2">
-                  <div className="recommend-rating-9" style={{"backgroundImage": ("url('"+(this.props.img_rate)+"')")}} /> 
+              <Rating defaultRating={this.props.img_rate} maxRating={5} disabled size='massive'/>
               </div>
           </div>
       </div>

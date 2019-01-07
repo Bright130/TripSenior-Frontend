@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Homepage from './mainpages/home/homepage'
 import Summarypage from './mainpages/summary/summarypage'
 import Customize from './mainpages/customize/customize'
+import Detailpage from './mainpages/detail/detailpage'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/es/createBrowserHistory';
 
