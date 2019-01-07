@@ -38,7 +38,7 @@ function getBar(reactComponent) {
     <div className="header-utils-7">
       <div className="header-1-3-0" />
       <div className="header-1-3-1">
-        <div className="header-line-3" />
+        {/* <div className="header-line-3" /> */}
         <div className="header-1-3-1-2">
           <div className="header-1-3-1-2-0 ">
             <Modal

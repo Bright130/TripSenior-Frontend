@@ -24,7 +24,7 @@ export default class Gallery extends React.Component {
       <div className="gallery-gallery-20">
         <div className="gallery-0">
           <div className="gallery-gallery-2">
-            <ImageGallery autoPlay={true} items={images} />
+            <ImageGallery className="fill" autoPlay={true} items={images} />
           </div>
         </div>
         <div className="gallery-1" />
