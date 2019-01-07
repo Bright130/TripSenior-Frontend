@@ -3,13 +3,24 @@ import React from 'react';
 import Styletag from './styletag';
 import './recommend.css';
 import { Rating } from 'semantic-ui-react'
-
+import PropTypes from "prop-types";
 
 
 export default class Recommend extends React.Component {
+    constructor(props) {
+        super(props);
+        this.changeRoute=this.changeRoute.bind(this);
+      }
+    static contextTypes = {
+        router: PropTypes.object
+      };
+    changeRoute(evt) {
+        this.context.router.history.push("/place/"+this.props.id);
+        // console.log(this.props.id)
+      };
   render() {
     return (
-      <div className="pd-onhover-parent pd-onactive-parent recommend">
+      <div className="pd-onhover-parent pd-onactive-parent recommend" onClick={this.changeRoute}>
           { (('default') === "default") ?
               <div className="recommend-default-2">
                   <div className="recommend-0-0-0">
