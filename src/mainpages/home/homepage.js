@@ -15,7 +15,7 @@ export default class Homepage extends React.Component {
         <div className="homepage-0">
           <div className="homepage-0-0" />
           <div className="homepage-header-8">
-            <Header />{" "}
+            <Header />
           </div>
           <div className="homepage-0-2" />
         </div>
