@@ -4,7 +4,7 @@ import Header from '../utility/header';
 import Gallery from './gallery';
 import Detail from './detail';
 import Peaktime from './peaktime';
-import Placemap from './placemap';
+import PlaceMap from './placemap';
 import './detailpage.css';
 
 
@@ -37,11 +37,12 @@ export default class Detailpage extends React.Component {
           <div className="detailpage-2">
               <div className="detailpage-2-0" /> 
               <div className="detailpage-unnamed_instance-2">
-                  <Peaktime /> 
+                  {/* <Peaktime />  */}
+                  Peak Time Module
               </div>
               <div className="detailpage-2-2" /> 
               <div className="detailpage-component_2_">
-                  <Placemap /> 
+                  <PlaceMap latitude={7.0050994} longitude={100.4619507}/> 
               </div>
               <div className="detailpage-2-4" /> 
           </div>
