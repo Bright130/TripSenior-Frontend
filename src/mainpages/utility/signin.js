@@ -60,6 +60,7 @@ export default class Signin extends React.Component {
       .then(data =>
         localStorage.setItem("token", JSON.stringify(data["access_token"]))
       ) // JSON-string from `response.json()` call
+
       .catch(error => console.error(error));
     return this.setState({ error: "" });
   }
