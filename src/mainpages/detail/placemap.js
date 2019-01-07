@@ -16,7 +16,7 @@ class PlaceMap extends Component {
   return(
      <div>
        <GoogleMapExample
-         containerElement={ <div style={{ height: `384px`, width: '607px' }} /> }
+         containerElement={ <div style={{ height: `300px`, width: '607px' }} /> }
          mapElement={ <div style={{ height: `100%` }} /> }
        />
      </div>

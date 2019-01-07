@@ -45,6 +45,7 @@ export default class Recommendplace extends React.Component {
       place2: {},
       place3: {},
       place4: {}
+    
     };
   }
 
@@ -62,8 +63,9 @@ export default class Recommendplace extends React.Component {
         </div>
         <div className="recommendplace-1">
           <div className="recommendplace-1-0" />
-          <div className="recommendplace-recommend-7">
-            <Recommend
+          <div className="recommendplace-recommend-7" >
+            <Recommend 
+              id={this.state.place1["_id"]}
               place={this.state.place1["name"]}
               province={this.state.place1["province"]}
               img_src={this.state.place1["img"]}
@@ -74,6 +76,7 @@ export default class Recommendplace extends React.Component {
           <div className="recommendplace-1-2" />
           <div className="recommendplace-recommend-5">
             <Recommend
+            id={this.state.place2["_id"]}
               place={this.state.place2["name"]}
               province={this.state.place2["province"]}
               img_src={this.state.place2["img"]}
@@ -84,6 +87,7 @@ export default class Recommendplace extends React.Component {
           <div className="recommendplace-1-4" />
           <div className="recommendplace-recommend-6">
             <Recommend
+              id={this.state.place3["_id"]}
               place={this.state.place3["name"]}
               province={this.state.place3["province"]}
               img_src={this.state.place3["img"]}
@@ -94,6 +98,7 @@ export default class Recommendplace extends React.Component {
           <div className="recommendplace-1-6" />
           <div className="recommendplace-recommend-9">
             <Recommend
+              id={this.state.place4["_id"]}
               place={this.state.place4["name"]}
               province={this.state.place4["province"]}
               img_src={this.state.place4["img"]}
