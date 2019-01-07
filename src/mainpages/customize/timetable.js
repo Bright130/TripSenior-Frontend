@@ -149,7 +149,8 @@ export default class TimeTable extends React.Component {
             canResize={'both'}
             canMove={true}
             canChangeGroup={true}
-            lineHeight={45}
+            lineHeight={50}
+            itemHeightRatio={0.9}
             onItemMove={this.handleItemMove}
             onItemResize={this.handleItemResize}
             stackItems={true}
