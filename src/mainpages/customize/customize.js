@@ -42,12 +42,36 @@ export default class Customize extends React.Component {
           <div className="customize-tripname_instance_2">
             <Tripname name={"MyTrip"} />
           </div>
-          <div className="customize-tripname_instance_2">
-            <Button type="submit" onClick={this.changeRoute}>
-              {" "}
-              Complete{" "}
-            </Button>
-          </div>
+          <div className="customize-1-2" /> 
+              <div className="customize-1-3">
+                  <div className="customize-1-3-0">
+                      <div className="customize-rectangle_2">
+                          <div className="customize-1-3-0-0-0">
+                              <div className="customize-routebutton-1">
+                                  <Button className="customize-1-3-0-0-0-0-0">
+                                      <div className="customize-route_optimize-9">
+                                          Route Optimize
+                                      </div>
+                                  </Button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div className="customize-1-4" /> 
+              <div className="customize-1-5">
+                  <div className="customize-1-5-0">
+                      <div className="customize-rectangle_2-7">
+                          <div className="customize-1-5-0-0-0">
+                              <div className="customize-completebutton-2">
+                                  <Button className="customize-1-5-0-0-0-0-0" onClick={this.changeRoute}>
+                                      <div className="customize-complete-3">Complete</div>
+                                  </Button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
         </div>
         <div className="customize-2">
           <div className="customize-rectangle_4">
