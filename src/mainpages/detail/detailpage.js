@@ -27,25 +27,18 @@ const loadAPI = uri => {
   });
 };
 
-const place = reactComponent => {
-  let ret = [];
-  loadAPI(
-    " http://127.0.0.1:5000/place?place_id=" + reactComponent.state.place
-  ).then(result => {
-    reactComponent.setState({
-      place1: result[0],
-      place2: result[1],
-      place3: result[2],
-      place4: result[3]
-    });
-  });
-};
-
 const imgGenerator = reactComponent => {
+  let container = [];
+  // console.log(reactComponent);
+  // for (var key in reactComponent) {
+  //   container.push({
+  //     original: element[key],
+  //     thumbnail: element[key]
+  //   });
+  // }
   console.log(reactComponent);
-  for (var key in reactComponent) {
-    return reactComponent[0];
-  }
+  // return container;
+  return reactComponent[0];
 };
 
 export default class Detailpage extends React.Component {
@@ -55,11 +48,19 @@ export default class Detailpage extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     loadAPI(
       " http://127.0.0.1:5000/place?place_id=" + this.props.match.params.id
     ).then(data => {
-      this.setState({ placeInfo: data });
+      this.setState({
+        placeInfo: data,
+        img: [
+          {
+            original: data.imgs[0],
+            thumbnail: data.imgs[0]
+          }
+        ]
+      });
+      console.log(this.state);
     });
   }
 
@@ -79,7 +80,7 @@ export default class Detailpage extends React.Component {
           <div className="detailpage-1-1">
             <div className="detailpage-1-1-0">
               <div className="detailpage-component_2">
-                <Gallery img_src={imgGenerator(this.state.placeInfo["imgs"])} />
+                <Gallery img_src={this.state.img} />
               </div>
             </div>
           </div>
