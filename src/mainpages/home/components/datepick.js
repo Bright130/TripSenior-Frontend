@@ -1,10 +1,18 @@
 import React from "react";
 import DateRangePicker from "react-daterange-picker";
-import '../startpanel.css';
+import "../startpanel.css";
 import "react-daterange-picker/dist/css/react-calendar.css";
 import originalMoment from "moment";
 import { extendMoment } from "moment-range";
-import { Checkbox, Button, Popup, Grid, Form, Radio, GridColumn } from 'semantic-ui-react'
+import {
+  Checkbox,
+  Button,
+  Popup,
+  Grid,
+  Form,
+  Radio,
+  GridColumn
+} from "semantic-ui-react";
 const moment = extendMoment(originalMoment);
 
 class DatePop extends React.Component {
@@ -20,6 +28,9 @@ class DatePop extends React.Component {
   }
 
   onSelect = (value, states) => {
+    console.log(value);
+    this.props.getStartTime(value.start.unix());
+    this.props.getEndTime(value.end.unix());
     this.setState({ value, states });
   };
 
@@ -28,8 +39,9 @@ class DatePop extends React.Component {
   };
 
   renderSelectionValue = () => {
+    // this.props.getStartTime(this.state.value.start);
     return (
-      <div className='datebutton'>
+      <div className="datebutton">
         {this.state.value.start.format("DD-MM-YYYY")}
         {" - "}
         {this.state.value.end.format("DD-MM-YYYY")}
@@ -40,16 +52,20 @@ class DatePop extends React.Component {
   render() {
     return (
       <div>
-        <Popup trigger={<Button>{this.renderSelectionValue()}</Button>} flowing hoverable>
-        {/* <div>{this.renderSelectionValue()}</div> */}
+        <Popup
+          trigger={<Button>{this.renderSelectionValue()}</Button>}
+          flowing
+          hoverable
+        >
+          {/* <div>{this.renderSelectionValue()}</div> */}
 
-        {this.state.isOpen && (
-          <DateRangePicker
-            value={this.state.value}
-            onSelect={this.onSelect}
-            singleDateRange={true}
-          />
-        )}
+          {this.state.isOpen && (
+            <DateRangePicker
+              value={this.state.value}
+              onSelect={this.onSelect}
+              singleDateRange={true}
+            />
+          )}
         </Popup>
       </div>
     );

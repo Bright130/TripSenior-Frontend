@@ -6,7 +6,7 @@ import NationDrop from "./components/nationality";
 import StylePop from "./components/styleselect";
 import DatePop from "./components/datepick";
 import PropTypes from "prop-types";
-
+import * as moment from "moment";
 // const loadAPI = uri => {
 //   return new Promise(function(resolve, reject) {
 //     fetch(uri)
@@ -27,13 +27,90 @@ import PropTypes from "prop-types";
 //   });
 // };
 
+function postData(url = ``, data = {}) {
+  // Default options are marked with *
+  return fetch(url, {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, cors, *same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json"
+      // "Content-Type": "application/x-www-form-urlencoded",
+    },
+    redirect: "follow", // manual, *follow, error
+    referrer: "no-referrer", // no-referrer, *client
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  }).then(response => response.json()); // parses response to JSON
+}
+
+function convertstyle(styles) {
+  let ret = [];
+  if (styles["Adventure"]) ret.push("Adventure");
+  if (styles["Historical"]) ret.push("Historical");
+  if (styles["Sea"]) ret.push("Sea");
+
+  if (styles["Mountain"]) ret.push("Mountain");
+  if (styles["Waterfall"]) ret.push("Waterfall");
+  if (styles["Shopping"]) ret.push("Shopping");
+  // console.log(ret);
+  return ret;
+}
+
+function converttime(time) {
+  let ret = [];
+  ret.push(moment(time * 1000).format("MMM"));
+  // console.log(ret);
+  return ret;
+}
 export default class Startpanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      destinations: [],
-      styles: []
+      destinations: "",
+      styles: {
+        speed: "",
+        Adventure: false,
+        Historical: false,
+        Sea: false,
+        Mountain: false,
+        Waterfall: false,
+        Shopping: false
+      },
+      starttime: 0,
+      endtime: 0,
+      nationality: ""
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  /**
+   * Callback
+   * @param {string}
+   */
+  getDestination = destination => {
+    this.setState({ destinations: destination }, console.log(destination));
+  };
+  getNationality = nationality => {
+    this.setState({ nationality: nationality }, console.log(nationality));
+  };
+
+  getStartTime = time => {
+    this.setState({ starttime: time }, console.log(time));
+  };
+
+  getEndTime = time => {
+    this.setState({ endtime: time }, console.log(time));
+  };
+
+  getStyle = style => {
+    this.setState({ styles: style }, console.log(this.state.styles));
+  };
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
   }
 
   static contextTypes = {
@@ -52,6 +129,19 @@ export default class Startpanel extends React.Component {
   changeRoute = () => {
     this.context.router.history.push("/trip-custom");
   };
+
+  handleSubmit(evt) {
+    evt.preventDefault();
+
+    postData("http://localhost:5000/plan", {
+      style: convertstyle(this.state.styles),
+      seasons: converttime(this.state.starttime),
+      nationality:
+        this.state.nationality == "" ? "Thailand" : this.state.nationality,
+      province:
+        this.state.destinations == "" ? "Songkhla" : this.state.destinations
+    }).then(plan => console.log(plan));
+  }
 
   render() {
     return (
@@ -72,28 +162,29 @@ export default class Startpanel extends React.Component {
                       />
                       <div className="startpanel-0-1-0-1-1-0-0-1">
                         <div className="startpanel-destination_-8">
-                          <DestinationDrop />
-                        </div>{" "}
-                      </div>{" "}
+                          <DestinationDrop
+                            getDestination={this.getDestination}
+                          />
+                        </div>
+                      </div>
                       <div className="startpanel-0-1-0-1-1-0-0-2">
                         <div className="startpanel-0-1-0-1-1-0-0-2-0">
-                          {" "}
-                          {/* <img src="https://ucarecdn.com/9201e6b7-db8e-40a6-ad57-aff951b52626/" className="startpanel-drop-1" />  */}{" "}
-                        </div>{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
+                          {/* <img src="https://ucarecdn.com/9201e6b7-db8e-40a6-ad57-aff951b52626/" className="startpanel-drop-1" />  */}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="startpanel-0-1-0-1-2" />
-              </div>{" "}
+              </div>
               <div className="startpanel-0-1-0-2" />
               <div className="startpanel-0-1-0-3">
                 <div className="startpanel-0-1-0-3-0" />
                 <div className="startpanel-0-1-0-3-1">
                   <div className="startpanel-line1" />
-                </div>{" "}
+                </div>
                 <div className="startpanel-0-1-0-3-2" />
-              </div>{" "}
+              </div>
               <div className="startpanel-0-1-0-4" />
               <div className="startpanel-0-1-0-5">
                 <div className="startpanel-0-1-0-5-0" />
@@ -106,22 +197,25 @@ export default class Startpanel extends React.Component {
                       />
                       <div className="startpanel-0-1-0-5-1-0-0-1">
                         <div className="startpanel-0-1-0-5-1-0-0-1-0">
-                          <DatePop />
-                        </div>{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
+                          <DatePop
+                            getStartTime={this.getStartTime}
+                            getEndTime={this.getEndTime}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="startpanel-0-1-0-5-2" />
-              </div>{" "}
+              </div>
               <div className="startpanel-0-1-0-6" />
               <div className="startpanel-0-1-0-7">
                 <div className="startpanel-0-1-0-7-0" />
                 <div className="startpanel-0-1-0-7-1">
                   <div className="startpanel-line2" />
-                </div>{" "}
+                </div>
                 <div className="startpanel-0-1-0-7-2" />
-              </div>{" "}
+              </div>
               <div className="startpanel-0-1-0-8" />
               <div className="startpanel-0-1-0-9">
                 <div className="startpanel-0-1-0-9-0" />
@@ -135,29 +229,28 @@ export default class Startpanel extends React.Component {
                       <div className="startpanel-0-1-0-9-1-0-0-1">
                         <div className="startpanel-0-1-0-9-1-0-0-1-0">
                           <div className="startpanel-nationality_-0">
-                            <NationDrop />
-                          </div>{" "}
-                        </div>{" "}
-                      </div>{" "}
+                            <NationDrop getNationality={this.getNationality} />
+                          </div>
+                        </div>
+                      </div>
                       <div className="startpanel-0-1-0-9-1-0-0-2">
                         <div className="startpanel-0-1-0-9-1-0-0-2-0">
-                          {" "}
-                          {/* <img src="https://ucarecdn.com/9201e6b7-db8e-40a6-ad57-aff951b52626/" className="startpanel-drop-10" />  */}{" "}
-                        </div>{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
+                          {/* <img src="https://ucarecdn.com/9201e6b7-db8e-40a6-ad57-aff951b52626/" className="startpanel-drop-10" />  */}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="startpanel-0-1-0-9-2" />
-              </div>{" "}
+              </div>
               <div className="startpanel-0-1-0-10" />
               <div className="startpanel-0-1-0-11">
                 <div className="startpanel-0-1-0-11-0" />
                 <div className="startpanel-0-1-0-11-1">
                   <div className="startpanel-line3" />
-                </div>{" "}
+                </div>
                 <div className="startpanel-0-1-0-11-2" />
-              </div>{" "}
+              </div>
               <div className="startpanel-0-1-0-12" />
               <div className="startpanel-0-1-0-13">
                 <div className="startpanel-0-1-0-13-0" />
@@ -170,35 +263,37 @@ export default class Startpanel extends React.Component {
                       />
                       <div className="startpanel-0-1-0-13-1-0-0-1">
                         <div className="startpanel-0-1-0-13-1-0-0-1-0">
-                          <StylePop className="startpanel-style_-2" />
-                        </div>{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
+                          <StylePop
+                            className="startpanel-style_-2"
+                            getStyle={this.getStyle}
+                            styles={this.state.styles}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="startpanel-0-1-0-13-2" />
-              </div>{" "}
+              </div>
               <div className="startpanel-0-1-0-14" />
               <div className="startpanel-0-1-0-15">
                 <div className="startpanel-0-1-0-15-0" />
                 <div className="startpanel-0-1-0-15-1">
                   <div
                     className="startpanel-startbutton-0"
-                    onClick={this.changeRoute}
+                    onClick={this.handleSubmit}
                   >
                     <div className="startpanel-0-1-0-15-1-0-0">
-                      <div className="startpanel-start_plan_-2">
-                        Start Plan{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
+                      <div className="startpanel-start_plan_-2">Start Plan</div>
+                    </div>
+                  </div>
+                </div>
                 <div className="startpanel-0-1-0-15-2" />
-              </div>{" "}
-            </div>{" "}
-          </div>{" "}
+              </div>
+            </div>
+          </div>
           <div className="startpanel-0-2" />
-        </div>{" "}
+        </div>
       </div>
     );
   }
