@@ -23,9 +23,7 @@ function getBar(reactComponent) {
           <div className="header-1-3-1-2">
             <div className="header-1-3-1-2-0 ">
               <form onSubmit={reactComponent.handleSubmit}>
-                <div className="signin-0-3-3-1-0">
-                  <input type="submit" value="Logout" data-test="submit" />
-                </div>
+                  <Button type="submit" value="Logout" data-test="submit" > Logout </Button>
               </form>
             </div>
           </div>
