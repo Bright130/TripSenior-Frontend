@@ -468,6 +468,7 @@
     text-decoration: none;
     text-align: center;
     word-wrap: break-word;
+    cursor: pointer;
 }
 
 .summarypage-sendmail-9 {
@@ -510,6 +511,7 @@
     text-decoration: none;
     text-align: center;
     word-wrap: break-word;
+    cursor: pointer;
 }
 
 * {
