@@ -4,10 +4,32 @@ import Timeline from "react-calendar-timeline";
 import "react-calendar-timeline/lib/Timeline.css";
 import "./timetable.css";
 import moment from "moment";
+import { Menu, Item, Separator, Submenu, MenuProvider } from "react-contexify";
+import "react-contexify/dist/ReactContexify.min.css";
+import { contextMenu } from "react-contexify";
+
 // import {
 //     defaultHeaderLabelFormats,
 //     defaultSubHeaderLabelFormats
 //   } from 'react-calendar-timeline'
+
+const MyMenu = ({ menuId, drawBox, p }) => (
+  <Menu id={menuId}>
+    <Item onClick={() => drawBox("blue")}>
+      <span>🔷</span>
+      Turn box to blue id={p}
+    </Item>
+    <Item onClick={() => drawBox("red")}>
+      <span>🛑</span>
+      Turn box to red
+    </Item>
+    <Item onClick={() => drawBox()}>
+      <span>🔄</span>
+      Reset
+    </Item>
+  </Menu>
+);
+const menuId = "awesome";
 
 const groups = [
   { id: 1, title: "Day1" },
@@ -101,8 +123,23 @@ export default class TimeTable extends React.Component {
       groups,
       items,
       defaultTimeStart,
-      defaultTimeEnd
+      defaultTimeEnd,
+      rightClickId: 0
     };
+    this.handleContextMenu = this.handleContextMenu.bind(this);
+  }
+
+  handleContextMenu(itemId, e) {
+    // always prevent default behavior
+    e.preventDefault();
+    console.log("Right Click", itemId, e);
+    this.setState(
+      { rightClickId: itemId },
+      contextMenu.show({
+        id: menuId,
+        event: e
+      })
+    );
   }
 
   handleItemMove = (itemId, dragTime, newGroupOrder) => {
@@ -122,7 +159,7 @@ export default class TimeTable extends React.Component {
       )
     });
 
-    console.log("Moved", itemId, dragTime, newGroupOrder);
+    console.log("Moved", itemId);
   };
 
   handleItemResize = (itemId, time, edge) => {
@@ -144,31 +181,36 @@ export default class TimeTable extends React.Component {
 
   render() {
     return (
-      <Timeline
-        groups={this.state.groups}
-        items={this.state.items}
-        timeSteps={timeSteps}
-        dragSnap={dragSnap}
-        sidebarContent={<p>Trip Days</p>}
-        defaultTimeStart={moment().add(-12, "hour")}
-        defaultTimeEnd={moment().add(12, "hour")}
-        minZoom={60 * 60 * 1000 * 24}
-        maxZoom={60 * 60 * 1000 * 24}
-        defaultTimeStart={this.state.defaultTimeStart}
-        defaultTimeEnd={this.state.defaultTimeEnd}
-        visibleTimeStart={this.state.defaultTimeStart}
-        visibleTimeEnd={this.state.defaultTimeEnd}
-        headerLabelFormats={defaultHeaderLabelFormats}
-        subHeaderLabelFormats={defaultSubHeaderLabelFormats}
-        canResize={"both"}
-        canMove={true}
-        canChangeGroup={true}
-        lineHeight={50}
-        itemHeightRatio={0.9}
-        onItemMove={this.handleItemMove}
-        onItemResize={this.handleItemResize}
-        stackItems={true}
-      />
+      <div>
+        <Timeline
+          id="menu_id"
+          groups={this.state.groups}
+          items={this.state.items}
+          timeSteps={timeSteps}
+          dragSnap={dragSnap}
+          sidebarContent={<p>Trip Days</p>}
+          defaultTimeStart={moment().add(-12, "hour")}
+          defaultTimeEnd={moment().add(12, "hour")}
+          minZoom={60 * 60 * 1000 * 24}
+          maxZoom={60 * 60 * 1000 * 24}
+          defaultTimeStart={this.state.defaultTimeStart}
+          defaultTimeEnd={this.state.defaultTimeEnd}
+          visibleTimeStart={this.state.defaultTimeStart}
+          visibleTimeEnd={this.state.defaultTimeEnd}
+          headerLabelFormats={defaultHeaderLabelFormats}
+          subHeaderLabelFormats={defaultSubHeaderLabelFormats}
+          canResize={"both"}
+          canMove={true}
+          canChangeGroup={true}
+          lineHeight={50}
+          itemHeightRatio={0.9}
+          onItemMove={this.handleItemMove}
+          onItemResize={this.handleItemResize}
+          onItemContextMenu={this.handleContextMenu}
+          stackItems={true}
+        />
+        <MyMenu menuId={"awesome"} p={this.state.rightClickId} />
+      </div>
     );
   }
 }
