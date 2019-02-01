@@ -8,17 +8,53 @@ import "./customize.css";
 import TimeTable from "./timetable";
 import { Icon, Input, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
-
+import moment from "moment";
 export default class Customize extends React.Component {
   constructor() {
     super();
     this.state = {
-      tripname: "MyTrip"
+      tripname: "MyTrip",
+      items: [
+        {
+          id: 1,
+          group: 1,
+          title: "Songkhla lake",
+          start_time: moment()
+            .startOf("day")
+            .add(7, "hour"),
+          end_time: moment()
+            .startOf("day")
+            .add(9, "hour")
+        },
+        {
+          id: 2,
+          group: 2,
+          title: "Central Hatyai",
+          start_time: moment().add(-0.5, "hour"),
+          end_time: moment().add(0.5, "hour")
+        },
+        {
+          id: 3,
+          group: 1,
+          title: "Kim yong market",
+          start_time: moment()
+            .startOf("day")
+            .add(13, "hour"),
+          end_time: moment()
+            .startOf("day")
+            .add(16, "hour")
+        }
+      ]
     };
   }
 
   getName = name => {
     this.setState({ tripname: name });
+  };
+
+  getTrip = trip => {
+    this.setState({ items: trip });
+    this.forceUpdate();
   };
 
   static contextTypes = {
@@ -86,7 +122,7 @@ export default class Customize extends React.Component {
         </div>
         <div className="customize-2">
           <div className="customize-rectangle_4">
-            <TimeTable />
+            <TimeTable items={this.state.items} getTrip={this.getTrip} />
           </div>
         </div>
         <div className="customize-3">

@@ -13,19 +13,18 @@ import { contextMenu } from "react-contexify";
 //     defaultSubHeaderLabelFormats
 //   } from 'react-calendar-timeline'
 
-const MyMenu = ({ menuId, drawBox, p }) => (
-  <Menu id={menuId}>
-    <Item onClick={() => drawBox("blue")}>
-      <span>🔷</span>
-      Turn box to blue id={p}
+const MyMenu = ({ menuId, p, deleteItem }) => (
+  <Menu id={menuId} a={"ss"}>
+    <Submenu label="📅Change day">
+      <Item>Bar</Item>
+    </Submenu>
+    <Item>
+      <span>🗑️</span>
+      Move to basket
     </Item>
-    <Item onClick={() => drawBox("red")}>
-      <span>🛑</span>
-      Turn box to red
-    </Item>
-    <Item onClick={() => drawBox()}>
-      <span>🔄</span>
-      Reset
+    <Item onClick={() => deleteItem(menuId)}>
+      <span>❌</span>
+      Delete it
     </Item>
   </Menu>
 );
@@ -70,46 +69,6 @@ const timeSteps = {
   year: 0
 };
 
-const items = [
-  {
-    id: 1,
-    group: 1,
-    title: "Songkhla lake",
-    start_time: moment()
-      .startOf("day")
-      .add(7, "hour"),
-    end_time: moment()
-      .startOf("day")
-      .add(9, "hour"),
-    itemProps: {
-      // these optional attributes are passed to the root <div /> of each item as <div {...itemProps} />
-      "data-custom-attribute": "Random content",
-      "aria-hidden": true,
-      onDoubleClick: () => {
-        console.log("You clicked double!");
-      }
-    }
-  },
-  {
-    id: 2,
-    group: 2,
-    title: "Central Hatyai",
-    start_time: moment().add(-0.5, "hour"),
-    end_time: moment().add(0.5, "hour")
-  },
-  {
-    id: 3,
-    group: 1,
-    title: "Kim yong market",
-    start_time: moment()
-      .startOf("day")
-      .add(13, "hour"),
-    end_time: moment()
-      .startOf("day")
-      .add(16, "hour")
-  }
-];
-
 const defaultTimeStart = moment()
   .startOf("day")
   .add(5, "hour");
@@ -121,25 +80,45 @@ export default class TimeTable extends React.Component {
 
     this.state = {
       groups,
-      items,
+
       defaultTimeStart,
       defaultTimeEnd,
-      rightClickId: 0
+      rightClickId: 0,
+      needUpdate: 0
     };
     this.handleContextMenu = this.handleContextMenu.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevProps, this.props);
   }
 
   handleContextMenu(itemId, e) {
     // always prevent default behavior
     e.preventDefault();
-    console.log("Right Click", itemId, e);
+    let temp = {};
+    // console.log("Right Click", itemId, e);
+    this.props.items.forEach(function(item, index) {
+      if (item["id"] == itemId) {
+        temp = index;
+      }
+    });
+    console.log(temp);
+
     this.setState(
-      { rightClickId: itemId },
+      { rightClickId: temp },
       contextMenu.show({
         id: menuId,
         event: e
       })
     );
+  }
+
+  deleteItem() {
+    let arr = this.props.items;
+    let a = arr.splice(0, this.state.rightClickId);
+    let b = arr.splice(1, arr.length);
+    this.props.getTrip(a.concat(b));
   }
 
   handleItemMove = (itemId, dragTime, newGroupOrder) => {
@@ -185,7 +164,7 @@ export default class TimeTable extends React.Component {
         <Timeline
           id="menu_id"
           groups={this.state.groups}
-          items={this.state.items}
+          items={this.props.items}
           timeSteps={timeSteps}
           dragSnap={dragSnap}
           sidebarContent={<p>Trip Days</p>}
@@ -209,7 +188,11 @@ export default class TimeTable extends React.Component {
           onItemContextMenu={this.handleContextMenu}
           stackItems={true}
         />
-        <MyMenu menuId={"awesome"} p={this.state.rightClickId} />
+        <MyMenu
+          menuId={"awesome"}
+          id={this.state.rightClickId}
+          deleteItem={this.deleteItem}
+        />
       </div>
     );
   }
