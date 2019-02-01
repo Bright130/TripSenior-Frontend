@@ -8,7 +8,9 @@ import "./customize.css";
 import TimeTable from "./timetable";
 import { Icon, Input, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
+import VisitedPlace from "./visitedPlace";
 import moment from "moment";
+import Basket from "./basket";
 export default class Customize extends React.Component {
   constructor() {
     super();
@@ -132,7 +134,7 @@ export default class Customize extends React.Component {
         <div className="customize-4">
           <div className="customize-4-0">
             <div className="customize-4-0-0">
-              <div className="customize-rectangle_5" />
+              <Basket name={["a", "b", "c"]} />
             </div>
             <div className="customize-4-0-1">
               <div className="customize-suggested_places_-1">
@@ -140,23 +142,7 @@ export default class Customize extends React.Component {
               </div>
             </div>
           </div>
-          <div className="customize-4-1">
-            <div className="customize-4-1-0">
-              <div className="customize-rectangle_6">
-                <div className="customize-4-1-0-0-0">
-                  <div className="customize-component_1_">
-                    <Component_1 />
-                  </div>
-                  <div className="customize-component_1_">
-                    <Component_1 />
-                  </div>
-                  <div className="customize-component_1_">
-                    <Component_1 />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <VisitedPlace name={["a", "b", "c"]} />
         </div>
         <div className="customize-5">
           <div className="customize-rectangle_7">
