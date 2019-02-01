@@ -122,38 +122,36 @@ export default class TimeTable extends React.Component {
   }
 
   handleItemMove = (itemId, dragTime, newGroupOrder) => {
-    const { items, groups } = this.state;
+    // const { groups } = this.state;
+    const { items } = this.props;
 
     const group = groups[newGroupOrder];
-
-    this.setState({
-      items: items.map(item =>
-        item.id === itemId
-          ? Object.assign({}, item, {
-              start_time: dragTime,
-              end_time: dragTime + (item.end_time - item.start_time),
-              group: group.id
-            })
-          : item
-      )
-    });
+    let temp = items.map(item =>
+      item.id === itemId
+        ? Object.assign({}, item, {
+            start_time: dragTime,
+            end_time: dragTime + (item.end_time - item.start_time),
+            group: group.id
+          })
+        : item
+    );
+    console.log(temp);
+    this.props.getTrip(temp);
 
     console.log("Moved", itemId);
   };
 
   handleItemResize = (itemId, time, edge) => {
-    const { items } = this.state;
-
-    this.setState({
-      items: items.map(item =>
-        item.id === itemId
-          ? Object.assign({}, item, {
-              start_time: edge === "left" ? time : item.start_time,
-              end_time: edge === "left" ? item.end_time : time
-            })
-          : item
-      )
-    });
+    const { items } = this.props;
+    let temp = items.map(item =>
+      item.id === itemId
+        ? Object.assign({}, item, {
+            start_time: edge === "left" ? time : item.start_time,
+            end_time: edge === "left" ? item.end_time : time
+          })
+        : item
+    );
+    this.props.getTrip(temp);
 
     console.log("Resized", itemId, time, edge);
   };

@@ -56,7 +56,6 @@ export default class Customize extends React.Component {
 
   getTrip = trip => {
     this.setState({ items: trip });
-    this.forceUpdate();
   };
 
   static contextTypes = {
