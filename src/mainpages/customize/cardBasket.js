@@ -8,9 +8,6 @@ import { contextMenu } from "react-contexify";
 const menuId = "awesomee";
 const MyMenu = ({ menuId, deleteItem, sendSchedule }) => (
   <Menu id={menuId}>
-    <Submenu label="📅Change day">
-      <Item>Bar</Item>
-    </Submenu>
     <Item onClick={() => sendSchedule(menuId.split("awesomee")[1])}>
       <span>📅</span>
       Add to schedule
@@ -52,6 +49,7 @@ export default class CardBasket extends React.Component {
       <div>
         <div
           onContextMenu={this.handleContextMenu}
+          onClick={this.handleContextMenu}
           className="card_basket-card_basket"
         >
           <div className="card_basket-0">

@@ -64,19 +64,22 @@ export default class Customize extends React.Component {
   };
 
   appendTrip = name => {
-    let len = this.state.items.length > 0 ? this.state.items.length : 1;
+    let len =
+      this.state.items.length > 0
+        ? this.state.items[this.state.items.length - 1].id + 1
+        : 1;
     console.log(len);
     this.setState({
       items: this.state.items.concat({
-        id: len + 1,
+        id: len,
         group: 1,
         title: name,
         start_time: moment()
           .startOf("day")
-          .add(7, "hour"),
+          .add(5, "hour"),
         end_time: moment()
           .startOf("day")
-          .add(9, "hour")
+          .add(7, "hour")
       })
     });
   };
