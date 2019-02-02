@@ -17,40 +17,16 @@ export default class Customize extends React.Component {
     super();
     this.state = {
       tripname: "MyTrip",
-      items: [
-        {
-          id: 1,
-          group: 1,
-          title: "Songkhla lake",
-          start_time: moment()
-            .startOf("day")
-            .add(7, "hour"),
-          end_time: moment()
-            .startOf("day")
-            .add(9, "hour")
-        },
-        {
-          id: 2,
-          group: 2,
-          title: "Central Hatyai",
-          start_time: moment().add(-0.5, "hour"),
-          end_time: moment().add(0.5, "hour")
-        },
-        {
-          id: 3,
-          group: 1,
-          title: "Kim yong market",
-          start_time: moment()
-            .startOf("day")
-            .add(13, "hour"),
-          end_time: moment()
-            .startOf("day")
-            .add(16, "hour")
-        }
-      ],
+      items: [],
       basket: ["a", "b", "c"],
       visited: ["Central Hatyai", "ab", "ac"]
     };
+  }
+
+  componentDidMount(){
+    console.log(this.props.location.state.items)
+    console.log(this.state.items)
+    this.setState({items: this.props.location.state.items})
   }
 
   getName = name => {
@@ -98,7 +74,7 @@ export default class Customize extends React.Component {
     router: PropTypes.object
   };
   changeRoute = () => {
-    console.log(this.state);
+    console.log(this.props.location.state.items);
     // this.context.router.history.push("/summary/1");
   };
   render() {

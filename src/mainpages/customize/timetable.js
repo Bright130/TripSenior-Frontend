@@ -61,11 +61,11 @@ const defaultSubHeaderLabelFormats = {
   hourLong: "HH:00"
 };
 
-const dragSnap = 30 * 60 * 1000;
+const dragSnap = 5 * 60 * 1000;
 
 const timeSteps = {
   second: 1,
-  minute: 30,
+  minute: 5,
   hour: 1,
   day: 0,
   month: 0,
