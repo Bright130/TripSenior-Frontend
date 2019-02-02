@@ -55,6 +55,7 @@
     "react-bootstrap": "^0.32.4",
     "react-bootstrap-datetimerangepicker": "^2.0.4",
     "react-calendar-timeline": "^0.22.0",
+    "react-contexify": "^4.0.1",
     "react-date-range": "^1.0.0-beta",
     "react-daterange-picker": "^2.0.1",
     "react-dates": "^18.3.1",

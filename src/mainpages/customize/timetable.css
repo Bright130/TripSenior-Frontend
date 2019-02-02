@@ -15,11 +15,15 @@
 }
 
 .rct-item {
-    overflow:hidden;
-    white-space:nowrap;
-    text-overflow:ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     border-radius: 8px;
     text-align: center;
+}
+
+.react-contexify {
+    z-index: 100;
 }
 
 p:last-child {
@@ -34,4 +38,3 @@ p:last-child {
 .rct-top-header {
     display: none;
 } */
-

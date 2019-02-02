@@ -8,17 +8,90 @@ import "./customize.css";
 import TimeTable from "./timetable";
 import { Icon, Input, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
+import VisitedPlace from "./visitedPlace";
+import moment from "moment";
+import Basket from "./basket";
 
 export default class Customize extends React.Component {
   constructor() {
     super();
+    this.state = {
+      tripname: "MyTrip",
+      items: [
+        {
+          id: 1,
+          group: 1,
+          title: "Songkhla lake",
+          start_time: moment()
+            .startOf("day")
+            .add(7, "hour"),
+          end_time: moment()
+            .startOf("day")
+            .add(9, "hour")
+        },
+        {
+          id: 2,
+          group: 2,
+          title: "Central Hatyai",
+          start_time: moment().add(-0.5, "hour"),
+          end_time: moment().add(0.5, "hour")
+        },
+        {
+          id: 3,
+          group: 1,
+          title: "Kim yong market",
+          start_time: moment()
+            .startOf("day")
+            .add(13, "hour"),
+          end_time: moment()
+            .startOf("day")
+            .add(16, "hour")
+        }
+      ],
+      basket: ["a", "b", "c"]
+    };
   }
+
+  getName = name => {
+    this.setState({ tripname: name });
+  };
+  getTrip = trip => {
+    this.setState({ items: trip });
+  };
+
+  getBasket = trip => {
+    this.setState({ basket: trip });
+  };
+
+  appendTrip = name => {
+    let len = this.state.items.length > 0 ? this.state.items.length : 1;
+    console.log(len);
+    this.setState({
+      items: this.state.items.concat({
+        id: len + 1,
+        group: 1,
+        title: name,
+        start_time: moment()
+          .startOf("day")
+          .add(7, "hour"),
+        end_time: moment()
+          .startOf("day")
+          .add(9, "hour")
+      })
+    });
+  };
+
+  appendBasket = trip => {
+    console.log(trip);
+    this.setState({ basket: this.state.basket.concat(trip) });
+  };
 
   static contextTypes = {
     router: PropTypes.object
   };
   changeRoute = () => {
-    this.context.router.history.push("/summary/1");
+    console.log(this.state);
+    // this.context.router.history.push("/summary/1");
   };
   render() {
     return (
@@ -40,42 +113,49 @@ export default class Customize extends React.Component {
             </div>
           </div>
           <div className="customize-tripname_instance_2">
-            <Tripname name={"MyTrip"} />
+            <Tripname name={this.state.tripname} getName={this.getName} />
           </div>
-          <div className="customize-1-2" /> 
-              <div className="customize-1-3">
-                  <div className="customize-1-3-0">
-                      <div className="customize-rectangle_2">
-                          <div className="customize-1-3-0-0-0">
-                              <div className="customize-routebutton-1">
-                                  <Button className="customize-1-3-0-0-0-0-0">
-                                      <div className="customize-route_optimize-9">
-                                          Route Optimize
-                                      </div>
-                                  </Button>
-                              </div>
-                          </div>
+          <div className="customize-1-2" />
+          <div className="customize-1-3">
+            <div className="customize-1-3-0">
+              <div className="customize-rectangle_2">
+                <div className="customize-1-3-0-0-0">
+                  <div className="customize-routebutton-1">
+                    <Button className="customize-1-3-0-0-0-0-0">
+                      <div className="customize-route_optimize-9">
+                        Route Optimize
                       </div>
+                    </Button>
                   </div>
+                </div>
               </div>
-              <div className="customize-1-4" /> 
-              <div className="customize-1-5">
-                  <div className="customize-1-5-0">
-                      <div className="customize-rectangle_2-7">
-                          <div className="customize-1-5-0-0-0">
-                              <div className="customize-completebutton-2">
-                                  <Button className="customize-1-5-0-0-0-0-0" onClick={this.changeRoute}>
-                                      <div className="customize-complete-3">Complete</div>
-                                  </Button>
-                              </div>
-                          </div>
-                      </div>
+            </div>
+          </div>
+          <div className="customize-1-4" />
+          <div className="customize-1-5">
+            <div className="customize-1-5-0">
+              <div className="customize-rectangle_2-7">
+                <div className="customize-1-5-0-0-0">
+                  <div className="customize-completebutton-2">
+                    <Button
+                      className="customize-1-5-0-0-0-0-0"
+                      onClick={this.changeRoute}
+                    >
+                      <div className="customize-complete-3">Complete</div>
+                    </Button>
                   </div>
+                </div>
               </div>
+            </div>
+          </div>
         </div>
         <div className="customize-2">
           <div className="customize-rectangle_4">
-            <TimeTable />
+            <TimeTable
+              items={this.state.items}
+              getTrip={this.getTrip}
+              appendBasket={this.appendBasket}
+            />
           </div>
         </div>
         <div className="customize-3">
@@ -85,7 +165,11 @@ export default class Customize extends React.Component {
         <div className="customize-4">
           <div className="customize-4-0">
             <div className="customize-4-0-0">
-              <div className="customize-rectangle_5" />
+              <Basket
+                name={this.state.basket}
+                appendTrip={this.appendTrip}
+                getBasket={this.getBasket}
+              />
             </div>
             <div className="customize-4-0-1">
               <div className="customize-suggested_places_-1">
@@ -93,23 +177,7 @@ export default class Customize extends React.Component {
               </div>
             </div>
           </div>
-          <div className="customize-4-1">
-            <div className="customize-4-1-0">
-              <div className="customize-rectangle_6">
-                <div className="customize-4-1-0-0-0">
-                  <div className="customize-component_1_">
-                    <Component_1 />
-                  </div>
-                  <div className="customize-component_1_">
-                    <Component_1 />
-                  </div>
-                  <div className="customize-component_1_">
-                    <Component_1 />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <VisitedPlace name={["a", "b", "c"]} />
         </div>
         <div className="customize-5">
           <div className="customize-rectangle_7">
