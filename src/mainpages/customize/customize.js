@@ -48,7 +48,8 @@ export default class Customize extends React.Component {
             .add(16, "hour")
         }
       ],
-      basket: ["a", "b", "c"]
+      basket: ["a", "b", "c"],
+      visited: ["aa", "ab", "ac"]
     };
   }
 
@@ -61,6 +62,10 @@ export default class Customize extends React.Component {
 
   getBasket = trip => {
     this.setState({ basket: trip });
+  };
+
+  getVisited = trip => {
+    this.setState({ visited: trip });
   };
 
   appendTrip = name => {
@@ -180,7 +185,11 @@ export default class Customize extends React.Component {
               </div>
             </div>
           </div>
-          <VisitedPlace name={["a", "b", "c"]} />
+          <VisitedPlace
+            name={this.state.visited}
+            appendTrip={this.appendTrip}
+            getVisited={this.getVisited}
+          />
         </div>
         <div className="customize-5">
           <div className="customize-rectangle_7">

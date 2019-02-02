@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CardBasket from "./cardBasket";
 import "./customize.css";
+import "./card_basket.css";
 // const deleteItem = id => {
 //   console.log(id);
 //   // let arr = this.props.items;
