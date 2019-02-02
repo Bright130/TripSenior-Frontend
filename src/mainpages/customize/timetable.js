@@ -13,12 +13,12 @@ import { contextMenu } from "react-contexify";
 //     defaultSubHeaderLabelFormats
 //   } from 'react-calendar-timeline'
 
-const MyMenu = ({ menuId, p, deleteItem }) => (
+const MyMenu = ({ menuId, p, deleteItem, sendBasket }) => (
   <Menu id={menuId} a={"ss"}>
     <Submenu label="📅Change day">
       <Item>Bar</Item>
     </Submenu>
-    <Item>
+    <Item onClick={() => sendBasket(menuId)}>
       <span>🗑️</span>
       Move to basket
     </Item>
@@ -88,6 +88,7 @@ export default class TimeTable extends React.Component {
     };
     this.handleContextMenu = this.handleContextMenu.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.sendBasket = this.sendBasket.bind(this);
   }
   componentDidUpdate(prevProps, prevState) {
     console.log(prevProps, this.props);
@@ -119,6 +120,15 @@ export default class TimeTable extends React.Component {
     let a = arr.splice(0, this.state.rightClickId);
     let b = arr.splice(1, arr.length);
     this.props.getTrip(a.concat(b));
+  }
+
+  sendBasket() {
+    let arr = this.props.items;
+    let a = arr.splice(0, this.state.rightClickId);
+    let b = arr.splice(1, arr.length);
+    this.props.getTrip(a.concat(b));
+
+    this.props.appendBasket([arr[0].title]);
   }
 
   handleItemMove = (itemId, dragTime, newGroupOrder) => {
@@ -190,6 +200,7 @@ export default class TimeTable extends React.Component {
           menuId={"awesome"}
           id={this.state.rightClickId}
           deleteItem={this.deleteItem}
+          sendBasket={this.sendBasket}
         />
       </div>
     );

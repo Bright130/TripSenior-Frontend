@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import VisitedPlace from "./visitedPlace";
 import moment from "moment";
 import Basket from "./basket";
+
 export default class Customize extends React.Component {
   constructor() {
     super();
@@ -46,16 +47,43 @@ export default class Customize extends React.Component {
             .startOf("day")
             .add(16, "hour")
         }
-      ]
+      ],
+      basket: ["a", "b", "c"]
     };
   }
 
   getName = name => {
     this.setState({ tripname: name });
   };
-
   getTrip = trip => {
     this.setState({ items: trip });
+  };
+
+  getBasket = trip => {
+    this.setState({ basket: trip });
+  };
+
+  appendTrip = name => {
+    let len = this.state.items.length > 0 ? this.state.items.length : 1;
+    console.log(len);
+    this.setState({
+      items: this.state.items.concat({
+        id: len + 1,
+        group: 1,
+        title: name,
+        start_time: moment()
+          .startOf("day")
+          .add(7, "hour"),
+        end_time: moment()
+          .startOf("day")
+          .add(9, "hour")
+      })
+    });
+  };
+
+  appendBasket = trip => {
+    console.log(trip);
+    this.setState({ basket: this.state.basket.concat(trip) });
   };
 
   static contextTypes = {
@@ -123,7 +151,11 @@ export default class Customize extends React.Component {
         </div>
         <div className="customize-2">
           <div className="customize-rectangle_4">
-            <TimeTable items={this.state.items} getTrip={this.getTrip} />
+            <TimeTable
+              items={this.state.items}
+              getTrip={this.getTrip}
+              appendBasket={this.appendBasket}
+            />
           </div>
         </div>
         <div className="customize-3">
@@ -133,7 +165,11 @@ export default class Customize extends React.Component {
         <div className="customize-4">
           <div className="customize-4-0">
             <div className="customize-4-0-0">
-              <Basket name={["a", "b", "c"]} />
+              <Basket
+                name={this.state.basket}
+                appendTrip={this.appendTrip}
+                getBasket={this.getBasket}
+              />
             </div>
             <div className="customize-4-0-1">
               <div className="customize-suggested_places_-1">
