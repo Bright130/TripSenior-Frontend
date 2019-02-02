@@ -58,7 +58,7 @@ export default class Signup extends React.Component {
         const email = this.state.username;
         const password = this.state.password;
     
-        postData("http://localhost:5000/login", {
+        postData("http://localhost:5000/user", {
           email: email,
           password: password
         })
@@ -68,6 +68,7 @@ export default class Signup extends React.Component {
     
           .catch(error => console.error(error));
         return this.setState({ error: "" });
+        
       }
     
       handleUserChange(evt) {
@@ -171,7 +172,7 @@ export default class Signup extends React.Component {
                                 <div className="signup-0-1-0-0-7-1-0">
                                     {/* <Button type='submit' >Submit</Button> */}
                                     {/* <input type="submit" value="Log In" data-test="submit" /> */}
-                                    <div className="signup-sign_up_-1">Sign in</div>
+                                    <div className="signup-sign_up_-1">Sign Up</div>
                                 </div>
                                 </Button> 
                               <div className="signup-0-1-0-0-7-2" /> 
