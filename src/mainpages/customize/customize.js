@@ -49,7 +49,7 @@ export default class Customize extends React.Component {
         }
       ],
       basket: ["a", "b", "c"],
-      visited: ["aa", "ab", "ac"]
+      visited: ["Central Hatyai", "ab", "ac"]
     };
   }
 

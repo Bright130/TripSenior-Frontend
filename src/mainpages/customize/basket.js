@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CardBasket from "./cardBasket";
 import "./customize.css";
 import "./card_basket.css";
+import { loadAPI } from "./util";
 // const deleteItem = id => {
 //   console.log(id);
 //   // let arr = this.props.items;
@@ -27,6 +28,7 @@ export default class Basket extends Component {
     this.createPlace = this.createPlace.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.sendSchedule = this.sendSchedule.bind(this);
+    this.openDetail = this.openDetail.bind(this);
   }
 
   deleteItem(id) {
@@ -46,8 +48,15 @@ export default class Basket extends Component {
 
     this.props.appendTrip(arr[0]);
   }
-
-  createPlace = (arr, deleteItem, sendSchedule) => {
+  openDetail(id) {
+    loadAPI(
+      " http://127.0.0.1:5000/placename?place_id=" + this.props.name[id]
+    ).then(result => {
+      console.log(this.props.name[id], result["place_id"]);
+      window.open("http://127.0.0.1:8081/place/" + result["place_id"]);
+    });
+  }
+  createPlace = (arr, deleteItem, sendSchedule, openDetail) => {
     let ret = [];
 
     arr.forEach(function(name, index) {
@@ -58,6 +67,7 @@ export default class Basket extends Component {
             uid={index}
             deleteItem={deleteItem}
             sendSchedule={sendSchedule}
+            openDetail={openDetail}
           />
         </div>
       );
@@ -75,7 +85,8 @@ export default class Basket extends Component {
               {this.createPlace(
                 this.props.name,
                 this.deleteItem,
-                this.sendSchedule
+                this.sendSchedule,
+                this.openDetail
               )}
             </div>
           </div>

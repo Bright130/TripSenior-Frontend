@@ -7,17 +7,20 @@ import moment from "moment";
 import { Menu, Item, Separator, Submenu, MenuProvider } from "react-contexify";
 import "react-contexify/dist/ReactContexify.min.css";
 import { contextMenu } from "react-contexify";
+import { loadAPI } from "./util";
 
 // import {
 //     defaultHeaderLabelFormats,
 //     defaultSubHeaderLabelFormats
 //   } from 'react-calendar-timeline'
 
-const MyMenu = ({ menuId, p, deleteItem, sendBasket }) => (
+const MyMenu = ({ menuId, p, deleteItem, sendBasket, openDetail }) => (
   <Menu id={menuId} a={"ss"}>
-    <Submenu label="📅Change day">
-      <Item>Bar</Item>
-    </Submenu>
+    <Item onClick={() => openDetail(menuId)}>
+      <span>📋</span>
+      View detail
+    </Item>
+
     <Item onClick={() => sendBasket(menuId)}>
       <span>🗑️</span>
       Move to basket
@@ -89,6 +92,7 @@ export default class TimeTable extends React.Component {
     this.handleContextMenu = this.handleContextMenu.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.sendBasket = this.sendBasket.bind(this);
+    this.openDetail = this.openDetail.bind(this);
   }
   componentDidUpdate(prevProps, prevState) {
     console.log(prevProps, this.props);
@@ -129,6 +133,19 @@ export default class TimeTable extends React.Component {
     this.props.getTrip(a.concat(b));
 
     this.props.appendBasket([arr[0].title]);
+  }
+
+  openDetail() {
+    loadAPI(
+      " http://127.0.0.1:5000/placename?place_id=" +
+        this.props.items[this.state.rightClickId]["title"]
+    ).then(result => {
+      console.log(
+        this.props.items[this.state.rightClickId]["title"],
+        result["place_id"]
+      );
+      window.open("http://127.0.0.1:8081/place/" + result["place_id"]);
+    });
   }
 
   handleItemMove = (itemId, dragTime, newGroupOrder) => {
@@ -201,6 +218,7 @@ export default class TimeTable extends React.Component {
           id={this.state.rightClickId}
           deleteItem={this.deleteItem}
           sendBasket={this.sendBasket}
+          openDetail={this.openDetail}
         />
       </div>
     );

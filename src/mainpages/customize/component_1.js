@@ -5,8 +5,12 @@ import { Menu, Item, Separator, Submenu, MenuProvider } from "react-contexify";
 import "react-contexify/dist/ReactContexify.min.css";
 import { contextMenu } from "react-contexify";
 const menuId = "awesomeee";
-const MyMenu = ({ menuId, deleteItem, sendSchedule }) => (
+const MyMenu = ({ menuId, deleteItem, sendSchedule, openDetail }) => (
   <Menu id={menuId}>
+    <Item onClick={() => openDetail(menuId.split("awesomeee")[1])}>
+      <span>📋</span>
+      View detail
+    </Item>
     <Item onClick={() => sendSchedule(menuId.split("awesomeee")[1])}>
       <span>📅</span>
       Add to schedule
@@ -61,6 +65,7 @@ export default class Component_1 extends React.Component {
           menuId={menuId + this.props.uid}
           deleteItem={this.props.deleteItem}
           sendSchedule={this.props.sendSchedule}
+          openDetail={this.props.openDetail}
         />
       </div>
     );
