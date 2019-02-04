@@ -127,7 +127,7 @@ export default class Startpanel extends React.Component {
   // }
 
   changeRoute = () => {
-    this.context.router.history.push("/trip-custom");
+    
   };
 
   handleSubmit(evt) {
@@ -140,7 +140,10 @@ export default class Startpanel extends React.Component {
         this.state.nationality == "" ? "Thailand" : this.state.nationality,
       province:
         this.state.destinations == "" ? "Songkhla" : this.state.destinations
-    }).then(plan => console.log(plan));
+    }).then(plan => this.context.router.history.push({
+      pathname: '/trip-custom',
+      state: plan
+    }));
   }
 
   render() {
