@@ -165,61 +165,6 @@ export default class Summarypage extends React.Component {
   //     );
   //   }
 
-  //   componentWillReceiveProps(nextProps) {
-  //     if (
-  //       this.state.timeframe !== nextProps.timeframe ||
-  //       this.state.startTime !== nextProps.startTime
-  //     ) {
-  //       this.setState(
-  //         {
-  //           timeframe: nextProps.timeframe,
-  //           isTimeProviderChange: 1,
-  //           isTimeConsumerChange: 1,
-  //           startTime: nextProps.startTime,
-  //           selectedTime: nextProps.selectedTime,
-  //           endTime: nextProps.endTime
-  //         },
-  //         () => {
-  //           this.getDatum();
-  //         }
-  //       );
-  //     } else if (this.state.collection !== nextProps.collection) {
-  //       this.setState(
-  //         {
-  //           collection: nextProps.collection
-  //         },
-  //         () => this.getDatum()
-  //       );
-  //     } else if (
-  //       this.state.selectedTime !== nextProps.selectedTime &&
-  //       this.state.timeframe === nextProps.timeframe
-  //     ) {
-  //       this.setState(
-  //         {
-  //           selectedTime: nextProps.selectedTime
-  //         },
-  //         () => this.getDatum()
-  //       );
-  //     }
-  //   }
-
-  //   /**
-  //    * Refresh the data
-  //    */
-  //   getDatum() {
-  //     if (this.state.collection === "provider") {
-  //       loadProvider(this).catch(err => {
-  //         this.setState({
-  //           error: err
-  //         });
-  //       });
-  //     } else if (this.state.collection === "consumer") {
-  //       loadConsumer(this).then(() => {});
-  //     } else {
-  //       loadAll(this).catch(error => {});
-  //     }
-  //   }
-
   render() {
     return (
       <div className="summarypage-summarypage-7">

@@ -11,6 +11,54 @@ import PropTypes from "prop-types";
 import VisitedPlace from "./visitedPlace";
 import moment from "moment";
 import Basket from "./basket";
+import { loadAPI } from "./util";
+
+async function searchPlaceID(name) {
+  return new Promise(async function(resolve) {
+    let ret = await loadAPI(
+      " http://127.0.0.1:5000/placename?place_id=" + name
+    );
+    resolve(ret["place_id"]);
+  });
+}
+
+const createDBFormat = (props, state, isCreated) => {
+  let trip = {
+    tripID: 1,
+    tripName: state.tripname,
+
+    lastSavedTime: moment().unix() * 1000,
+    startTime: 1507680000,
+    endTime: 1507892800,
+    styles: ["Sea", "Shopping"],
+    speed: "Medium",
+    destinations: ["Songkhla"],
+    numberOfDay: 4,
+    detail: {},
+    removePlaceID: [10, 11, 12]
+  };
+  if (isCreated == true) trip["createdTime"] = moment().unix() * 1000;
+  for (let i = 1; i <= trip.numberOfDay; i++) {
+    trip.detail["" + i] = [];
+  }
+
+  state.items.forEach(async function(item) {
+    let s =
+      typeof item["start_time"] == "number"
+        ? item["start_time"] * 1000
+        : item["start_time"].unix() * 1000;
+    let e =
+      typeof item["end_time"] == "number"
+        ? item["end_time"] * 1000
+        : item["end_time"].unix() * 1000;
+    trip.detail["" + item.group].push({
+      placeID: await searchPlaceID(item["title"]),
+      startTime: s,
+      peroidMinute: (e - s) / 60000
+    });
+  });
+  return trip;
+};
 
 export default class Customize extends React.Component {
   constructor() {
@@ -21,7 +69,7 @@ export default class Customize extends React.Component {
         {
           id: 1,
           group: 1,
-          title: "Songkhla lake",
+          title: "Songkhla Lake",
           start_time: moment()
             .startOf("day")
             .add(7, "hour"),
@@ -39,7 +87,7 @@ export default class Customize extends React.Component {
         {
           id: 3,
           group: 1,
-          title: "Kim yong market",
+          title: "Kim Yong Market",
           start_time: moment()
             .startOf("day")
             .add(13, "hour"),
@@ -118,6 +166,7 @@ export default class Customize extends React.Component {
     router: PropTypes.object
   };
   changeRoute = () => {
+    console.log(createDBFormat(this.props, this.state, true));
     console.log(this.state);
     // this.context.router.history.push("/summary/1");
   };
