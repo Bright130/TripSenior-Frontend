@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../utility/header";
 import Tripname from "./tripname";
 import Component_1 from "./component_1";
-import Suggestcustom from "./suggestcustom";
+import SuggestCustom from "./suggestcustom";
 import "./customize.css";
 import TimeTable from "./timetable";
 import { Icon, Input, Button } from "semantic-ui-react";
@@ -19,7 +19,23 @@ export default class Customize extends React.Component {
       tripname: "MyTrip",
       items: [],
       basket: ["a", "b", "c"],
-      visited: ["Central Hatyai", "ab", "ac"]
+      visited: ["Central Hatyai", "ab", "ac"],
+      sugguest: [
+        {
+          place: "Central Hatyai",
+          province: "Songkla",
+          img_src: "https://ucarecdn.com/ec629618-5d41-4d33-86d5-0cb12ee243ed/",
+          style: "Zoo",
+          img_main: "https://ucarecdn.com/646c21d3-59ea-4f2e-b8d7-2ef590d80bb6/"
+        },
+        {
+          place: "Place C",
+          province: "Songkla",
+          img_src: "https://ucarecdn.com/ec629618-5d41-4d33-86d5-0cb12ee243ed/",
+          style: "Zoo",
+          img_main: "https://ucarecdn.com/646c21d3-59ea-4f2e-b8d7-2ef590d80bb6/"
+        }
+      ]
     };
   }
 
@@ -42,6 +58,10 @@ export default class Customize extends React.Component {
 
   getVisited = trip => {
     this.setState({ visited: trip });
+  };
+
+  getSuggest = trip => {
+    this.setState({ sugguest: trip });
   };
 
   appendTrip = name => {
@@ -171,57 +191,11 @@ export default class Customize extends React.Component {
           <div className="customize-rectangle_7">
             <div className="customize-5-0-0">
               <div className="customize-5-0-0-0">
-                <div className="customize-5-0-0-0-0">
-                  <div className="customize-5-0-0-0-0-0">
-                    <div className="customize-suggestcustom_instance-6">
-                      <Suggestcustom
-                        place={"Place A"}
-                        province={"Songkla"}
-                        img_src={
-                          "https://ucarecdn.com/4ddffb97-e590-4649-abab-290493e11cf9/"
-                        }
-                        style={"Temple"}
-                        img_main={
-                          "https://ucarecdn.com/577034a5-7ea0-4b21-898a-c364e7d818a6/"
-                        }
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="customize-5-0-0-0-1">
-                  <div className="customize-5-0-0-0-1-0">
-                    <div className="customize-suggestcustom_instance_2">
-                      <Suggestcustom
-                        place={"Place B"}
-                        province={"Songkla"}
-                        img_src={
-                          "https://ucarecdn.com/ec629618-5d41-4d33-86d5-0cb12ee243ed/"
-                        }
-                        style={"Zoo"}
-                        img_main={
-                          "https://ucarecdn.com/646c21d3-59ea-4f2e-b8d7-2ef590d80bb6/"
-                        }
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="customize-5-0-0-0-2">
-                  <div className="customize-5-0-0-0-2-0">
-                    <div className="customize-suggestcustom_instance_3">
-                      <Suggestcustom
-                        place={"Place C"}
-                        province={"Songkla"}
-                        img_src={
-                          "https://ucarecdn.com/9823c134-1e88-4c2b-84b9-0e5f084adc23/"
-                        }
-                        style={"Mountain"}
-                        img_main={
-                          "https://ucarecdn.com/fcf691fa-7146-4aab-a066-18cdeeb772eb/"
-                        }
-                      />
-                    </div>
-                  </div>
-                </div>
+                <SuggestCustom
+                  name={this.state.sugguest}
+                  appendTrip={this.appendTrip}
+                  getSuggest={this.getSuggest}
+                />
               </div>
               <div className="customize-5-0-0-1" />
             </div>
