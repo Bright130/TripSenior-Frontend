@@ -65,7 +65,6 @@ export default class Customize extends React.Component {
     super();
     this.state = {
       tripname: "MyTrip",
-<<<<<<< HEAD
       items: [
         {
           id: 1,
@@ -97,9 +96,6 @@ export default class Customize extends React.Component {
             .add(16, "hour")
         }
       ],
-=======
-      items: [],
->>>>>>> 7aac3d6494b179b46181306e37f3b215e3315770
       basket: ["a", "b", "c"],
       visited: ["Central Hatyai", "ab", "ac"],
       sugguest: [
@@ -121,10 +117,10 @@ export default class Customize extends React.Component {
     };
   }
 
-  componentDidMount(){
-    console.log(this.props.location.state.items)
-    console.log(this.state.items)
-    this.setState({items: this.props.location.state.items})
+  componentDidMount() {
+    console.log(this.props.location.state.items);
+    console.log(this.state.items);
+    this.setState({ items: this.props.location.state.items });
   }
 
   getName = name => {
@@ -176,12 +172,9 @@ export default class Customize extends React.Component {
     router: PropTypes.object
   };
   changeRoute = () => {
-<<<<<<< HEAD
     console.log(createDBFormat(this.props, this.state, true));
     console.log(this.state);
-=======
     console.log(this.props.location.state.items);
->>>>>>> 7aac3d6494b179b46181306e37f3b215e3315770
     // this.context.router.history.push("/summary/1");
   };
   render() {
