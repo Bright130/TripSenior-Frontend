@@ -27,6 +27,11 @@ class DatePop extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.props.getStartTime(this.state.value.start.unix());
+    this.props.getEndTime(this.state.value.end.unix());
+  }
+
   onSelect = (value, states) => {
     console.log(value);
     this.props.getStartTime(value.start.unix());

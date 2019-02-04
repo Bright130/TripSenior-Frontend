@@ -33,13 +33,6 @@ const MyMenu = ({ menuId, p, deleteItem, sendBasket, openDetail }) => (
 );
 const menuId = "awesome";
 
-const groups = [
-  { id: 1, title: "Day1" },
-  { id: 2, title: "Day2" },
-  { id: 3, title: "Day3" },
-  { id: 4, title: "Day4" }
-];
-
 const defaultHeaderLabelFormats = {
   yearShort: "[Assign Time Slot]",
   yearLong: "[Assign Time Slot]",
@@ -73,17 +66,18 @@ const timeSteps = {
 };
 
 const defaultTimeStart = moment()
+  .add(-7, "hour")
   .startOf("day")
   .add(5, "hour");
-const defaultTimeEnd = moment().endOf("day");
+const defaultTimeEnd = moment()
+  .add(-7, "hour")
+  .endOf("day");
 
 export default class TimeTable extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      groups,
-
       defaultTimeStart,
       defaultTimeEnd,
       rightClickId: 0,
@@ -152,7 +146,7 @@ export default class TimeTable extends React.Component {
     // const { groups } = this.state;
     const { items } = this.props;
 
-    const group = groups[newGroupOrder];
+    const group = this.props.groups[newGroupOrder];
     let temp = items.map(item =>
       item.id === itemId
         ? Object.assign({}, item, {
@@ -188,13 +182,11 @@ export default class TimeTable extends React.Component {
       <div>
         <Timeline
           id="menu_id"
-          groups={this.state.groups}
+          groups={this.props.groups}
           items={this.props.items}
           timeSteps={timeSteps}
           dragSnap={dragSnap}
           sidebarContent={<p>Trip Days</p>}
-          defaultTimeStart={moment().add(-12, "hour")}
-          defaultTimeEnd={moment().add(12, "hour")}
           minZoom={60 * 60 * 1000 * 24}
           maxZoom={60 * 60 * 1000 * 24}
           defaultTimeStart={this.state.defaultTimeStart}

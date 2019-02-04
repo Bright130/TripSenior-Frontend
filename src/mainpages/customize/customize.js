@@ -22,6 +22,8 @@ async function searchPlaceID(name) {
   });
 }
 
+const convertFakeToRealTime = faketime => {};
+
 const createDBFormat = (props, state, isCreated) => {
   let trip = {
     tripID: 1,
@@ -65,36 +67,37 @@ export default class Customize extends React.Component {
     super();
     this.state = {
       tripname: "MyTrip",
+      groups: [],
       items: [
-        {
-          id: 1,
-          group: 1,
-          title: "Songkhla Lake",
-          start_time: moment()
-            .startOf("day")
-            .add(7, "hour"),
-          end_time: moment()
-            .startOf("day")
-            .add(9, "hour")
-        },
-        {
-          id: 2,
-          group: 2,
-          title: "Central Hatyai",
-          start_time: moment().add(-0.5, "hour"),
-          end_time: moment().add(0.5, "hour")
-        },
-        {
-          id: 3,
-          group: 1,
-          title: "Kim Yong Market",
-          start_time: moment()
-            .startOf("day")
-            .add(13, "hour"),
-          end_time: moment()
-            .startOf("day")
-            .add(16, "hour")
-        }
+        // {
+        //   id: 1,
+        //   group: 1,
+        //   title: "Songkhla Lake",
+        //   start_time: moment()
+        //     .startOf("day")
+        //     .add(7, "hour"),
+        //   end_time: moment()
+        //     .startOf("day")
+        //     .add(9, "hour")
+        // },
+        // {
+        //   id: 2,
+        //   group: 2,
+        //   title: "Central Hatyai",
+        //   start_time: moment().add(-0.5, "hour"),
+        //   end_time: moment().add(0.5, "hour")
+        // },
+        // {
+        //   id: 3,
+        //   group: 1,
+        //   title: "Kim Yong Market",
+        //   start_time: moment()
+        //     .startOf("day")
+        //     .add(13, "hour"),
+        //   end_time: moment()
+        //     .startOf("day")
+        //     .add(16, "hour")
+        // }
       ],
       basket: ["a", "b", "c"],
       visited: ["Central Hatyai", "ab", "ac"],
@@ -118,9 +121,12 @@ export default class Customize extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.location.state.items);
+    console.log(this.props.location);
     console.log(this.state.items);
-    this.setState({ items: this.props.location.state.items });
+    this.setState({
+      items: this.props.location.state.items,
+      groups: this.props.location.state.groups
+    });
   }
 
   getName = name => {
@@ -239,6 +245,7 @@ export default class Customize extends React.Component {
               items={this.state.items}
               getTrip={this.getTrip}
               appendBasket={this.appendBasket}
+              groups={this.state.groups}
             />
           </div>
         </div>
