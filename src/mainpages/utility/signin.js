@@ -57,9 +57,10 @@ export default class Signin extends React.Component {
       email: email,
       password: password
     })
-      .then(data =>
-        localStorage.setItem("token", JSON.stringify(data["access_token"]))
-      ) // JSON-string from `response.json()` call
+      .then(data => {
+        localStorage.setItem("token", JSON.stringify(data["access_token"]));
+        window.location.reload();
+      }) // JSON-string from `response.json()` call
 
       .catch(error => console.error(error));
     return this.setState({ error: "" });
@@ -123,24 +124,32 @@ export default class Signin extends React.Component {
               <div className="signin-0-3-1">
                 <div className="signin-0-3-1-0" />
                 <div className="signin-rectangle_11">
-                  <Input icon={<Icon name='mail' size='big'/>} className="signin-0-3-1-1-0" type="text"
-                      placeholder="Email"
-                      value={this.state.username}
-                      onChange={this.handleUserChange}
-                      iconPosition='left'
-                      style={{ color: "black" }}/>
+                  <Input
+                    icon={<Icon name="mail" size="big" />}
+                    className="signin-0-3-1-1-0"
+                    type="text"
+                    placeholder="Email"
+                    value={this.state.username}
+                    onChange={this.handleUserChange}
+                    iconPosition="left"
+                    style={{ color: "black" }}
+                  />
                 </div>
                 <div className="signin-0-3-1-2" />
               </div>
               <div className="signin-0-3-2">
                 <div className="signin-0-3-2-0" />
                 <div className="signin-rectangle_11-1">
-                  <Input icon={<Icon name='key' size='big'/>} className="signin-0-3-1-1-0" type="password"
-                      placeholder="Password"
-                      value={this.state.password}
-                      onChange={this.handlePassChange}
-                      iconPosition='left'
-                      style={{ color: "black" }}/>
+                  <Input
+                    icon={<Icon name="key" size="big" />}
+                    className="signin-0-3-1-1-0"
+                    type="password"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.handlePassChange}
+                    iconPosition="left"
+                    style={{ color: "black" }}
+                  />
                 </div>
                 <div className="signin-0-3-2-2" />
               </div>
