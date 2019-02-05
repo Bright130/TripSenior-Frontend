@@ -27,7 +27,8 @@
     flex-direction: column;
     padding-top: 24px;
     padding-bottom: 25px;
-
+    width: 116px;
+    height: 79px;
     background-size: 100% 100%;
 }
 

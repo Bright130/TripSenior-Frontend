@@ -54,9 +54,16 @@ export default class Component_1 extends React.Component {
           className="component_1-component_1"
         >
           <div className="component_1-0">
-            <div className="component_1-image_9">
+            <div
+              className="component_1-image_9"
+              style={{
+                backgroundImage: "url(" + this.props.place["img"] + ")"
+              }}
+            >
               <div className="component_1-0-0-0">
-                <div className="component_1-wat_arun_-1">{this.props.name}</div>
+                <div className="component_1-wat_arun_-1">
+                  {this.props.place["name"]}
+                </div>
               </div>
             </div>
           </div>

@@ -68,6 +68,7 @@ export default class Customize extends React.Component {
     this.state = {
       tripname: "MyTrip",
       groups: [],
+
       items: [
         // {
         //   id: 1,
@@ -107,7 +108,7 @@ export default class Customize extends React.Component {
         // }
       ],
 
-      visited: ["Central Hatyai", "ab", "ac"],
+      visited: [],
       sugguest: [
         // {
         //   place: "Central Hatyai",
@@ -133,7 +134,8 @@ export default class Customize extends React.Component {
     this.setState({
       items: this.props.location.state.items,
       groups: this.props.location.state.groups,
-      sugguest: this.props.location.state.suggestedPlace
+      sugguest: this.props.location.state.suggestedPlace,
+      visited: this.props.location.state.visitedPlace
     });
   }
 
@@ -277,7 +279,7 @@ export default class Customize extends React.Component {
             </div>
           </div>
           <VisitedPlace
-            name={this.state.visited}
+            place={this.state.visited}
             appendTrip={this.appendTrip}
             getVisited={this.getVisited}
           />
