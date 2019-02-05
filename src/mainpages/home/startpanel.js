@@ -132,7 +132,11 @@ export default class Startpanel extends React.Component {
     evt.preventDefault();
     let info = {
       accesstoken:
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDkzNjczNzAsIm5iZiI6MTU0OTM2NzM3MCwianRpIjoiODVlZDQ4OTUtMTAyNS00OWU3LTgwNzQtOTJhMWZhNWNmZDJkIiwiZXhwIjoxNTQ5MzY4MjcwLCJpZGVudGl0eSI6MSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.KTMggggN_800rPp5T9BUhlmmF-42GAnnew04SHqZrBo",
+        localStorage.getItem("token") != null
+          ? localStorage
+              .getItem("token")
+              .slice(1, localStorage.getItem("token").length - 1)
+          : null,
       style: convertstyle(this.state.styles),
       seasons: converttime(this.state.starttime),
       nationality:
@@ -142,6 +146,7 @@ export default class Startpanel extends React.Component {
       startTime: this.state.starttime,
       endTime: this.state.endtime
     };
+
     postData("http://localhost:5000/plan", info).then(plan =>
       this.context.router.history.push({
         pathname: "/trip-custom",
