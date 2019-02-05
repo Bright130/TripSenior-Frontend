@@ -139,14 +139,14 @@
     display: flex;
     flex-shrink: 0;
     margin-top: 1px;
-    padding-left: 34px;
-    padding-right: 48px;
+    padding-left: 21px;
+    padding-right: 27px;
 }
 
 .customize-4-0 {
     display: flex;
     flex-direction: column;
-    padding-top: 2px;
+    padding-right: 2%;
     width: 60%;
 }
 
@@ -200,6 +200,8 @@
 }
 
 .customize-rectangle_6 {
+    min-width: 100%;
+    min-height: 120px;
     display: flex;
     flex-direction: column;
     overflow-x: scroll;
@@ -207,6 +209,9 @@
     padding-bottom: 15px;
     background: rgb(238, 238, 238);
 }
+
+
+
 
 .customize-4-1-0-0-0 {
     display: flex;
@@ -465,30 +470,30 @@ a {
     color: inherit;
 }
 
-.pd-onhover-parent >.pd-onhover {
+.pd-onhover-parent>.pd-onhover {
     display: none;
 }
 
-.pd-onhover-parent:hover > * {
+.pd-onhover-parent:hover>* {
     display: none;
 }
 
-.pd-onhover-parent:hover > .pd-onhover {
+.pd-onhover-parent:hover>.pd-onhover {
     display: flex;
 }
 
-.pd-onactive-parent > .pd-onactive {
+.pd-onactive-parent>.pd-onactive {
     display: none;
 }
 
-.pd-onactive-parent:active > * {
+.pd-onactive-parent:active>* {
     display: none;
 }
 
-.pd-onactive-parent:active > .pd-onactive {
+.pd-onactive-parent:active>.pd-onactive {
     display: flex;
 }
 
-.pd-onactive-parent.pd-onhover-parent:active > .pd-onhover {
+.pd-onactive-parent.pd-onhover-parent:active>.pd-onhover {
     display: none;
 }

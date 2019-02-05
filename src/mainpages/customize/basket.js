@@ -33,7 +33,7 @@ export default class Basket extends Component {
 
   deleteItem(id) {
     console.log(id);
-    let arr = this.props.name;
+    let arr = this.props.place;
     let a = arr.splice(0, id);
     let b = arr.splice(1, arr.length);
     this.props.getBasket(a.concat(b));
@@ -41,29 +41,26 @@ export default class Basket extends Component {
 
   sendSchedule(id) {
     console.log(id);
-    let arr = this.props.name;
+    let arr = this.props.place;
     let a = arr.splice(0, id);
     let b = arr.splice(1, arr.length);
     this.props.getBasket(a.concat(b));
 
-    this.props.appendTrip(arr[0]);
+    this.props.appendTrip(arr[0]["name"]);
   }
   openDetail(id) {
-    loadAPI(
-      " http://127.0.0.1:5000/placename?place_id=" + this.props.name[id]
-    ).then(result => {
-      console.log(this.props.name[id], result["place_id"]);
-      window.open("http://127.0.0.1:8081/place/" + result["place_id"]);
-    });
+    window.open(
+      "http://127.0.0.1:8081/place/" + this.props.place[id]["place_id"]
+    );
   }
   createPlace = (arr, deleteItem, sendSchedule, openDetail) => {
     let ret = [];
 
-    arr.forEach(function(name, index) {
+    arr.forEach(function(place, index) {
       ret.push(
         <div className="customize-component_1_" key={index}>
           <CardBasket
-            name={name}
+            place={place}
             uid={index}
             deleteItem={deleteItem}
             sendSchedule={sendSchedule}
@@ -83,7 +80,7 @@ export default class Basket extends Component {
           <div className="customize-rectangle_6">
             <div className="customize-4-1-0-0-0">
               {this.createPlace(
-                this.props.name,
+                this.props.place,
                 this.deleteItem,
                 this.sendSchedule,
                 this.openDetail

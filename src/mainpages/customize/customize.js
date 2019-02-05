@@ -99,7 +99,14 @@ export default class Customize extends React.Component {
         //     .add(16, "hour")
         // }
       ],
-      basket: ["a", "b", "c"],
+      basket: [
+        // {
+        //   name: "s",
+        //   img: "https://ucarecdn.com/e618b2c9-1d4c-4ad6-9fa7-e8538d1f6f74/",
+        //   place_id: "3"
+        // }
+      ],
+
       visited: ["Central Hatyai", "ab", "ac"],
       sugguest: [
         // {
@@ -258,7 +265,7 @@ export default class Customize extends React.Component {
           <div className="customize-4-0">
             <div className="customize-4-0-0">
               <Basket
-                name={this.state.basket}
+                place={this.state.basket}
                 appendTrip={this.appendTrip}
                 getBasket={this.getBasket}
               />

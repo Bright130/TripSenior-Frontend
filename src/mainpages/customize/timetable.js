@@ -126,7 +126,21 @@ export default class TimeTable extends React.Component {
     let b = arr.splice(1, arr.length);
     this.props.getTrip(a.concat(b));
 
-    this.props.appendBasket([arr[0].title]);
+    loadAPI(" http://127.0.0.1:5000/placename?place_id=" + arr[0].title).then(
+      result => {
+        console.log(result);
+
+        this.props.appendBasket([
+          {
+            name: arr[0].title,
+            img: result["imgs"][0]
+              ? result["imgs"][0]
+              : "https://ucarecdn.com/e618b2c9-1d4c-4ad6-9fa7-e8538d1f6f74/",
+            place_id: result["place_id"]
+          }
+        ]);
+      }
+    );
   }
 
   openDetail() {

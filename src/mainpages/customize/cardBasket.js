@@ -58,9 +58,16 @@ export default class CardBasket extends React.Component {
           className="card_basket-card_basket"
         >
           <div className="card_basket-0">
-            <div className="card_basket-image_9">
+            <div
+              className="card_basket-image_9"
+              style={{
+                backgroundImage: "url(" + this.props.place["img"] + ")"
+              }}
+            >
               <div className="card_basket-0-0-0">
-                <div className="card_basket-wat_arun_-1">{this.props.name}</div>
+                <div className="card_basket-wat_arun_-1">
+                  {this.props.place["name"]}
+                </div>
               </div>
             </div>
           </div>
