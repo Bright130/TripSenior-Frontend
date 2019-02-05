@@ -23,7 +23,7 @@ class DatePop extends React.Component {
 
     this.state = {
       isOpen: true,
-      value: moment.range(today.clone().subtract(7, "days"), today.clone())
+      value: moment.range(today.clone().subtract(2, "days"), today.clone())
     };
   }
 
