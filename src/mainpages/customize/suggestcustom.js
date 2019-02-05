@@ -31,13 +31,9 @@ export default class SuggestCustom extends Component {
     this.props.appendTrip(arr[0]["place"]);
   }
   openDetail(id) {
-    loadAPI(
-      " http://127.0.0.1:5000/placename?place_id=" +
-        this.props.name[id]["place"]
-    ).then(result => {
-      console.log(this.props.name[id]["place"], result["place_id"]);
-      window.open("http://127.0.0.1:8081/place/" + result["place_id"]);
-    });
+    window.open(
+      "http://127.0.0.1:8081/place/" + this.props.name[id]["place_id"]
+    );
   }
 
   createPlace = (arr, deleteItem, sendSchedule, openDetail) => {

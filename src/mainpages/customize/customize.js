@@ -102,20 +102,20 @@ export default class Customize extends React.Component {
       basket: ["a", "b", "c"],
       visited: ["Central Hatyai", "ab", "ac"],
       sugguest: [
-        {
-          place: "Central Hatyai",
-          province: "Songkla",
-          img_src: "https://ucarecdn.com/ec629618-5d41-4d33-86d5-0cb12ee243ed/",
-          style: "Zoo",
-          img_main: "https://ucarecdn.com/646c21d3-59ea-4f2e-b8d7-2ef590d80bb6/"
-        },
-        {
-          place: "Place C",
-          province: "Songkla",
-          img_src: "https://ucarecdn.com/ec629618-5d41-4d33-86d5-0cb12ee243ed/",
-          style: "Zoo",
-          img_main: "https://ucarecdn.com/646c21d3-59ea-4f2e-b8d7-2ef590d80bb6/"
-        }
+        // {
+        //   place: "Central Hatyai",
+        //   province: "Songkla",
+        //   img_src: "https://ucarecdn.com/ec629618-5d41-4d33-86d5-0cb12ee243ed/",
+        //   style: "Zoo",
+        //   img_main: "https://ucarecdn.com/646c21d3-59ea-4f2e-b8d7-2ef590d80bb6/"
+        // },
+        // {
+        //   place: "Place C",
+        //   province: "Songkla",
+        //   img_src: "https://ucarecdn.com/ec629618-5d41-4d33-86d5-0cb12ee243ed/",
+        //   style: "Zoo",
+        //   img_main: "https://ucarecdn.com/646c21d3-59ea-4f2e-b8d7-2ef590d80bb6/"
+        // }
       ]
     };
   }
@@ -125,7 +125,8 @@ export default class Customize extends React.Component {
     console.log(this.state.items);
     this.setState({
       items: this.props.location.state.items,
-      groups: this.props.location.state.groups
+      groups: this.props.location.state.groups,
+      sugguest: this.props.location.state.suggestedPlace
     });
   }
 

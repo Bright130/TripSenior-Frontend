@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import { Menu, Item, Separator, Submenu, MenuProvider } from "react-contexify";
 import "react-contexify/dist/ReactContexify.min.css";
 import { contextMenu } from "react-contexify";
+import { Rating } from "semantic-ui-react";
 const menuId = "awesomeeee";
 const MyMenu = ({ menuId, deleteItem, sendSchedule, openDetail }) => (
   <Menu id={menuId}>
@@ -89,12 +90,12 @@ export default class Card_suggestion extends Component {
                       </div>
                     </div>
                     <div className="suggestcustom-0-0-2">
-                      <div
-                        className="suggestcustom-rating-3"
-                        style={{
-                          backgroundImage:
-                            "url('" + this.props.name["img_src"] + "')"
-                        }}
+                      <Rating
+                        className="suggestcustom-rating-8"
+                        defaultRating={this.props.name["avg_rank"]}
+                        maxRating={5}
+                        disabled
+                        size="huge"
                       />
                     </div>
                   </div>
@@ -127,13 +128,13 @@ export default class Card_suggestion extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="suggestcustom-1-2">
-                    <div
-                      className="suggestcustom-rating-0"
-                      style={{
-                        backgroundImage:
-                          "url('" + this.props.name["img_src"] + "')"
-                      }}
+                  <div className="suggestcustom-0-0-2">
+                    <Rating
+                      className="suggestcustom-rating-8"
+                      defaultRating={this.props.name["avg_rank"]}
+                      maxRating={5}
+                      disabled
+                      size="huge"
                     />
                   </div>
                 </div>
@@ -167,13 +168,13 @@ export default class Card_suggestion extends Component {
                           </div>
                         </div>
                       </div>
-                      <div className="suggestcustom-2-0-0-2">
-                        <div
+                      <div className="suggestcustom-0-0-2">
+                        <Rating
                           className="suggestcustom-rating-8"
-                          style={{
-                            backgroundImage:
-                              "url('" + this.props.name["img_src"] + "')"
-                          }}
+                          defaultRating={this.props.name["avg_rank"]}
+                          maxRating={5}
+                          disabled
+                          size="huge"
                         />
                       </div>
                     </div>
