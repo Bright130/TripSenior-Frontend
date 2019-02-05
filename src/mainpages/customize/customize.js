@@ -22,20 +22,38 @@ async function searchPlaceID(name) {
   });
 }
 
-const convertFakeToRealTime = faketime => {};
+const convertFakeToRealTime = (faketime, startTime, group) => {
+  let hour = moment(faketime).hour();
+  let min = moment(faketime).minute();
+  let year = moment(startTime).year();
+  let month = moment(startTime).month();
+  let date = moment(startTime).date();
+  let real = moment()
+    .year(year)
+    .month(month)
+    .date(date)
+    .hour(hour)
+    .minute(min)
+    .second(0)
+    .millisecond(0)
+    .add(parseInt(group) - 1, "days");
+
+  return real.unix() * 1000;
+};
 
 const createDBFormat = (props, state, isCreated) => {
   let trip = {
-    tripID: 1,
     tripName: state.tripname,
 
     lastSavedTime: moment().unix() * 1000,
-    startTime: 1507680000,
-    endTime: 1507892800,
-    styles: ["Sea", "Shopping"],
+    startTime: props.location.state.startTime * 1000,
+    endTime: props.location.state.endTime * 1000,
+    styles: props.location.state.styles,
     speed: "Medium",
-    destinations: ["Songkhla"],
-    numberOfDay: 4,
+    destinations: [props.location.state.province],
+    numberOfDay:
+      (props.location.state.endTime - props.location.state.startTime) / 86400 +
+      1,
     detail: {},
     removePlaceID: [10, 11, 12]
   };
@@ -47,15 +65,19 @@ const createDBFormat = (props, state, isCreated) => {
   state.items.forEach(async function(item) {
     let s =
       typeof item["start_time"] == "number"
-        ? item["start_time"] * 1000
+        ? item["start_time"]
         : item["start_time"].unix() * 1000;
     let e =
       typeof item["end_time"] == "number"
-        ? item["end_time"] * 1000
+        ? item["end_time"]
         : item["end_time"].unix() * 1000;
     trip.detail["" + item.group].push({
       placeID: await searchPlaceID(item["title"]),
-      startTime: s,
+      startTime: convertFakeToRealTime(
+        s,
+        props.location.state.startTime * 1000,
+        item["group"]
+      ),
       peroidMinute: (e - s) / 60000
     });
   });

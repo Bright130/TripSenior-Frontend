@@ -170,7 +170,7 @@ export default class TimeTable extends React.Component {
           })
         : item
     );
-    console.log(temp);
+    console.log(moment(dragTime));
     this.props.getTrip(temp);
 
     console.log("Moved", itemId);

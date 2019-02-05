@@ -147,17 +147,19 @@ export default class Startpanel extends React.Component {
       endTime: this.state.endtime
     };
 
-    postData("http://localhost:5000/plan", info).then(plan =>
+    postData("http://localhost:5000/plan", info).then(plan => {
+      plan["styles"] = convertstyle(this.state.styles);
+      plan["startTime"] = this.state.starttime;
+      plan["endTime"] = this.state.endtime;
+      (plan["nationality"] =
+        this.state.nationality == "" ? "Thailand" : this.state.nationality),
+        (plan["province"] =
+          this.state.destinations == "" ? "Songkhla" : this.state.destinations);
       this.context.router.history.push({
         pathname: "/trip-custom",
-        state: plan,
-        styles: convertstyle(this.state.styles),
-        startTime: this.state.starttime,
-        endTime: this.state.endtime,
-        nationality: this.state.nationality,
-        destinations: this.state.destinations
-      })
-    );
+        state: plan
+      });
+    });
   }
 
   render() {
