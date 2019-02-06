@@ -113,6 +113,8 @@ const getMoreDate = reactComponent => {
                 text={convertButtonDate(
                   reactComponent.state.startTime + 86400 * (i - 1)
                 )}
+                day={i}
+                setDay={reactComponent.setDay}
               />
             </div>
           </div>
@@ -128,7 +130,7 @@ export default class Summarypage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedDate: 2
+      selectedDate: 1
       // trip: {
       //   "1": [
       //     {
@@ -154,6 +156,10 @@ export default class Summarypage extends React.Component {
     console.log(nextState);
     console.log(this.state);
   }
+
+  setDay = day => {
+    this.setState({ selectedDate: day });
+  };
 
   render() {
     return (
