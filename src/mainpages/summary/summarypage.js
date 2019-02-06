@@ -38,6 +38,18 @@ function getTrip(id, reactComponent) {
   });
 }
 
+function countPlace(trip, numberOfday) {
+  let count = 0;
+  if (trip !== undefined) {
+    for (let i = 1; i <= numberOfday; i++) {
+      count += trip[i].length;
+    }
+
+    return String(count);
+  }
+  return "-";
+}
+
 const convertMonth = timestamp => {
   var months = [
     "Jan",
@@ -216,16 +228,21 @@ export default class Summarypage extends React.Component {
               <div className="summarypage-rightside-4">
                 <div className="summarypage-2-2-0-0-0">
                   <div className="summarypage-4">
-                    {this.state.numberOfday +
-                      " Days,10 Places,300 Baht In " +
-                      this.state.destination}
+                    {"Day " + this.state.numberOfday + " , "}
+                    {this.state.trip !== undefined
+                      ? this.state.trip[this.state.selectedDate].length
+                      : ""}
+                    {"Places ,30 Baht In " + this.state.destination}
                   </div>
                 </div>
                 <div className="summarypage-2-2-0-0-1">
                   <div className="summarypage-map_instance-7">
                     <Maparea
-                      zone={"Songkla"}
-                      places={"4 Places"}
+                      zone={this.state.destination}
+                      places={
+                        countPlace(this.state.trip, this.state.numberOfday) +
+                        "Places"
+                      }
                       fee={"300 Baht"}
                     />
                   </div>
