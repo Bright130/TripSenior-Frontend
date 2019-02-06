@@ -176,6 +176,23 @@ function createDBFormat(props, state, isCreated) {
   });
 }
 
+function postData1(url = ``, data = {}) {
+  // Default options are marked with *
+  return fetch(url, {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, cors, *same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json"
+      // "Content-Type": "application/x-www-form-urlencoded",
+    },
+    redirect: "follow", // manual, *follow, error
+    referrer: "no-referrer", // no-referrer, *client
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  }).then(response => response.json()); // parses response to JSON
+}
+
 export default class Customize extends React.Component {
   constructor() {
     super();
@@ -313,6 +330,21 @@ export default class Customize extends React.Component {
 
     // this.context.router.history.push("/summary/1");
   };
+
+  routeOptimize = () => {
+    let info = {
+      items: this.state.items,
+      groups: this.state.groups,
+      province: this.props.location.state.province
+    };
+    console.log(JSON.stringify(info));
+    postData1("http://localhost:5000/optimize", info).then(plan => {
+      this.setState({
+        items: plan["items"]
+      });
+    });
+  };
+
   render() {
     return (
       <div className="customize-customize-7">
@@ -342,7 +374,10 @@ export default class Customize extends React.Component {
                 <div className="customize-1-3-0-0-0">
                   <div className="customize-routebutton-1">
                     <Button className="customize-1-3-0-0-0-0-0">
-                      <div className="customize-route_optimize-9">
+                      <div
+                        className="customize-route_optimize-9"
+                        onClick={this.routeOptimize}
+                      >
                         Route Optimize
                       </div>
                     </Button>

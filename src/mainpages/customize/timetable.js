@@ -88,8 +88,9 @@ export default class TimeTable extends React.Component {
     this.sendBasket = this.sendBasket.bind(this);
     this.openDetail = this.openDetail.bind(this);
   }
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     console.log(prevProps, this.props);
+  
   }
 
   handleContextMenu(itemId, e) {
