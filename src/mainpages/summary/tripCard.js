@@ -9,11 +9,10 @@ import Summary from "./summary";
 import Maparea from "./maparea";
 import "./summarypage.css";
 const convertTime = timestamp => {
-  var a = new Date(timestamp * 1000);
+  var a = new Date(timestamp);
 
-  var hour = a.getUTCHours() < 10 ? "0" + a.getUTCHours() : a.getUTCHours();
-  var min =
-    a.getUTCMinutes() < 10 ? "0" + a.getUTCMinutes() : a.getUTCMinutes();
+  var hour = a.getHours() < 10 ? "0" + a.getHours() : a.getHours();
+  var min = a.getMinutes() < 10 ? "0" + a.getMinutes() : a.getMinutes();
 
   var date = hour + ":" + min;
   return date;
