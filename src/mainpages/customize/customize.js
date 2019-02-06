@@ -13,12 +13,93 @@ import moment from "moment";
 import Basket from "./basket";
 import { loadAPI } from "./util";
 
+async function asyncForEach(array, callback) {
+  for (let index = 0; index < array.length; index++) {
+    await callback(array[index], index, array);
+  }
+}
+
 async function searchPlaceID(name) {
   return new Promise(async function(resolve) {
     let ret = await loadAPI(
       " http://127.0.0.1:5000/placename?place_id=" + name
     );
     resolve(ret["place_id"]);
+  });
+}
+const r = {
+  tripID: 2,
+  tripName: "Tour songkhla",
+  createdTime: 1508730400,
+  lastSavedTime: 1508730400,
+  startTime: 1508680000,
+  endTime: 1508892800,
+  styles: ["Sea", "Shopping"],
+  speed: "Medium",
+  destinations: ["Songkhla"],
+  numberOfDay: 3,
+  detail: {
+    "1": [
+      {
+        placeID: 4,
+        startTime: 1508680000,
+        peroidMinute: 90
+      },
+      {
+        placeID: 5,
+        startTime: 1508686000,
+        peroidMinute: 60
+      }
+    ],
+    "2": [
+      {
+        placeID: 6,
+        startTime: 1508710000,
+        peroidMinute: 90
+      }
+    ],
+    "3": [
+      {
+        placeID: 7,
+        startTime: 1508810000,
+        peroidMinute: 90
+      }
+    ]
+  },
+  removePlaceID: []
+};
+
+function postData(url = ``, data = {}) {
+  return new Promise(function(resolve, reject) {
+    console.log(r["detail"]);
+    console.log(data);
+    fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, cors, *same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json"
+        // "Content-Type": "application/x-www-form-urlencoded",
+      },
+      redirect: "follow", // manual, *follow, error
+      referrer: "no-referrer", // no-referrer, *client
+      body: data // body data type must match "Content-Type" header
+    })
+      .then(result => {
+        result
+          .json()
+          .then(json => {
+            resolve(json);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      })
+
+      .catch(error => {
+        reject(error);
+      });
   });
 }
 
@@ -41,48 +122,59 @@ const convertFakeToRealTime = (faketime, startTime, group) => {
   return real.unix() * 1000;
 };
 
-const createDBFormat = (props, state, isCreated) => {
-  let trip = {
-    tripName: state.tripname,
+function createDBFormat(props, state, isCreated) {
+  return new Promise(async function(resolve, reject) {
+    let trip = {
+      accesstoken:
+        localStorage.getItem("token") != null
+          ? localStorage
+              .getItem("token")
+              .slice(1, localStorage.getItem("token").length - 1)
+          : null,
+      tripName: state.tripname,
 
-    lastSavedTime: moment().unix() * 1000,
-    startTime: props.location.state.startTime * 1000,
-    endTime: props.location.state.endTime * 1000,
-    styles: props.location.state.styles,
-    speed: "Medium",
-    destinations: [props.location.state.province],
-    numberOfDay:
-      (props.location.state.endTime - props.location.state.startTime) / 86400 +
-      1,
-    detail: {},
-    removePlaceID: [10, 11, 12]
-  };
-  if (isCreated == true) trip["createdTime"] = moment().unix() * 1000;
-  for (let i = 1; i <= trip.numberOfDay; i++) {
-    trip.detail["" + i] = [];
-  }
+      lastSavedTime: moment().unix() * 1000,
+      startTime: props.location.state.startTime * 1000,
+      endTime: props.location.state.endTime * 1000,
+      styles: props.location.state.styles,
+      speed: "Medium",
+      destinations: [props.location.state.province],
+      numberOfDay:
+        (props.location.state.endTime - props.location.state.startTime) /
+          86400 +
+        1,
+      detail: {},
+      removePlaceID: [10, 11, 12]
+    };
+    if (isCreated == true) trip["createdTime"] = moment().unix() * 1000;
+    let oo = state.items;
+    for (let i = 1; i <= trip.numberOfDay; i++) {
+      trip.detail["" + i] = [];
+    }
 
-  state.items.forEach(async function(item) {
-    let s =
-      typeof item["start_time"] == "number"
-        ? item["start_time"]
-        : item["start_time"].unix() * 1000;
-    let e =
-      typeof item["end_time"] == "number"
-        ? item["end_time"]
-        : item["end_time"].unix() * 1000;
-    trip.detail["" + item.group].push({
-      placeID: await searchPlaceID(item["title"]),
-      startTime: convertFakeToRealTime(
-        s,
-        props.location.state.startTime * 1000,
-        item["group"]
-      ),
-      peroidMinute: (e - s) / 60000
+    await asyncForEach(oo, async item => {
+      let s =
+        typeof item["start_time"] == "number"
+          ? item["start_time"]
+          : item["start_time"].unix() * 1000;
+      let e =
+        typeof item["end_time"] == "number"
+          ? item["end_time"]
+          : item["end_time"].unix() * 1000;
+      trip["detail"]["" + item.group].push({
+        placeID: item["place_id"],
+        startTime: convertFakeToRealTime(
+          s,
+          props.location.state.startTime * 1000,
+          item["group"]
+        ),
+        peroidMinute: (e - s) / 60000
+      });
     });
+    let a = await JSON.stringify(trip);
+    resolve(a);
   });
-  return trip;
-};
+}
 
 export default class Customize extends React.Component {
   constructor() {
@@ -180,7 +272,7 @@ export default class Customize extends React.Component {
     this.setState({ sugguest: trip });
   };
 
-  appendTrip = name => {
+  appendTrip = (name, pid) => {
     let len =
       this.state.items.length > 0
         ? this.state.items[this.state.items.length - 1].id + 1
@@ -196,7 +288,8 @@ export default class Customize extends React.Component {
           .add(5, "hour"),
         end_time: moment()
           .startOf("day")
-          .add(7, "hour")
+          .add(7, "hour"),
+        place_id: pid
       })
     });
   };
@@ -210,9 +303,14 @@ export default class Customize extends React.Component {
     router: PropTypes.object
   };
   changeRoute = () => {
-    console.log(createDBFormat(this.props, this.state, true));
+    //true if create
+    createDBFormat(this.props, this.state, true).then(info => {
+      postData("http://localhost:5000/saveplan", info).then(data => {
+        this.context.router.history.push("/summary/" + data["id"]);
+      });
+    });
     console.log(this.state);
-    console.log(this.props.location.state.items);
+
     // this.context.router.history.push("/summary/1");
   };
   render() {

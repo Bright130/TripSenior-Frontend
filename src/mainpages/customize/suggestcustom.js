@@ -28,7 +28,7 @@ export default class SuggestCustom extends Component {
     let b = arr.splice(1, arr.length);
     this.props.getSuggest(a.concat(b));
 
-    this.props.appendTrip(arr[0]["place"]);
+    this.props.appendTrip(arr[0]["place"], arr[0]["place_id"]);
   }
   openDetail(id) {
     window.open(

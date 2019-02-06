@@ -119,15 +119,15 @@ const getCard = each => {
   });
 };
 
-const getTrip = reactComponent => {
+const getTrip = trip => {
   var i = 0;
   let container = [];
   let cnt = 0;
 
-  reactComponent.props.trip.forEach(each => {
+  trip.forEach((each, index) => {
     // console.log(each.placeID);
 
-    container.push(<TripCard each={each} />);
+    container.push(<TripCard key={index} each={each} />);
   });
   console.log(container);
   return container;
@@ -143,11 +143,17 @@ export default class Selectedsummary extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      trip: this.props.trip,
-      time: this.props.trip[0].startTime
-    });
-    console.log(this.props.trip);
+    // this.setState({
+    //   trip: this.props.trip[],
+    //   time: this.props.trip[0].startTime
+    // });
+    if (this.props.trip !== undefined) {
+      this.setState({
+        trip: this.props.trip[this.props.selectedDate],
+        time: this.props.trip[this.props.selectedDate][0].startTime
+      });
+      console.log(this.props.trip[this.props.selectedDate]);
+    }
   }
 
   render() {
@@ -155,13 +161,29 @@ export default class Selectedsummary extends React.Component {
       <div>
         <div className="summarypage-2-0-2">
           <div className="summarypage-date_instance-7">
-            <Dates
+            {/* <Dates
               text={convertDate1(this.state.time)}
               text2={convertDate2(this.state.time)}
-            />
+            /> */}
+            {this.props.trip !== undefined ? (
+              <Dates
+                text={convertDate1(
+                  this.props.trip[this.props.selectedDate.toString()][0]
+                    .startTime / 1000
+                )}
+                text2={convertDate2(
+                  this.props.trip[this.props.selectedDate.toString()][0]
+                    .startTime / 1000
+                )}
+              />
+            ) : (
+              ""
+            )}
           </div>
         </div>
-        {getTrip(this)}
+        {this.props.trip !== undefined
+          ? getTrip(this.props.trip[this.props.selectedDate.toString()])
+          : ""}
       </div>
     );
   }

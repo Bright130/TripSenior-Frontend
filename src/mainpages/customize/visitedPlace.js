@@ -27,7 +27,7 @@ export default class VisitedPlace extends Component {
     let b = arr.splice(1, arr.length);
     this.props.getVisited(a.concat(b));
 
-    this.props.appendTrip(arr[0]["name"]);
+    this.props.appendTrip(arr[0]["name"], arr[0]["place_id"]);
   }
   openDetail(id) {
     window.open(
