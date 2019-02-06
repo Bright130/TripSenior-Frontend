@@ -27,51 +27,45 @@ async function searchPlaceID(name) {
     resolve(ret["place_id"]);
   });
 }
-const r = {
-  tripID: 2,
-  tripName: "Tour songkhla",
-  createdTime: 1508730400,
-  lastSavedTime: 1508730400,
-  startTime: 1508680000,
-  endTime: 1508892800,
-  styles: ["Sea", "Shopping"],
-  speed: "Medium",
-  destinations: ["Songkhla"],
-  numberOfDay: 3,
-  detail: {
-    "1": [
-      {
-        placeID: 4,
-        startTime: 1508680000,
-        peroidMinute: 90
+
+async function postData1(url = ``, data = {}, callback) {
+  return new Promise(async function(resolve, reject) {
+    data = await JSON.stringify(data);
+    console.log(data);
+    fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, cors, *same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json"
+        // "Content-Type": "application/x-www-form-urlencoded",
       },
-      {
-        placeID: 5,
-        startTime: 1508686000,
-        peroidMinute: 60
-      }
-    ],
-    "2": [
-      {
-        placeID: 6,
-        startTime: 1508710000,
-        peroidMinute: 90
-      }
-    ],
-    "3": [
-      {
-        placeID: 7,
-        startTime: 1508810000,
-        peroidMinute: 90
-      }
-    ]
-  },
-  removePlaceID: []
-};
+      redirect: "follow", // manual, *follow, error
+      referrer: "no-referrer", // no-referrer, *client
+      body: data // body data type must match "Content-Type" header
+    })
+      .then(result => {
+        result
+          .json()
+          .then(async json => {
+            await console.log(json);
+            await callback.getTrip([]);
+            resolve(json);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      })
+
+      .catch(error => {
+        reject(error);
+      });
+  });
+}
 
 function postData(url = ``, data = {}) {
   return new Promise(function(resolve, reject) {
-    console.log(r["detail"]);
     console.log(data);
     fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -174,23 +168,6 @@ function createDBFormat(props, state, isCreated) {
     let a = await JSON.stringify(trip);
     resolve(a);
   });
-}
-
-function postData1(url = ``, data = {}) {
-  // Default options are marked with *
-  return fetch(url, {
-    method: "POST", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, cors, *same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
-    headers: {
-      "Content-Type": "application/json"
-      // "Content-Type": "application/x-www-form-urlencoded",
-    },
-    redirect: "follow", // manual, *follow, error
-    referrer: "no-referrer", // no-referrer, *client
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  }).then(response => response.json()); // parses response to JSON
 }
 
 export default class Customize extends React.Component {
@@ -300,12 +277,18 @@ export default class Customize extends React.Component {
         id: len,
         group: 1,
         title: name,
-        start_time: moment()
-          .startOf("day")
-          .add(5, "hour"),
-        end_time: moment()
-          .startOf("day")
-          .add(7, "hour"),
+        start_time:
+          moment()
+            .add(-7, "hour")
+            .startOf("day")
+            .add(5, "hour")
+            .unix() * 1000,
+        end_time:
+          moment()
+            .add(-7, "hour")
+            .startOf("day")
+            .add(7, "hour")
+            .unix() * 1000,
         place_id: pid
       })
     });
@@ -337,8 +320,8 @@ export default class Customize extends React.Component {
       groups: this.state.groups,
       province: this.props.location.state.province
     };
-    console.log(JSON.stringify(info));
-    postData1("http://localhost:5000/optimize", info).then(plan => {
+    let info_string = JSON.stringify(info);
+    postData1("http://localhost:5000/optimize", info, this).then(plan => {
       this.setState({
         items: plan["items"]
       });
