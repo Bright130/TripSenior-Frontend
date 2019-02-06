@@ -9,6 +9,7 @@ import Summary from "./summary";
 import Maparea from "./maparea";
 import "./summarypage.css";
 const convertTime = timestamp => {
+  console.log(new Date(timestamp));
   var a = new Date(timestamp);
 
   var hour = a.getHours() < 10 ? "0" + a.getHours() : a.getHours();
@@ -74,7 +75,7 @@ export default class TripCard extends React.Component {
           <Summary
             time1={convertTime(this.props.each.startTime)}
             time2={convertTime(
-              this.props.each.startTime + this.props.each.peroidMinute * 60
+              this.props.each.startTime + this.props.each.peroidMinute * 60000
             )}
             placename={this.state.place == null ? "" : this.state.place["name"]}
             img_src={
