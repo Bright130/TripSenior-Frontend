@@ -4,12 +4,15 @@ import Header from "../utility/header";
 import Tripname from "./tripname";
 import Selecteddate from "./selecteddate";
 import Notselectdate from "./notselectdate";
-
+import { Icon, Input, Button } from "semantic-ui-react";
 import Summary from "./summary";
 import Maparea from "./maparea";
 import Selectedsummary from "./selectedsummary";
 import "./summarypage.css";
 import { loadAPI } from "./util";
+
+import PropTypes from "prop-types";
+
 // fetch('http://localhost:5000/getTrip/', {
 //    method: 'GET',
 //    headers: new Headers({
@@ -17,6 +20,22 @@ import { loadAPI } from "./util";
 //      'Content-Type': 'application/json'
 //    })
 //  }).then(response => console.log(response.json()))
+function postData(url = ``, data = {}) {
+  // Default options are marked with *
+  return fetch(url, {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, cors, *same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json"
+      // "Content-Type": "application/x-www-form-urlencoded",
+    },
+    redirect: "follow", // manual, *follow, error
+    referrer: "no-referrer", // no-referrer, *client
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  }).then(response => response.json()); // parses response to JSON
+}
 
 function getTrip(id, reactComponent) {
   return new Promise(async function(resolve) {
@@ -158,6 +177,7 @@ export default class Summarypage extends React.Component {
       // endTime: 1507892800,
       // destination: ["Songkhla"]
     };
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   componentDidMount() {
@@ -172,6 +192,29 @@ export default class Summarypage extends React.Component {
   setDay = day => {
     this.setState({ selectedDate: day });
   };
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  handleEdit(evt) {
+    evt.preventDefault();
+    let info = {
+      accesstoken:
+        localStorage.getItem("token") != null
+          ? localStorage
+              .getItem("token")
+              .slice(1, localStorage.getItem("token").length - 1)
+          : null,
+      id: this.props.match.params.id
+    };
+    console.log(info);
+    postData("http://localhost:5000/getPlan", info).then(plan => {
+      this.context.router.history.push({
+        pathname: "/trip-custom",
+        state: plan
+      });
+    });
+  }
 
   render() {
     return (
@@ -209,9 +252,14 @@ export default class Summarypage extends React.Component {
               <div className="summarypage-edit-9">
                 <div className="summarypage-2-0-1-0-0">
                   <div className="summarypage-rectangle_3">
-                    <div className="summarypage-2-0-1-0-0-0-0">
-                      <div className="summarypage-edit_-2">Edit</div>
-                    </div>
+                    <Button className="summarypage-2-0-1-0-0-0-0">
+                      <div
+                        className="summarypage-edit_-2"
+                        onClick={this.handleEdit}
+                      >
+                        Edit
+                      </div>
+                    </Button>
                   </div>
                 </div>
               </div>

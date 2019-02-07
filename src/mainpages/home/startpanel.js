@@ -149,8 +149,8 @@ export default class Startpanel extends React.Component {
 
     postData("http://localhost:5000/plan", info).then(plan => {
       plan["styles"] = convertstyle(this.state.styles);
-      plan["startTime"] = this.state.starttime;
-      plan["endTime"] = this.state.endtime;
+      plan["startTime"] = this.state.starttime * 1000;
+      plan["endTime"] = this.state.endtime * 1000;
       (plan["nationality"] =
         this.state.nationality == "" ? "Thailand" : this.state.nationality),
         (plan["province"] =

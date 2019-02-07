@@ -128,14 +128,14 @@ function createDBFormat(props, state, isCreated) {
       tripName: state.tripname,
 
       lastSavedTime: moment().unix() * 1000,
-      startTime: props.location.state.startTime * 1000,
-      endTime: props.location.state.endTime * 1000,
+      startTime: props.location.state.startTime,
+      endTime: props.location.state.endTime,
       styles: props.location.state.styles,
       speed: "Medium",
       destinations: [props.location.state.province],
       numberOfDay:
         (props.location.state.endTime - props.location.state.startTime) /
-          86400 +
+          86400000 +
         1,
       detail: {},
       removePlaceID: [10, 11, 12]
@@ -159,7 +159,7 @@ function createDBFormat(props, state, isCreated) {
         placeID: item["place_id"],
         startTime: convertFakeToRealTime(
           s,
-          props.location.state.startTime * 1000,
+          props.location.state.startTime,
           item["group"]
         ),
         peroidMinute: (e - s) / 60000
@@ -302,7 +302,8 @@ export default class Customize extends React.Component {
   static contextTypes = {
     router: PropTypes.object
   };
-  changeRoute = () => {
+  changeRoute = evt => {
+    evt.preventDefault();
     //true if create
     createDBFormat(this.props, this.state, true).then(info => {
       postData("http://localhost:5000/saveplan", info).then(data => {
