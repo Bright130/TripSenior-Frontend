@@ -228,7 +228,7 @@ export default class Summarypage extends React.Component {
               <div className="summarypage-rightside-4">
                 <div className="summarypage-2-2-0-0-0">
                   <div className="summarypage-4">
-                    {"Day " + this.state.numberOfday + " , "}
+                    {"Day " + this.state.selectedDate + " , "}
                     {this.state.trip !== undefined
                       ? this.state.trip[this.state.selectedDate].length
                       : ""}
