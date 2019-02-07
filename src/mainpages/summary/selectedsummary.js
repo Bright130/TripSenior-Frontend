@@ -119,17 +119,17 @@ const getCard = each => {
   });
 };
 
-const getTrip = trip => {
+const getTrip = (trip, indexx) => {
   var i = 0;
   let container = [];
   let cnt = 0;
 
-  trip.forEach((each, index) => {
+  trip[indexx].forEach((each, index) => {
     // console.log(each.placeID);
 
     container.push(<TripCard key={index} each={each} />);
   });
-  console.log(container);
+  console.log(indexx);
   return container;
 };
 
@@ -182,7 +182,7 @@ export default class Selectedsummary extends React.Component {
           </div>
         </div>
         {this.props.trip !== undefined
-          ? getTrip(this.props.trip[this.props.selectedDate.toString()])
+          ? getTrip(this.props.trip, this.props.selectedDate.toString())
           : ""}
       </div>
     );

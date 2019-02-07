@@ -56,6 +56,7 @@ export default class TripCard extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.state);
     getPlace(this.props.each.placeID).then(data => {
       this.setState(
         {
@@ -67,7 +68,18 @@ export default class TripCard extends React.Component {
       );
     });
   }
-
+  componentWillReceiveProps(nextProps) {
+    getPlace(nextProps.each.placeID).then(data => {
+      this.setState(
+        {
+          place: data
+        },
+        () => {
+          console.log(this.state.place);
+        }
+      );
+    });
+  }
   render() {
     return (
       <div className="summarypage-2-0-3">
@@ -81,7 +93,7 @@ export default class TripCard extends React.Component {
             img_src={
               this.state.place == null ? "" : this.state.place["imgs"][0]
             }
-            openTime={"08.00-12.00"}
+            openTime={""}
             phone={""}
             fee={""}
           />
