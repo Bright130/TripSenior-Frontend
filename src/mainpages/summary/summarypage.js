@@ -252,14 +252,16 @@ export default class Summarypage extends React.Component {
               <div className="summarypage-edit-9">
                 <div className="summarypage-2-0-1-0-0">
                   <div className="summarypage-rectangle_3">
-                    <Button className="summarypage-2-0-1-0-0-0-0">
-                      <div
-                        className="summarypage-edit_-2"
-                        onClick={this.handleEdit}
-                      >
-                        Edit
-                      </div>
-                    </Button>
+                    <div className="summarypage-2-0-1-0-0-0-0">
+                      <Button>
+                        <div
+                          className="summarypage-edit_-2"
+                          onClick={this.handleEdit}
+                        >
+                          Edit
+                        </div>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
