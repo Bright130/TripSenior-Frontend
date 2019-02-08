@@ -7,6 +7,16 @@ class Map extends Component {
       coor: []
     };
   }
+  markerLoop() {
+    var rows = [];
+    if (this.props.coor !== undefined){
+      for (var i = 1; i < this.props.coor[this.props.selectedDate].length_1; i++) {
+        rows.push(<Marker position = {this.props.coor[this.props.selectedDate][i]}
+          title= {this.props.trip !== undefined ? "Place "+i : ""}/>);
+      }
+    }
+    return {rows}
+  }
 
   componentDidMount() {
     // this.setState({
@@ -22,16 +32,46 @@ class Map extends Component {
    render() {
     if (this.props.coor !== undefined)
     console.log(this.props.coor[1]);
+
+    if (this.props.trip !== undefined)
+    console.log(this.props.trip[1]);
    const GoogleMapExample = withGoogleMap(props => (
       <GoogleMap
         defaultCenter = {this.props.coor !== undefined ?
           this.props.coor[this.props.selectedDate][0] : ""} 
-        defaultZoom = { 13 }
+        defaultZoom = { 9 }
       >
       <Marker position = {this.props.coor !== undefined ?
        this.props.coor[this.props.selectedDate][0] : ""}
        title= {this.props.trip !== undefined ?
-        this.props.trip[this.props.selectedDate][0].toString() : ""}/>
+        "Place 1" : ""}/>
+
+      <Marker position = {this.props.coor !== undefined ?
+       this.props.coor[this.props.selectedDate][1] : ""}
+       title= {this.props.trip !== undefined ?
+        "Place 2" : ""}/>
+
+      <Marker position = {this.props.coor !== undefined ?
+       this.props.coor[this.props.selectedDate][2] : ""}
+       title= {this.props.trip !== undefined ?
+        "Place 3" : ""}/>
+
+      <Marker position = {this.props.coor !== undefined ?
+       this.props.coor[this.props.selectedDate][3] : ""}
+       title= {this.props.trip !== undefined ?
+        "Place 4" : ""}/>
+
+      <Marker position = {this.props.coor !== undefined ?
+       this.props.coor[this.props.selectedDate][4] : ""}
+       title= {this.props.trip !== undefined ?
+        "Place 5" : ""}/>
+
+      <Marker position = {this.props.coor !== undefined ?
+       this.props.coor[this.props.selectedDate][5] : ""}
+       title= {this.props.trip !== undefined ?
+        "Place 6" : ""}/>
+      
+      
       </GoogleMap>
    ));
    return(
