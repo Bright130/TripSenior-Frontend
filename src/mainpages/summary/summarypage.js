@@ -209,6 +209,7 @@ export default class Summarypage extends React.Component {
     };
     console.log(info);
     postData("http://localhost:5000/getPlan", info).then(plan => {
+      plan["tripId"] = this.props.match.params.id;
       this.context.router.history.push({
         pathname: "/trip-custom",
         state: plan

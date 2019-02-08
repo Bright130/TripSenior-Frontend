@@ -14,10 +14,14 @@ export default class Tripname extends React.Component {
       <div className="tripname-tripname-8">
         <div className="tripname-0">
           <div className="tripname-tripname-9">
-            <EditableLabel
-              initialValue={this.props.name}
-              save={value => this.props.getName(value)}
-            />
+            {this.props.name == "" ? (
+              ""
+            ) : (
+              <EditableLabel
+                initialValue={this.props.name}
+                save={value => this.props.getName(value)}
+              />
+            )}
           </div>
         </div>
       </div>

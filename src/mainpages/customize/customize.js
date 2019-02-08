@@ -140,7 +140,12 @@ function createDBFormat(props, state, isCreated) {
       detail: {},
       removePlaceID: [10, 11, 12]
     };
-    if (isCreated == true) trip["createdTime"] = moment().unix() * 1000;
+    if (isCreated == true) {
+      trip["createdTime"] = moment().unix() * 1000;
+    } else {
+      trip["createdTime"] = props.location.state.createdTime;
+      trip.tripId = props.location.state.tripId;
+    }
     let oo = state.items;
     for (let i = 1; i <= trip.numberOfDay; i++) {
       trip.detail["" + i] = [];
@@ -174,7 +179,7 @@ export default class Customize extends React.Component {
   constructor() {
     super();
     this.state = {
-      tripname: "MyTrip",
+      tripname: "",
       groups: [],
 
       items: [
@@ -238,8 +243,16 @@ export default class Customize extends React.Component {
 
   componentDidMount() {
     console.log(this.props.location);
-    console.log(this.state.items);
+    console.log(
+      this.props.location.state.tripName !== undefined
+        ? this.props.location.state.tripName
+        : "MyTrip"
+    );
     this.setState({
+      tripname:
+        this.props.location.state.tripName !== undefined
+          ? this.props.location.state.tripName
+          : "MyTrip",
       items: this.props.location.state.items,
       groups: this.props.location.state.groups,
       sugguest: this.props.location.state.suggestedPlace,
@@ -305,10 +318,20 @@ export default class Customize extends React.Component {
   changeRoute = evt => {
     evt.preventDefault();
     //true if create
-    createDBFormat(this.props, this.state, true).then(info => {
-      postData("http://localhost:5000/saveplan", info).then(data => {
-        this.context.router.history.push("/summary/" + data["id"]);
-      });
+
+    let isCreate = this.props.location.state.tripId == undefined;
+    createDBFormat(this.props, this.state, isCreate).then(info => {
+      if (isCreate) {
+        console.log("create");
+        postData("http://localhost:5000/saveplan", info).then(data => {
+          this.context.router.history.push("/summary/" + data["id"]);
+        });
+      } else {
+        console.log("update", this.props.location.state);
+        postData("http://localhost:5000/updateplan", info).then(data => {
+          this.context.router.history.push("/summary/" + data["id"]);
+        });
+      }
     });
     console.log(this.state);
 
