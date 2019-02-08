@@ -86,7 +86,7 @@ const convertMonth = timestamp => {
   ];
   var a = new Date(timestamp * 1000);
 
-  var month = months[a.getUTCMonth()];
+  var month = months[a.getMonth()];
 
   return month;
 };
@@ -108,13 +108,10 @@ const convertButtonDate = timestamp => {
     "Dec"
   ];
   var days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-  var year = a.getUTCFullYear();
-  var month = months[a.getUTCMonth()];
-  var date = a.getUTCDate() < 10 ? "0" + a.getUTCDate() : a.getUTCDate();
-  var hour = a.getUTCHours() < 10 ? "0" + a.getUTCHours() : a.getUTCHours();
-  var min =
-    a.getUTCMinutes() < 10 ? "0" + a.getUTCMinutes() : a.getUTCMinutes();
-  var day = days[a.getUTCDay()];
+
+  var date = a.getDate() < 10 ? "0" + a.getDate() : a.getDate();
+
+  var day = days[a.getDay()];
   var date = day + " " + date;
   return date;
 };

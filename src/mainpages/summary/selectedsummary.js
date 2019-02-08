@@ -35,13 +35,12 @@ const convertDate1 = timestamp => {
     "Friday",
     "Saturday"
   ];
-  var year = a.getUTCFullYear();
-  var month = months[a.getUTCMonth()];
-  var date = a.getUTCDate() < 10 ? "0" + a.getUTCDate() : a.getUTCDate();
-  var hour = a.getUTCHours() < 10 ? "0" + a.getUTCHours() : a.getUTCHours();
-  var min =
-    a.getUTCMinutes() < 10 ? "0" + a.getUTCMinutes() : a.getUTCMinutes();
-  var day = days[a.getUTCDay()];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate() < 10 ? "0" + a.getDate() : a.getDate();
+  var hour = a.getHours() < 10 ? "0" + a.getHours() : a.getHours();
+  var min = a.getMinutes() < 10 ? "0" + a.getMinutes() : a.getMinutes();
+  var day = days[a.getDay()];
   var date = day + " " + date + " " + month + " " + year;
   return day;
 };
@@ -71,13 +70,12 @@ const convertDate2 = timestamp => {
     "Friday",
     "Saturday"
   ];
-  var year = a.getUTCFullYear();
-  var month = months[a.getUTCMonth()];
-  var date = a.getUTCDate() < 10 ? "0" + a.getUTCDate() : a.getUTCDate();
-  var hour = a.getUTCHours() < 10 ? "0" + a.getUTCHours() : a.getUTCHours();
-  var min =
-    a.getUTCMinutes() < 10 ? "0" + a.getUTCMinutes() : a.getUTCMinutes();
-  var day = days[a.getUTCDay()];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate() < 10 ? "0" + a.getDate() : a.getDate();
+  var hour = a.getHours() < 10 ? "0" + a.getHours() : a.getHours();
+  var min = a.getMinutes() < 10 ? "0" + a.getMinutes() : a.getMinutes();
+  var day = days[a.getDay()];
   var date = date + " " + month + " " + year;
   return date;
 };

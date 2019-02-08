@@ -112,7 +112,7 @@ const convertFakeToRealTime = (faketime, startTime, group) => {
     .second(0)
     .millisecond(0)
     .add(parseInt(group) - 1, "days");
-
+  console.log(faketime, real.unix() * 1000 + " " + group);
   return real.unix() * 1000;
 };
 
