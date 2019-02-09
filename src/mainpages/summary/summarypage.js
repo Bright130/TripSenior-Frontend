@@ -160,7 +160,8 @@ export default class Summarypage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedDate: 1
+      selectedDate: 1,
+      edit: "Edit"
       // trip: {
       //   "1": [
       //     {
@@ -197,21 +198,23 @@ export default class Summarypage extends React.Component {
 
   handleEdit(evt) {
     evt.preventDefault();
-    let info = {
-      accesstoken:
-        localStorage.getItem("token") != null
-          ? localStorage
-              .getItem("token")
-              .slice(1, localStorage.getItem("token").length - 1)
-          : null,
-      id: this.props.match.params.id
-    };
-    console.log(info);
-    postData("http://localhost:5000/getPlan", info).then(plan => {
-      plan["tripId"] = this.props.match.params.id;
-      this.context.router.history.push({
-        pathname: "/trip-custom",
-        state: plan
+    this.setState({ edit: "Loading.." }, () => {
+      let info = {
+        accesstoken:
+          localStorage.getItem("token") != null
+            ? localStorage
+                .getItem("token")
+                .slice(1, localStorage.getItem("token").length - 1)
+            : null,
+        id: this.props.match.params.id
+      };
+      console.log(info);
+      postData("http://localhost:5000/getPlan", info).then(plan => {
+        plan["tripId"] = this.props.match.params.id;
+        this.context.router.history.push({
+          pathname: "/trip-custom",
+          state: plan
+        });
       });
     });
   }
@@ -258,7 +261,7 @@ export default class Summarypage extends React.Component {
                           className="summarypage-edit_-2"
                           onClick={this.handleEdit}
                         >
-                          Edit
+                          {this.state.edit}
                         </div>
                       </Button>
                     </div>
