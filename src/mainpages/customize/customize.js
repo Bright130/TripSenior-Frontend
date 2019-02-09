@@ -192,62 +192,13 @@ export default class Customize extends React.Component {
       tripname: "",
       groups: [],
 
-      items: [
-        // {
-        //   id: 1,
-        //   group: 1,
-        //   title: "Songkhla Lake",
-        //   start_time: moment()
-        //     .startOf("day")
-        //     .add(7, "hour"),
-        //   end_time: moment()
-        //     .startOf("day")
-        //     .add(9, "hour")
-        // },
-        // {
-        //   id: 2,
-        //   group: 2,
-        //   title: "Central Hatyai",
-        //   start_time: moment().add(-0.5, "hour"),
-        //   end_time: moment().add(0.5, "hour")
-        // },
-        // {
-        //   id: 3,
-        //   group: 1,
-        //   title: "Kim Yong Market",
-        //   start_time: moment()
-        //     .startOf("day")
-        //     .add(13, "hour"),
-        //   end_time: moment()
-        //     .startOf("day")
-        //     .add(16, "hour")
-        // }
-      ],
-      basket: [
-        // {
-        //   name: "s",
-        //   img: "https://ucarecdn.com/e618b2c9-1d4c-4ad6-9fa7-e8538d1f6f74/",
-        //   place_id: "3"
-        // }
-      ],
+      items: [],
+      basket: [],
 
       visited: [],
-      sugguest: [
-        // {
-        //   place: "Central Hatyai",
-        //   province: "Songkla",
-        //   img_src: "https://ucarecdn.com/ec629618-5d41-4d33-86d5-0cb12ee243ed/",
-        //   style: "Zoo",
-        //   img_main: "https://ucarecdn.com/646c21d3-59ea-4f2e-b8d7-2ef590d80bb6/"
-        // },
-        // {
-        //   place: "Place C",
-        //   province: "Songkla",
-        //   img_src: "https://ucarecdn.com/ec629618-5d41-4d33-86d5-0cb12ee243ed/",
-        //   style: "Zoo",
-        //   img_main: "https://ucarecdn.com/646c21d3-59ea-4f2e-b8d7-2ef590d80bb6/"
-        // }
-      ]
+      sugguest: [],
+      optimizing: "Route Optimize",
+      complete: "Complete"
     };
   }
 
@@ -328,36 +279,39 @@ export default class Customize extends React.Component {
   changeRoute = evt => {
     evt.preventDefault();
     //true if create
-
-    let isCreate = this.props.location.state.tripId == undefined;
-    createDBFormat(this.props, this.state, isCreate).then(info => {
-      if (isCreate) {
-        console.log("create");
-        postData("http://localhost:5000/saveplan", info).then(data => {
-          this.context.router.history.push("/summary/" + data["id"]);
-        });
-      } else {
-        console.log("update", this.props.location.state);
-        postData("http://localhost:5000/updateplan", info).then(data => {
-          this.context.router.history.push("/summary/" + data["id"]);
-        });
-      }
+    this.setState({ complete: "Loading.." }, () => {
+      let isCreate = this.props.location.state.tripId == undefined;
+      createDBFormat(this.props, this.state, isCreate).then(info => {
+        if (isCreate) {
+          console.log("create");
+          postData("http://localhost:5000/saveplan", info).then(data => {
+            this.context.router.history.push("/summary/" + data["id"]);
+          });
+        } else {
+          console.log("update", this.props.location.state);
+          postData("http://localhost:5000/updateplan", info).then(data => {
+            this.context.router.history.push("/summary/" + data["id"]);
+          });
+        }
+      });
     });
-    console.log(this.state);
 
     // this.context.router.history.push("/summary/1");
   };
 
   routeOptimize = () => {
-    let info = {
-      items: this.state.items,
-      groups: this.state.groups,
-      province: this.props.location.state.province
-    };
-    let info_string = JSON.stringify(info);
-    postData1("http://localhost:5000/optimize", info, this).then(plan => {
-      this.setState({
-        items: plan["items"]
+    this.setState({ optimizing: "Loading.." }, () => {
+      let info = {
+        items: this.state.items,
+        groups: this.state.groups,
+        province: this.props.location.state.province
+      };
+      let info_string = JSON.stringify(info);
+      postData1("http://localhost:5000/optimize", info, this).then(plan => {
+        this.setState({
+          items: plan["items"],
+          optimizing: "Route Optimize"
+        });
       });
     });
   };
@@ -395,7 +349,7 @@ export default class Customize extends React.Component {
                         className="customize-route_optimize-9"
                         onClick={this.routeOptimize}
                       >
-                        Route Optimize
+                        {this.state.optimizing}
                       </div>
                     </Button>
                   </div>
@@ -413,7 +367,9 @@ export default class Customize extends React.Component {
                       className="customize-1-5-0-0-0-0-0"
                       onClick={this.changeRoute}
                     >
-                      <div className="customize-complete-3">Complete</div>
+                      <div className="customize-complete-3">
+                        {this.state.complete}
+                      </div>
                     </Button>
                   </div>
                 </div>

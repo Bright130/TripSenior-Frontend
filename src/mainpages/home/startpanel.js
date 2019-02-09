@@ -97,7 +97,8 @@ export default class Startpanel extends React.Component {
       },
       starttime: 0,
       endtime: 0,
-      nationality: ""
+      nationality: "",
+      startplan: "Start Plan"
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -148,34 +149,38 @@ export default class Startpanel extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    let info = {
-      accesstoken:
-        localStorage.getItem("token") != null
-          ? localStorage
-              .getItem("token")
-              .slice(1, localStorage.getItem("token").length - 1)
-          : null,
-      style: convertstyle(this.state.styles),
-      seasons: converttime(this.state.starttime),
-      nationality:
-        this.state.nationality == "" ? "Thailand" : this.state.nationality,
-      province:
-        this.state.destinations == "" ? "Songkhla" : this.state.destinations,
-      startTime: this.state.starttime,
-      endTime: this.state.endtime
-    };
+    this.setState({ startplan: "Loading.." }, () => {
+      let info = {
+        accesstoken:
+          localStorage.getItem("token") != null
+            ? localStorage
+                .getItem("token")
+                .slice(1, localStorage.getItem("token").length - 1)
+            : null,
+        style: convertstyle(this.state.styles),
+        seasons: converttime(this.state.starttime),
+        nationality:
+          this.state.nationality == "" ? "Thailand" : this.state.nationality,
+        province:
+          this.state.destinations == "" ? "Songkhla" : this.state.destinations,
+        startTime: this.state.starttime,
+        endTime: this.state.endtime
+      };
 
-    postData("http://localhost:5000/plan", info).then(plan => {
-      plan["styles"] = convertstyle(this.state.styles);
-      plan["startTime"] = this.state.starttime * 1000;
-      plan["endTime"] = this.state.endtime * 1000;
-      (plan["nationality"] =
-        this.state.nationality == "" ? "Thailand" : this.state.nationality),
-        (plan["province"] =
-          this.state.destinations == "" ? "Songkhla" : this.state.destinations);
-      this.context.router.history.push({
-        pathname: "/trip-custom",
-        state: plan
+      postData("http://localhost:5000/plan", info).then(plan => {
+        plan["styles"] = convertstyle(this.state.styles);
+        plan["startTime"] = this.state.starttime * 1000;
+        plan["endTime"] = this.state.endtime * 1000;
+        (plan["nationality"] =
+          this.state.nationality == "" ? "Thailand" : this.state.nationality),
+          (plan["province"] =
+            this.state.destinations == ""
+              ? "Songkhla"
+              : this.state.destinations);
+        this.context.router.history.push({
+          pathname: "/trip-custom",
+          state: plan
+        });
       });
     });
   }
@@ -321,7 +326,9 @@ export default class Startpanel extends React.Component {
                     onClick={this.handleSubmit}
                   >
                     <div className="startpanel-0-1-0-15-1-0-0">
-                      <div className="startpanel-start_plan_-2">Start Plan</div>
+                      <div className="startpanel-start_plan_-2">
+                        {this.state.startplan}
+                      </div>
                     </div>
                   </div>
                 </div>
