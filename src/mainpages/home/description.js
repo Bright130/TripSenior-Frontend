@@ -19,7 +19,7 @@ export default class Description extends React.Component {
                               <div className="description-desc_4">
                                   Auto Generate
                                   <div className="description-desc-down">
-                                    Some texxt
+                                    Generate a complete travel plan at a desired destination with a few simple steps
                                   </div>
                               </div>
                           </div>
@@ -37,7 +37,7 @@ export default class Description extends React.Component {
                               <div className="description-desc_1">
                                   Customization
                                   <div className="description-desc-down">
-                                    Some texxt
+                                    Traveller can customize places and time in a travel plan to make desired travel plan
                                   </div>
                               </div>
                           </div>
@@ -55,7 +55,7 @@ export default class Description extends React.Component {
                               <div className="description-desc_2">
                                   Export To PDF
                                   <div className="description-desc-down">
-                                    Some texxt
+                                    The completed plan can be exported to PDF which provide more convenience on viewing offline in any devices
                                   </div>
                               </div>
                           </div>
@@ -73,7 +73,7 @@ export default class Description extends React.Component {
                               <div className="description-desc_3">
                                   AI Implemented
                                   <div className="description-desc-down">
-                                    Some texxt
+                                    The AI engines provide the places that best match personal styles and find the best route for travelling
                                   </div>
                               </div>
                           </div>
