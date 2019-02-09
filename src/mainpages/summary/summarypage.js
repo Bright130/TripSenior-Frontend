@@ -10,6 +10,7 @@ import Maparea from "./maparea";
 import Selectedsummary from "./selectedsummary";
 import "./summarypage.css";
 import { loadAPI } from "./util";
+import Sticky from 'react-stickynode'
 
 import PropTypes from "prop-types";
 
@@ -271,6 +272,7 @@ export default class Summarypage extends React.Component {
               selectedDate={this.state.selectedDate}
             />
           </div>
+          <Sticky top={50}>
           <div className="summarypage-2-1" />
           <div className="summarypage-2-2">
             <div className="summarypage-2-2-0">
@@ -340,6 +342,7 @@ export default class Summarypage extends React.Component {
               </div>
             </div>
           </div>
+          </Sticky>
         </div>
       </div>
     );

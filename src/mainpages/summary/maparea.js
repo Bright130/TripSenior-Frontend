@@ -2,7 +2,7 @@
 import React from 'react';
 import './maparea.css';
 import Map from './components/Map'
-import Sticky from 'react-stickynode'
+
 
 
 export default class Maparea extends React.Component {
@@ -28,13 +28,14 @@ export default class Maparea extends React.Component {
     // if (this.props.coor !== undefined)
     // console.log(this.props.coor[1]);
     return (
+      // <Sticky top={50}>
       <div className="maparea-maparea-8">
           <div className="maparea-0">
-            <Sticky>
+            
               <Map coor ={this.props.coor}
               selectedDate={this.props.selectedDate}
               trip = {this.props.trip}/>
-            </Sticky>
+            
           </div>
           <div className="maparea-1">
               <div className="maparea-tra_zone-1">{"Travel Zone :"}</div>
@@ -47,6 +48,7 @@ export default class Maparea extends React.Component {
               <div className="maparea-086">{ this.props.fee }</div>
           </div>
       </div>
+      // </Sticky>
     );
   }
 };

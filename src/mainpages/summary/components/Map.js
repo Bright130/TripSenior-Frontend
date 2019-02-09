@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+
+const getPin = (trip, indexx) => {
+  let container = [];
+
+  trip[indexx].forEach((each, index) => {
+    // console.log(each.placeID);
+
+    container.push(<Marker position = {each} title= {"Place "+ (index+1)}/>);
+  });
+  console.log(indexx);
+  return container;
+};
+
 class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
       coor: []
     };
-  }
-  markerLoop() {
-    var rows = [];
-    if (this.props.coor !== undefined){
-      for (var i = 1; i < this.props.coor[this.props.selectedDate].length_1; i++) {
-        rows.push(<Marker position = {this.props.coor[this.props.selectedDate][i]}
-          title= {this.props.trip !== undefined ? "Place "+i : ""}/>);
-      }
-    }
-    return {rows}
   }
 
   componentDidMount() {
@@ -41,7 +44,7 @@ class Map extends Component {
           this.props.coor[this.props.selectedDate][0] : ""} 
         defaultZoom = { 9 }
       >
-      <Marker position = {this.props.coor !== undefined ?
+      {/* <Marker position = {this.props.coor !== undefined ?
        this.props.coor[this.props.selectedDate][0] : ""}
        title= {this.props.trip !== undefined ?
         "Place 1" : ""}/>
@@ -69,7 +72,9 @@ class Map extends Component {
       <Marker position = {this.props.coor !== undefined ?
        this.props.coor[this.props.selectedDate][5] : ""}
        title= {this.props.trip !== undefined ?
-        "Place 6" : ""}/>
+        "Place 6" : ""}/> */}
+
+      {this.props.coor !== undefined ? getPin(this.props.coor, this.props.selectedDate.toString()) : ""}
       
       
       </GoogleMap>
