@@ -178,6 +178,7 @@ export default class Summarypage extends React.Component {
       // destination: ["Songkhla"]
     };
     this.handleEdit = this.handleEdit.bind(this);
+    this.goPDF = this.goPDF.bind(this);
   }
 
   componentDidMount() {
@@ -196,6 +197,11 @@ export default class Summarypage extends React.Component {
     router: PropTypes.object
   };
 
+  goPDF(evt) {
+    window.open(
+      "http://localhost:5000/plan-pdf/Trip-" + this.props.match.params.id
+    );
+  }
   handleEdit(evt) {
     evt.preventDefault();
     this.setState({ edit: "Loading.." }, () => {
@@ -324,7 +330,10 @@ export default class Summarypage extends React.Component {
                           <div className="summarypage-2-2-0-0-2-0-0-1-0">
                             <div className="summarypage-rectangle_9">
                               <div className="summarypage-2-2-0-0-2-0-0-1-0-0-0">
-                                <div className="summarypage-export_pdf_-8">
+                                <div
+                                  className="summarypage-export_pdf_-8"
+                                  onClick={this.goPDF}
+                                >
                                   Export PDF
                                 </div>
                               </div>
