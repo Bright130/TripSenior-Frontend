@@ -93,7 +93,8 @@ export default class Startpanel extends React.Component {
         Farm: false,
         Zoo: false,
         Educational: false,
-        Wildlife: false
+        Wildlife: false,
+        "New Experience": false
       },
       starttime: 0,
       endtime: 0,

@@ -30,7 +30,8 @@ export default class StylePop extends Component {
       Farm: false,
       Zoo: false,
       Educational: false,
-      Wildlife: false
+      Wildlife: false,
+      "New Experience": false
     };
   }
 
@@ -57,6 +58,20 @@ export default class StylePop extends Component {
     return (
       <Popup trigger={<Button>Styles</Button>} flowing hoverable>
         <Form>
+        <Form.Group grouped>
+            <label>Travel Experience</label>
+            <Grid columns="three" divided>
+              <Grid.Row>
+                <Grid.Column>
+                <Checkbox toggle
+                    label="New Experience"
+                    checked={this.state["New Experience"]}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Form.Group>
           <Form.Group grouped>
             <label>Travelling Speed</label>
             <Grid columns="three" divided>
