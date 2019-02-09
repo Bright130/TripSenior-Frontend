@@ -15,12 +15,22 @@ export default class StylePop extends Component {
     super(props);
     this.state = {
       speed: "",
-      Adventure: false,
-      Historical: false,
+      Historic: false,
+      Sight: false,
+      Healthy: false,
       Sea: false,
+      Religion: false,
+      Entertainment: false,
+      Shopping: false,
+      Event: false,
       Mountain: false,
-      Waterfall: false,
-      Shopping: false
+      Military: false,
+      Park: false,
+      Transportation: false,
+      Farm: false,
+      Zoo: false,
+      Educational: false,
+      Wildlife: false
     };
   }
 
@@ -87,15 +97,22 @@ export default class StylePop extends Component {
               <Grid.Row>
                 <Grid.Column>
                   <Checkbox
-                    label="Adventure"
-                    checked={this.state.Adventure}
+                    label="Historic"
+                    checked={this.state.Historic}
                     onChange={this.handleCheck}
                   />
                 </Grid.Column>
                 <Grid.Column>
                   <Checkbox
-                    label="Historical"
-                    checked={this.state.Historical}
+                    label="Sight"
+                    checked={this.state.Sight}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Healthy"
+                    checked={this.state.Healthy}
                     onChange={this.handleCheck}
                   />
                 </Grid.Column>
@@ -108,15 +125,15 @@ export default class StylePop extends Component {
                 </Grid.Column>
                 <Grid.Column>
                   <Checkbox
-                    label="Mountain"
-                    checked={this.state.Mountain}
+                    label="Religion"
+                    checked={this.state.Religion}
                     onChange={this.handleCheck}
                   />
                 </Grid.Column>
                 <Grid.Column>
                   <Checkbox
-                    label="Waterfall"
-                    checked={this.state.Waterfall}
+                    label="Entertainment"
+                    checked={this.state.Entertainment}
                     onChange={this.handleCheck}
                   />
                 </Grid.Column>
@@ -124,6 +141,69 @@ export default class StylePop extends Component {
                   <Checkbox
                     label="Shopping"
                     checked={this.state.Shopping}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Event"
+                    checked={this.state.Event}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Mountain"
+                    checked={this.state.Mountain}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Military"
+                    checked={this.state.Military}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Park"
+                    checked={this.state.Park}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Transportation"
+                    checked={this.state.Transportation}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Farm"
+                    checked={this.state.Farm}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Zoo"
+                    checked={this.state.Zoo}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Educational"
+                    checked={this.state.Educational}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Wildlife"
+                    checked={this.state.Wildlife}
                     onChange={this.handleCheck}
                   />
                 </Grid.Column>
