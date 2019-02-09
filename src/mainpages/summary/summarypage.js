@@ -49,7 +49,8 @@ function getTrip(id, reactComponent) {
         endTime: data["endTime"] / 1000,
         tripName: data["tripName"],
         numberOfday: data["numberOfDay"],
-        destination: data["destinations"]
+        destination: data["destinations"],
+        coor: data["coor"]
       },
       resolve()
     );
@@ -292,6 +293,9 @@ export default class Summarypage extends React.Component {
                         "Places"
                       }
                       fee={"300 Baht"}
+                      coor = {this.state.coor}
+                      selectedDate={this.state.selectedDate}
+                      trip = {this.state.trip}
                     />
                   </div>
                   <div className="summarypage-2-2-0-0-1-1" />

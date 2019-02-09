@@ -6,12 +6,34 @@ import Sticky from 'react-stickynode'
 
 
 export default class Maparea extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      coor: []
+    };
+  }
+
+  componentDidMount() {
+    // this.setState({
+    //   trip: this.props.trip[],
+    //   time: this.props.trip[0].startTime
+    // });
+      // this.setState({
+      //   coor: this.props.coor
+      // });
+      // console.log(this.props.coor[this.props.selectedDate]);
+   
+  }
   render() {
+    // if (this.props.coor !== undefined)
+    // console.log(this.props.coor[1]);
     return (
       <div className="maparea-maparea-8">
           <div className="maparea-0">
             <Sticky>
-              <Map/>
+              <Map coor ={this.props.coor}
+              selectedDate={this.props.selectedDate}
+              trip = {this.props.trip}/>
             </Sticky>
           </div>
           <div className="maparea-1">
