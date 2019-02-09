@@ -6,6 +6,7 @@ import Signup from "./signup";
 import Signin from "./signin";
 import { Button, Modal } from "semantic-ui-react";
 import PropTypes from "prop-types";
+import logo from '../../images/Logo_full.png';
 
 function getBar(reactComponent) {
 
@@ -97,7 +98,7 @@ export default class Header extends React.Component {
             <div className="header-1-1">
               <div className="header-1-1-0" />
               <div className="header-1-1-1">
-                <div className="header-tripnotize_-2" onClick={this.changeRoute}>Tripnotize</div>
+                <img className="header-tripnotize_-2" onClick={this.changeRoute} src={logo}/>
               </div>
               <div className="header-1-1-2" />
             </div>
