@@ -98,7 +98,7 @@ export default class Header extends React.Component {
             <div className="header-1-1">
               <div className="header-1-1-0" />
               <div className="header-1-1-1">
-                <img className="header-tripnotize_-2" onClick={this.changeRoute} src={logo}/>
+                <img className="header-tripnotize_-2" onClick={this.changeRoute} src="https://i.imgur.com/gSmWBoT.png"/>
               </div>
               <div className="header-1-1-2" />
             </div>
