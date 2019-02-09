@@ -19,6 +19,7 @@ export default class Recommend extends React.Component {
         // console.log(this.props.id)
       };
   render() {
+    console.log(this.props.img_rate)
     return (
       <div className="pd-onhover-parent pd-onactive-parent recommend" onClick={this.changeRoute}>
           { (('default') === "default") ?
