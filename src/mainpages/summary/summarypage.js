@@ -10,7 +10,7 @@ import Maparea from "./maparea";
 import Selectedsummary from "./selectedsummary";
 import "./summarypage.css";
 import { loadAPI } from "./util";
-import Sticky from 'react-stickynode'
+import Sticky from "react-stickynode";
 
 import PropTypes from "prop-types";
 
@@ -270,67 +270,71 @@ export default class Summarypage extends React.Component {
             <Selectedsummary
               trip={this.state.trip}
               selectedDate={this.state.selectedDate}
+              startTime={this.state.startTime}
             />
           </div>
           <Sticky top={50}>
-          <div className="summarypage-2-1" />
-          <div className="summarypage-2-2">
-            <div className="summarypage-2-2-0">
-              <div className="summarypage-rightside-4">
-                <div className="summarypage-2-2-0-0-0">
-                  <div className="summarypage-4">
-                    {"Day " + this.state.selectedDate + " , "}
-                    {this.state.trip !== undefined
-                      ? this.state.trip[this.state.selectedDate].length
-                      : ""}
-                    {"Places ,30 Baht In " + this.state.destination}
+            <div className="summarypage-2-1" />
+            <div className="summarypage-2-2">
+              <div className="summarypage-2-2-0">
+                <div className="summarypage-rightside-4">
+                  <div className="summarypage-2-2-0-0-0">
+                    <div className="summarypage-4">
+                      {"Day " + this.state.selectedDate + " , "}
+                      {this.state.trip !== undefined
+                        ? this.state.trip[this.state.selectedDate].length
+                        : ""}
+                      {"Places ,30 Baht In " + this.state.destination}
+                    </div>
                   </div>
-                </div>
-                <div className="summarypage-2-2-0-0-1">
-                  <div className="summarypage-map_instance-7">
-                    <Maparea
-                      zone={this.state.destination}
-                      places={
-                        countPlace(this.state.trip, this.state.numberOfday) +
-                        "Places"
-                      }
-                      fee={"300 Baht"}
-                      coor = {this.state.coor}
-                      selectedDate={this.state.selectedDate}
-                      trip = {this.state.trip}
-                    />
+                  <div className="summarypage-2-2-0-0-1">
+                    <div className="summarypage-map_instance-7">
+                      <Maparea
+                        zone={this.state.destination}
+                        places={
+                          countPlace(this.state.trip, this.state.numberOfday) +
+                          "Places"
+                        }
+                        fee={"300 Baht"}
+                        coor={this.state.coor}
+                        selectedDate={this.state.selectedDate}
+                        trip={this.state.trip}
+                      />
+                    </div>
+                    <div className="summarypage-2-2-0-0-1-1" />
                   </div>
-                  <div className="summarypage-2-2-0-0-1-1" />
-                </div>
-                <div className="summarypage-2-2-0-0-2">
-                  <div className="summarypage-buttons-3">
-                    <div className="summarypage-2-2-0-0-2-0-0">
-                      <div className="summarypage-sharebutton-9">
-                        <div className="summarypage-2-2-0-0-2-0-0-0-0">
-                          <div className="summarypage-rectangle_2">
-                            <div className="summarypage-2-2-0-0-2-0-0-0-0-0-0">
-                              <div className="summarypage-share_-0">Share</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="summarypage-export-7">
-                        <div className="summarypage-2-2-0-0-2-0-0-1-0">
-                          <div className="summarypage-rectangle_9">
-                            <div className="summarypage-2-2-0-0-2-0-0-1-0-0-0">
-                              <div className="summarypage-export_pdf_-8">
-                                Export PDF
+                  <div className="summarypage-2-2-0-0-2">
+                    <div className="summarypage-buttons-3">
+                      <div className="summarypage-2-2-0-0-2-0-0">
+                        <div className="summarypage-sharebutton-9">
+                          <div className="summarypage-2-2-0-0-2-0-0-0-0">
+                            <div className="summarypage-rectangle_2">
+                              <div className="summarypage-2-2-0-0-2-0-0-0-0-0-0">
+                                <div className="summarypage-share_-0">
+                                  Share
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="summarypage-sendmail-9">
-                        <div className="summarypage-2-2-0-0-2-0-0-2-0">
-                          <div className="summarypage-rectangle_8">
-                            <div className="summarypage-2-2-0-0-2-0-0-2-0-0-0">
-                              <div className="summarypage-send_to_email_-7">
-                                Send to Email
+                        <div className="summarypage-export-7">
+                          <div className="summarypage-2-2-0-0-2-0-0-1-0">
+                            <div className="summarypage-rectangle_9">
+                              <div className="summarypage-2-2-0-0-2-0-0-1-0-0-0">
+                                <div className="summarypage-export_pdf_-8">
+                                  Export PDF
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="summarypage-sendmail-9">
+                          <div className="summarypage-2-2-0-0-2-0-0-2-0">
+                            <div className="summarypage-rectangle_8">
+                              <div className="summarypage-2-2-0-0-2-0-0-2-0-0-0">
+                                <div className="summarypage-send_to_email_-7">
+                                  Send to Email
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -341,7 +345,6 @@ export default class Summarypage extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
           </Sticky>
         </div>
       </div>

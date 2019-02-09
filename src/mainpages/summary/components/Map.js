@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import React, { Component } from "react";
+import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 const getPin = (trip, indexx) => {
   let container = [];
@@ -7,7 +7,7 @@ const getPin = (trip, indexx) => {
   trip[indexx].forEach((each, index) => {
     // console.log(each.placeID);
 
-    container.push(<Marker position = {each} title= {"Place "+ (index+1)}/>);
+    container.push(<Marker position={each} title={"Place " + (index + 1)} />);
   });
   console.log(indexx);
   return container;
@@ -26,25 +26,25 @@ class Map extends Component {
     //   trip: this.props.trip[],
     //   time: this.props.trip[0].startTime
     // });
-      // this.setState({
-      //   coor: this.props.coor
-      // });
-      // console.log(this.props.coor[this.props.selectedDate]);
-   
+    // this.setState({
+    //   coor: this.props.coor
+    // });
+    // console.log(this.props.coor[this.props.selectedDate]);
   }
-   render() {
-    if (this.props.coor !== undefined)
-    console.log(this.props.coor[1]);
+  render() {
+    if (this.props.coor !== undefined) console.log(this.props.coor[1]);
 
-    if (this.props.trip !== undefined)
-    console.log(this.props.trip[1]);
-   const GoogleMapExample = withGoogleMap(props => (
+    if (this.props.trip !== undefined) console.log(this.props.trip[1]);
+    const GoogleMapExample = withGoogleMap(props => (
       <GoogleMap
-        defaultCenter = {this.props.coor !== undefined ?
-          this.props.coor[this.props.selectedDate][0] : ""} 
-        defaultZoom = { 9 }
+        defaultCenter={
+          this.props.coor !== undefined
+            ? this.props.coor[this.props.selectedDate][0]
+            : ""
+        }
+        defaultZoom={9}
       >
-      {/* <Marker position = {this.props.coor !== undefined ?
+        {/* <Marker position = {this.props.coor !== undefined ?
        this.props.coor[this.props.selectedDate][0] : ""}
        title= {this.props.trip !== undefined ?
         "Place 1" : ""}/>
@@ -74,19 +74,19 @@ class Map extends Component {
        title= {this.props.trip !== undefined ?
         "Place 6" : ""}/> */}
 
-      {this.props.coor !== undefined ? getPin(this.props.coor, this.props.selectedDate.toString()) : ""}
-      
-      
+        {this.props.coor !== undefined
+          ? getPin(this.props.coor, this.props.selectedDate.toString())
+          : ""}
       </GoogleMap>
-   ));
-   return(
+    ));
+    return (
       <div>
         <GoogleMapExample
-          containerElement={ <div style={{ height: `384px`, width: '607px' }} /> }
-          mapElement={ <div style={{ height: `100%` }} /> }
+          containerElement={<div style={{ height: `384px`, width: "607px" }} />}
+          mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
-   );
-   }
-};
+    );
+  }
+}
 export default Map;
