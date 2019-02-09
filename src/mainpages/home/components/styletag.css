@@ -158,6 +158,10 @@
     white-space: nowrap;
 }
 
+.ui.toggle.checkbox input:checked~label:before {
+    background-color: rgb(17, 172, 160)!important;
+}
+
 * {
     box-sizing: border-box;
 }
