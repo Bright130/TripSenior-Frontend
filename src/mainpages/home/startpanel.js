@@ -46,13 +46,21 @@ function postData(url = ``, data = {}) {
 
 function convertstyle(styles) {
   let ret = [];
-  if (styles["Adventure"]) ret.push("Adventure");
-  if (styles["Historical"]) ret.push("Historical");
+  if (styles["Historic"]) ret.push("Historic");
+  if (styles["Sight"]) ret.push("Sight");
+  if (styles["Healthy"]) ret.push("Healthy");
   if (styles["Sea"]) ret.push("Sea");
-
-  if (styles["Mountain"]) ret.push("Mountain");
-  if (styles["Waterfall"]) ret.push("Waterfall");
+  if (styles["Entertainment"]) ret.push("Entertainment");
   if (styles["Shopping"]) ret.push("Shopping");
+  if (styles["Event"]) ret.push("Event");
+  if (styles["Mountain"]) ret.push("Mountain");
+  if (styles["Military"]) ret.push("Military");
+  if (styles["Park"]) ret.push("Park");
+  if (styles["Transportation"]) ret.push("Transportation");
+  if (styles["Farm"]) ret.push("Farm");
+  if (styles["Zoo"]) ret.push("Zoo");
+  if (styles["Educational"]) ret.push("Educational sites");
+  if (styles["Wildlife"]) ret.push("Wildlife Areas");
   // console.log(ret);
   return ret;
 }
@@ -70,12 +78,22 @@ export default class Startpanel extends React.Component {
       destinations: "",
       styles: {
         speed: "",
-        Adventure: false,
-        Historical: false,
+        Historic: false,
+        Sight: false,
+        Healthy: false,
         Sea: false,
+        Religion: false,
+        Entertainment: false,
+        Shopping: false,
+        Event: false,
         Mountain: false,
-        Waterfall: false,
-        Shopping: false
+        Military: false,
+        Park: false,
+        Transportation: false,
+        Farm: false,
+        Zoo: false,
+        Educational: false,
+        Wildlife: false
       },
       starttime: 0,
       endtime: 0,
