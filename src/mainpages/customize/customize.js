@@ -170,6 +170,16 @@ function createDBFormat(props, state, isCreated) {
         peroidMinute: (e - s) / 60000
       });
     });
+    for (let i = 1; i <= trip.numberOfDay; i++) {
+      var byDate = trip.detail["" + i].slice(0);
+      await byDate.sort(function(a, b) {
+        return a.startTime - b.startTime;
+      });
+      trip.detail["" + i] = byDate;
+    }
+
+    // use slice() to copy the array and not just make a reference
+
     let a = await JSON.stringify(trip);
     resolve(a);
   });
