@@ -6,10 +6,8 @@ import Signup from "./signup";
 import Signin from "./signin";
 import { Button, Modal } from "semantic-ui-react";
 import PropTypes from "prop-types";
-import logo from '../../images/Logo_full.png';
 
 function getBar(reactComponent) {
-
   if (localStorage.getItem("token") != null)
     return (
       <div className="header-utils-7">
@@ -24,7 +22,10 @@ function getBar(reactComponent) {
           <div className="header-1-3-1-2">
             <div className="header-1-3-1-2-0 ">
               <form onSubmit={reactComponent.handleSubmit}>
-                  <Button type="submit" value="Logout" data-test="submit" > Logout </Button>
+                <Button type="submit" value="Logout" data-test="submit">
+                  {" "}
+                  Logout{" "}
+                </Button>
               </form>
             </div>
           </div>
@@ -98,7 +99,11 @@ export default class Header extends React.Component {
             <div className="header-1-1">
               <div className="header-1-1-0" />
               <div className="header-1-1-1">
-                <img className="header-tripnotize_-2" onClick={this.changeRoute} src="https://i.imgur.com/gSmWBoT.png"/>
+                <img
+                  className="header-tripnotize_-2"
+                  onClick={this.changeRoute}
+                  src="https://i.imgur.com/gSmWBoT.png"
+                />
               </div>
               <div className="header-1-1-2" />
             </div>

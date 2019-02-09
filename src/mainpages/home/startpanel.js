@@ -150,6 +150,7 @@ export default class Startpanel extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
+    console.log(this.state.styles["New Experience"]);
     this.setState({ startplan: "Loading.." }, () => {
       let info = {
         accesstoken:
@@ -165,9 +166,10 @@ export default class Startpanel extends React.Component {
         province:
           this.state.destinations == "" ? "Songkhla" : this.state.destinations,
         startTime: this.state.starttime,
-        endTime: this.state.endtime
+        endTime: this.state.endtime,
+        isNewEXP: this.state.styles["New Experience"] ? 1 : 0
       };
-
+      console.log(JSON.stringify(info));
       postData("http://localhost:5000/plan", info).then(plan => {
         plan["styles"] = convertstyle(this.state.styles);
         plan["startTime"] = this.state.starttime * 1000;

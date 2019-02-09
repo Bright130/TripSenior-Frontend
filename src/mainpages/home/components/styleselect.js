@@ -58,12 +58,13 @@ export default class StylePop extends Component {
     return (
       <Popup trigger={<Button>Styles</Button>} flowing hoverable>
         <Form>
-        <Form.Group grouped>
+          <Form.Group grouped>
             <label>Travel Experience</label>
             <Grid columns="three" divided>
               <Grid.Row>
                 <Grid.Column>
-                <Checkbox toggle
+                  <Checkbox
+                    toggle
                     label="New Experience"
                     checked={this.state["New Experience"]}
                     onChange={this.handleCheck}
