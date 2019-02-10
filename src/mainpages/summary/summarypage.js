@@ -179,6 +179,7 @@ export default class Summarypage extends React.Component {
     };
     this.handleEdit = this.handleEdit.bind(this);
     this.goPDF = this.goPDF.bind(this);
+    this.goFB = this.goFB.bind(this);
   }
 
   componentDidMount() {
@@ -200,6 +201,13 @@ export default class Summarypage extends React.Component {
   goPDF(evt) {
     window.open(
       "http://localhost:5000/plan-pdf/Trip-" + this.props.match.params.id
+    );
+  }
+
+  goFB(evt) {
+    window.open(
+      "https://www.facebook.com/sharer/sharer.php?u=127.0.0.1:8081/summary/" +
+        this.props.match.params.id
     );
   }
   handleEdit(evt) {
@@ -319,9 +327,14 @@ export default class Summarypage extends React.Component {
                           <div className="summarypage-2-2-0-0-2-0-0-0-0">
                             <div className="summarypage-rectangle_2">
                               <div className="summarypage-2-2-0-0-2-0-0-0-0-0-0">
-                                <div className="summarypage-share_-0">
-                                  Share
-                                </div>
+                                <Button>
+                                  <div
+                                    className="summarypage-share_-0"
+                                    onClick={this.goFB}
+                                  >
+                                    Share
+                                  </div>
+                                </Button>
                               </div>
                             </div>
                           </div>
