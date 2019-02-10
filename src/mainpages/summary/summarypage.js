@@ -282,7 +282,7 @@ export default class Summarypage extends React.Component {
               startTime={this.state.startTime}
             />
           </div>
-          <Sticky top={50}>
+          <Sticky top={70}>
             <div className="summarypage-2-1" />
             <div className="summarypage-2-2">
               <div className="summarypage-2-2-0">
@@ -304,7 +304,7 @@ export default class Summarypage extends React.Component {
                           countPlace(this.state.trip, this.state.numberOfday) +
                           "Places"
                         }
-                        fee={"300 Baht"}
+                        fee={"-"}
                         coor={this.state.coor}
                         selectedDate={this.state.selectedDate}
                         trip={this.state.trip}
