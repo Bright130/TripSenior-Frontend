@@ -301,7 +301,7 @@ export default class Summarypage extends React.Component {
                       {this.state.trip !== undefined
                         ? this.state.trip[this.state.selectedDate].length
                         : ""}
-                      {"Places ,30 Baht In " + this.state.destination}
+                      {"Places , In " + this.state.destination}
                     </div>
                   </div>
                   <div className="summarypage-2-2-0-0-1">
