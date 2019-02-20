@@ -138,7 +138,7 @@ function createDBFormat(props, state, isCreated) {
           86400000 +
         1,
       detail: {},
-      removePlaceID: [10, 11, 12]
+      removePlaceID: state.removePlaceID
     };
     if (isCreated == true) {
       trip["createdTime"] = moment().unix() * 1000;
@@ -198,7 +198,8 @@ export default class Customize extends React.Component {
       visited: [],
       sugguest: [],
       optimizing: "Route Optimize",
-      complete: "Complete"
+      complete: "Complete",
+      removePlaceID: []
     };
   }
 
@@ -271,6 +272,13 @@ export default class Customize extends React.Component {
   appendBasket = trip => {
     console.log(trip);
     this.setState({ basket: this.state.basket.concat(trip) });
+  };
+
+  removePlace = id => {
+    let removeID = this.state.removePlaceID;
+    removeID.push(id);
+    console.log(id);
+    this.setState({ removePlaceID: removeID });
   };
 
   static contextTypes = {
@@ -384,6 +392,7 @@ export default class Customize extends React.Component {
               getTrip={this.getTrip}
               appendBasket={this.appendBasket}
               groups={this.state.groups}
+              removePlace={this.removePlace}
             />
           </div>
         </div>
@@ -398,6 +407,7 @@ export default class Customize extends React.Component {
                 place={this.state.basket}
                 appendTrip={this.appendTrip}
                 getBasket={this.getBasket}
+                removePlace={this.removePlace}
               />
             </div>
             <div className="customize-4-0-1">
@@ -410,6 +420,7 @@ export default class Customize extends React.Component {
             place={this.state.visited}
             appendTrip={this.appendTrip}
             getVisited={this.getVisited}
+            removePlace={this.removePlace}
           />
         </div>
         <div className="customize-5">
@@ -420,6 +431,7 @@ export default class Customize extends React.Component {
                   name={this.state.sugguest}
                   appendTrip={this.appendTrip}
                   getSuggest={this.getSuggest}
+                  removePlace={this.removePlace}
                 />
               </div>
               <div className="customize-5-0-0-1" />

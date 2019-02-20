@@ -14,6 +14,7 @@ export default class VisitedPlace extends Component {
 
   deleteItem(id) {
     console.log(id);
+    this.props.removePlace(parseInt(this.props.place[id]["place_id"]));
     let arr = this.props.place;
     let a = arr.splice(0, id);
     let b = arr.splice(1, arr.length);

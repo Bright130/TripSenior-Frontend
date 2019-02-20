@@ -37,6 +37,7 @@ export default class Basket extends Component {
     let a = arr.splice(0, id);
     let b = arr.splice(1, arr.length);
     this.props.getBasket(a.concat(b));
+    this.props.removePlace(parseInt(this.props.place[id]["place_id"]));
   }
 
   sendSchedule(id) {

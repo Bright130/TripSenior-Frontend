@@ -15,6 +15,7 @@ export default class SuggestCustom extends Component {
 
   deleteItem(id) {
     console.log(id);
+    this.props.removePlace(parseInt(this.props.name[id]["place_id"]));
     let arr = this.props.name;
     let a = arr.splice(0, id);
     let b = arr.splice(1, arr.length);

@@ -90,7 +90,6 @@ export default class TimeTable extends React.Component {
   }
   componentDidUpdate(prevProps) {
     console.log(prevProps, this.props);
-  
   }
 
   handleContextMenu(itemId, e) {
@@ -115,6 +114,9 @@ export default class TimeTable extends React.Component {
   }
 
   deleteItem() {
+    this.props.removePlace(
+      parseInt(this.props.items[this.state.rightClickId]["place_id"])
+    );
     let arr = this.props.items;
     let a = arr.splice(0, this.state.rightClickId);
     let b = arr.splice(1, arr.length);
