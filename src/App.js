@@ -4,6 +4,7 @@ import Summarypage from "./mainpages/summary/summarypage";
 import Customize from "./mainpages/customize/customize";
 import Detailpage from "./mainpages/detail/detailpage";
 import Trippage from "./mainpages/personal/trippage";
+import Profilepage from "./mainpages/personal/profilepage";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import createBrowserHistory from "history/es/createBrowserHistory";
 
@@ -20,6 +21,7 @@ class App extends Component {
           <Route path="/trip-custom" component={Customize} />
           <Route path="/summary/:id" component={Summarypage} />
           <Route path="/mytrip/" component={Trippage} />
+          <Route path="/myprofile/" component={Profilepage} />
         </div>
       </Router>
     );
