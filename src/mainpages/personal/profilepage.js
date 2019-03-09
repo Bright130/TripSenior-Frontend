@@ -5,7 +5,6 @@ import { DateInput } from "semantic-ui-calendar-react";
 import { loadAPI } from "../home/components/util";
 import Header from "../utility/header"
 
-
 export default class Profilepage extends React.Component {
     constructor(props) {
       super(props);
