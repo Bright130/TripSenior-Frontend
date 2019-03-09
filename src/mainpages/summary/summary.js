@@ -30,24 +30,31 @@ export default class Summary extends React.Component {
               <div className="summary-place_a_-0">{this.props.placename}</div>
             </div>
             <div className="summary-1-2-1">
-              <div className="summary-open_time_-7">{"Open Time :"}</div>
+              <div className="summary-open_time_-7">
+                {"Open Time : " + this.props.openTime}
+              </div>
             </div>
             <div className="summary-1-2-2">
-              <div className="summary-tel-4">{"Telephone :"}</div>
+              <div className="summary-tel-4">
+                {"Telephone :  " +
+                  (this.props.phone == null ? " " : this.props.phone)}
+              </div>
             </div>
             <div className="summary-1-2-3">
-              <div className="summary-fee-2">{"Entry Fee :"}</div>
+              <div className="summary-fee-2">
+                {"Entry Fee : " + this.props.fee}
+              </div>
             </div>
           </div>
           <div className="summary-1-3">
             <div className="summary-1-3-0">
-              <div className="summary-8">{this.props.openTime}</div>
+              <div className="summary-8">{}</div>
             </div>
             <div className="summary-1-3-1">
-              <div className="summary-086">{this.props.phone}</div>
+              <div className="summary-086">{}</div>
             </div>
             <div className="summary-1-3-2">
-              <div className="summary-086">{this.props.fee}</div>
+              <div className="summary-086">{}</div>
             </div>
           </div>
         </div>
