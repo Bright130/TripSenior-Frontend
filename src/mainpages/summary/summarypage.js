@@ -51,11 +51,13 @@ function getTrip(id, reactComponent) {
         tripName: data["tripName"],
         numberOfday: data["numberOfDay"],
         destination: data["destinations"],
-        coor: data["coor"]
+        coor: data["coor"],
+        res: data["res"]
       },
       resolve()
     );
     await console.log(data["detail"]);
+    await console.log(data["res"]);
   });
 }
 
@@ -162,6 +164,7 @@ export default class Summarypage extends React.Component {
     this.state = {
       selectedDate: 1,
       edit: "Edit"
+
       // trip: {
       //   "1": [
       //     {
@@ -288,6 +291,7 @@ export default class Summarypage extends React.Component {
               trip={this.state.trip}
               selectedDate={this.state.selectedDate}
               startTime={this.state.startTime}
+              res={this.state.res}
             />
           </div>
           <Sticky top={70}>

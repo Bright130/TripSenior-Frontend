@@ -5,6 +5,7 @@ import Dates from "./date";
 
 import "./summarypage.css";
 import TripCard from "./tripCard";
+import ResCard from "./resCard";
 
 const convertDate1 = timestamp => {
   var a = new Date(timestamp * 1000);
@@ -90,11 +91,26 @@ const getTrip = (trip, indexx) => {
   return container;
 };
 
+const getRes = (res, indexx) => {
+  var i = 0;
+  let container = [];
+  let cnt = 0;
+
+  res[indexx].forEach((each, index) => {
+    // console.log(each.placeID);
+
+    container.push(<ResCard key={index + 100} each={each} />);
+  });
+  console.log(indexx);
+  return container;
+};
+
 export default class Selectedsummary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       trip: [],
+      res: [],
       time: null
     };
   }
@@ -111,6 +127,16 @@ export default class Selectedsummary extends React.Component {
       });
       console.log(this.props.trip[this.props.selectedDate]);
     }
+
+    if (this.props.res !== undefined) {
+      this.setState({
+        res: this.props.res[this.props.selectedDate]
+      });
+      console.log(this.props.res[this.props.selectedDate]);
+    } else {
+      console.log("qwqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+    }
+    console.log(this.props.res);
   }
 
   render() {
@@ -138,6 +164,10 @@ export default class Selectedsummary extends React.Component {
         </div>
         {this.props.trip !== undefined
           ? getTrip(this.props.trip, this.props.selectedDate.toString())
+          : ""}
+        <h2>Recommended Restaurant</h2>
+        {this.props.res !== undefined
+          ? getRes(this.props.res, this.props.selectedDate.toString())
           : ""}
       </div>
     );
