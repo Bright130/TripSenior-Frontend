@@ -70,7 +70,7 @@ function converttime(time) {
   // console.log(ret);
   return ret;
 }
-export default class Startpanel extends React.Component {
+export default class Startpanel2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -98,7 +98,9 @@ export default class Startpanel extends React.Component {
       starttime: 0,
       endtime: 0,
       nationality: "",
-      startplan: "Start Plan"
+      startplan: "Start Plan",
+      startLocation: "",
+      endLocation: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -109,9 +111,14 @@ export default class Startpanel extends React.Component {
    * Callback
    * @param {string}
    */
-  getDestination = destination => {
-    this.setState({ destinations: destination }, console.log(destination));
+  getStartLocation = startLocation => {
+    this.setState({ startLocation: startLocation }, console.log(startLocation));
   };
+
+  getEndLocation = endLocation => {
+    this.setState({ endLocation: endLocation }, console.log(endLocation));
+  };
+
   getNationality = nationality => {
     this.setState({ nationality: nationality }, console.log(nationality));
   };
@@ -207,8 +214,16 @@ export default class Startpanel extends React.Component {
                       <div className="startpanel-0-1-0-1-1-0-0-1">
                         <div className="startpanel-destination_-8">
                           <DestinationDrop
-                            getDestination={this.getDestination}
-                            placeholder='Destination'
+                            getDestination={this.getStartLocation}
+                            placeholder= 'Start Location'
+                          />
+                        </div>
+                      </div>
+                      <div className="startpanel-0-1-0-1-1-0-0-1">
+                        <div className="startpanel-destination_-8">
+                          <DestinationDrop
+                            getDestination={this.getEndLocation}
+                            placeholder= 'End Location'
                           />
                         </div>
                       </div>

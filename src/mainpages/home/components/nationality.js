@@ -38,7 +38,7 @@ class NationDrop extends Component {
   render() {
     return (
       <Dropdown
-        placeholder="Nationality"
+        placeholder="Home Country"
         search
         selection
         fluid

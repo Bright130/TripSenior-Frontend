@@ -38,7 +38,7 @@ class DestinationDrop extends Component {
   render() {
     return (
       <Dropdown
-        placeholder="Destination"
+        placeholder={this.props.placeholder}
         search
         selection
         fluid
