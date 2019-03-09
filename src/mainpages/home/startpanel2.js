@@ -60,6 +60,8 @@ function convertstyle(styles) {
   if (styles["Zoo"]) ret.push("Zoo");
   if (styles["Educational"]) ret.push("Educational sites");
   if (styles["Wildlife"]) ret.push("Wildlife Areas");
+  if (styles["Waterfalls"]) ret.push("Waterfalls");
+  if (styles["Other"]) ret.push("Other");
   // console.log(ret);
   return ret;
 }
@@ -93,6 +95,8 @@ export default class Startpanel2 extends React.Component {
         Zoo: false,
         Educational: false,
         Wildlife: false,
+        Waterfalls: false,
+        Other: false,
         "New Experience": false
       },
       starttime: 0,
@@ -169,23 +173,29 @@ export default class Startpanel2 extends React.Component {
         seasons: converttime(this.state.starttime),
         nationality:
           this.state.nationality == "" ? "Thailand" : this.state.nationality,
-        province:
-          this.state.destinations == "" ? "Songkhla" : this.state.destinations,
+        startprovince:
+          this.state.startLocation == "" ? "Bangkok" : this.state.startLocation,
+        endprovince:
+          this.state.endLocation == "" ? "Rayong" : this.state.endLocation,
         startTime: this.state.starttime,
         endTime: this.state.endtime,
         isNewEXP: this.state.styles["New Experience"] ? 1 : 0
       };
       console.log(JSON.stringify(info));
-      postData("http://localhost:5000/plan", info).then(plan => {
+      postData("http://localhost:5000/planRoad", info).then(plan => {
         plan["styles"] = convertstyle(this.state.styles);
         plan["startTime"] = this.state.starttime * 1000;
         plan["endTime"] = this.state.endtime * 1000;
         (plan["nationality"] =
           this.state.nationality == "" ? "Thailand" : this.state.nationality),
-          (plan["province"] =
-            this.state.destinations == ""
-              ? "Songkhla"
-              : this.state.destinations);
+          (plan["startprovince"] =
+            this.state.startLocation == ""
+              ? "Bangkok"
+              : this.state.startLocation),
+              (plan["endprovince"] =
+              this.state.endLocation == ""
+                ? "Rayong"
+                : this.state.endLocation);
         this.context.router.history.push({
           pathname: "/trip-custom",
           state: plan

@@ -180,6 +180,7 @@
 
 .ui.label, .ui.labels .label{
     font-size: 20px;
+    background: transparent;
 }
 
 * {

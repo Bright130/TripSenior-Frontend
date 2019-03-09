@@ -60,6 +60,8 @@ function convertstyle(styles) {
   if (styles["Zoo"]) ret.push("Zoo");
   if (styles["Educational"]) ret.push("Educational sites");
   if (styles["Wildlife"]) ret.push("Wildlife Areas");
+  if (styles["Waterfalls"]) ret.push("Waterfalls");
+  if (styles["Other"]) ret.push("Other");
   // console.log(ret);
   return ret;
 }
@@ -93,6 +95,8 @@ export default class Startpanel extends React.Component {
         Zoo: false,
         Educational: false,
         Wildlife: false,
+        Waterfalls: false,
+        Other: false,
         "New Experience": false
       },
       starttime: 0,

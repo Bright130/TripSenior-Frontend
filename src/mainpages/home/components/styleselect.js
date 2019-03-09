@@ -31,6 +31,8 @@ export default class StylePop extends Component {
       Zoo: false,
       Educational: false,
       Wildlife: false,
+      Waterfalls: false,
+      Other: false,
       "New Experience": false
     };
   }
@@ -220,6 +222,20 @@ export default class StylePop extends Component {
                   <Checkbox
                     label="Wildlife"
                     checked={this.state.Wildlife}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Waterfalls"
+                    checked={this.state.Waterfalls}
+                    onChange={this.handleCheck}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Checkbox
+                    label="Other"
+                    checked={this.state.Other}
                     onChange={this.handleCheck}
                   />
                 </Grid.Column>
