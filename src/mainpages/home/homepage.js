@@ -57,7 +57,15 @@ export default class Homepage extends React.Component {
           <div className="homepage-startpanel_instance-3">
             
             {/* <Segment compact textAlign={'center'}> */}
-              <Label fitted >Trip Types: 
+              <Label fitted >Trip Types:
+              <Radio defaultChecked
+                className='pad-custom'
+                label="Single Destination"
+                name="radioGroup"
+                value="Single Destination"
+                checked={this.state.triptype === "Single Destination"}
+                onChange={this.handleChange}
+              /> 
               <Radio 
                 className='pad-custom'
                 label="Road Trip"
@@ -66,18 +74,9 @@ export default class Homepage extends React.Component {
                 checked={this.state.triptype === "Road Trip"}
                 onChange={this.handleChange}
               />  
-              <Radio defaultChecked
-                className='pad-custom'
-                label="Single Destination"
-                name="radioGroup"
-                value="Single Destination"
-                checked={this.state.triptype === "Single Destination"}
-                onChange={this.handleChange}
-              />
               </Label>        
             {/* </Segment> */}
-            <Startpanel />
-            <Startpanel2/>
+            {this.state.triptype == "Single Destination" ? <Startpanel/> : <Startpanel2/>}
           </div>
           <div className="homepage-2-2" />
         </div>
