@@ -60,7 +60,8 @@ export default class Detail extends React.Component {
                   </div>
                   <div className="detail-0-1-5">
                       <div className="detail-styletag_instance-2">
-                          <Styletag text={this.props.style}/> 
+                          <Styletag text={this.props.style==null?this.props.style:this.props.style[0]}/> 
+                        
                       </div>
                   </div>
                   <div className="detail-0-1-6">
