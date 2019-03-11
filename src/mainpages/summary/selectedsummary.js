@@ -3,6 +3,7 @@ import React from "react";
 
 import Dates from "./date";
 
+import "./tripname.css";
 import "./summarypage.css";
 import TripCard from "./tripCard";
 import ResCard from "./resCard";
@@ -165,7 +166,11 @@ export default class Selectedsummary extends React.Component {
         {this.props.trip !== undefined
           ? getTrip(this.props.trip, this.props.selectedDate.toString())
           : ""}
-        <h2>Recommended Restaurant</h2>
+        <div className="tripname-tripname-8x">
+          <div className="tripname-0x">
+            <div className="tripname-tripname-9x">Recommended Restaurant</div>
+          </div>
+      </div>
         {this.props.res !== undefined
           ? getRes(this.props.res, this.props.selectedDate.toString())
           : ""}

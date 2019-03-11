@@ -25,44 +25,44 @@ export default class Profilepage extends React.Component {
             <div className="tripname-tripname-9">My Profile</div>
           </div>
         </div>
-        <div className="tripname-tripname-8">
+        <div  className="profile-detail">
           <div className="tripname-0">
-  <div>
-    <Icon circular inverted color='teal' fitted name='user' size='large'/>
-  </div>
+            <div>
+              <Icon circular inverted color='teal' fitted name='user' size='large'/>
+            </div>
             <div className="tripname-tripname-10">Name</div>
           </div>
-        </div>
           <div className="tripname-0">
-  <div>
-    <Icon circular inverted color='teal' fitted name='flag' size='large'/>
-  </div>
+            <div>
+              <Icon circular inverted color='teal' fitted name='flag' size='large'/>
+            </div>
             <div className="tripname-tripname-10">Country</div>
           </div>
           <div className="tripname-0">
-  <div>
-    <Icon circular inverted color='teal' fitted name='calendar alternate outline' size='large'/>
-  </div>
+            <div>
+              <Icon circular inverted color='teal' fitted name='calendar alternate outline' size='large'/>
+            </div>
             <div className="tripname-tripname-10">Birthday</div>
           </div>
           <div className="tripname-0">
-  <div>
-    <Icon circular inverted color='teal' fitted name='address card' size='large'/>
-  </div>
+            <div>
+              <Icon circular inverted color='teal' fitted name='address card' size='large'/>
+            </div>
             <div className="tripname-tripname-10">Username</div>
           </div>
           <div className="tripname-0">
-  <div>
-    <Icon circular inverted color='teal' fitted name='key' size='large'/>
-  </div>
+            <div>
+              <Icon circular inverted color='teal' fitted name='key' size='large'/>
+            </div>
             <div className="tripname-tripname-10">Password</div>
           </div>
           <div className="tripname-0">
-  <div>
-    <Icon circular inverted color='teal' fitted name='key' size='large'/>
-  </div>
+            <div>
+              <Icon circular inverted color='teal' fitted name='key' size='large'/>
+            </div>
             <div className="tripname-tripname-10">Confirm Password</div>
           </div>
+        </div>
       </div>
     
     );

@@ -21,6 +21,11 @@
     font-style: normal;
     font-weight: 400;
 }
+
+.profile-detail {
+    padding-left: 10%;
+}
+
 .signup-signup-8 {
     display: flex;
     flex-direction: column;

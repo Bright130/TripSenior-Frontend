@@ -40,6 +40,32 @@
     white-space: nowrap;
 }
 
+.tripname-tripname-8x {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-top: 20px;
+}
+
+.tripname-0x {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.tripname-tripname-9x {
+    flex-shrink: 0;
+    font-family: Cavorting;
+    color: rgb(85, 73, 69);
+    font-size: 44px;
+    line-height: 50px;
+    letter-spacing: 0px;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    text-align: left;
+    word-wrap: normal;
+}
+
 * {
     box-sizing: border-box;
 }
