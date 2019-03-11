@@ -206,6 +206,7 @@
     height: 0px;
     flex-grow: 0.0011723329425556857;
     flex-basis: 0px;
+    margin-left: 15px;
 }
 
 .header-1-5 {
@@ -218,11 +219,13 @@
     flex-shrink: 0;
     flex-grow: 0.5263157894736842;
     flex-basis: 0px;
+    
 }
 
 .header-1-5-1 {
     display: flex;
     flex-shrink: 0;
+    cursor: pointer;
 }
 
 .header-image_5 {

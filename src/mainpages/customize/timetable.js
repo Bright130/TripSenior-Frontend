@@ -128,8 +128,8 @@ export default class TimeTable extends React.Component {
     let a = arr.splice(0, this.state.rightClickId);
     let b = arr.splice(1, arr.length);
     this.props.getTrip(a.concat(b));
-
-    loadAPI(" http://127.0.0.1:5000/placename?place_id=" + arr[0].title).then(
+    console.log(arr[0].title);
+    loadAPI(" http://127.0.0.1:5000/place?place_id=" + arr[0].id).then(
       result => {
         console.log(result);
 
@@ -148,11 +148,11 @@ export default class TimeTable extends React.Component {
 
   openDetail() {
     loadAPI(
-      " http://127.0.0.1:5000/placename?place_id=" +
-        this.props.items[this.state.rightClickId]["title"]
+      " http://127.0.0.1:5000/place?place_id=" +
+        this.props.items[this.state.rightClickId]["id"]
     ).then(result => {
       console.log(
-        this.props.items[this.state.rightClickId]["title"],
+        this.props.items[this.state.rightClickId]["id"],
         result["place_id"]
       );
       window.open("http://127.0.0.1:8081/place/" + result["place_id"]);

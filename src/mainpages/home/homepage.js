@@ -57,7 +57,7 @@ export default class Homepage extends React.Component {
           <div className="homepage-startpanel_instance-3">
             
             {/* <Segment compact textAlign={'center'}> */}
-              <Label fitted >Trip Types:
+              <Label>Trip Types:
               <Radio defaultChecked
                 className='pad-custom'
                 label="Single Destination"

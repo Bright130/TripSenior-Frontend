@@ -9,7 +9,7 @@ export default class TripSlot extends React.Component {
         <div className="summary-1">
           <div className="summary-1-1">
             <div className="summary-1-1-0">
-              <img src={this.props.img_src} className="summary-image_7" />
+              <img src="https://react.semantic-ui.com/images/wireframe/image.png" className="summary-image_7" />
             </div>
           </div>
           <div className="summary-1-">

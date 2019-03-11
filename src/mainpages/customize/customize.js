@@ -22,7 +22,7 @@ async function asyncForEach(array, callback) {
 async function searchPlaceID(name) {
   return new Promise(async function(resolve) {
     let ret = await loadAPI(
-      " http://127.0.0.1:5000/placename?place_id=" + name
+      " http://127.0.0.1:5000/place?place_id=" + name
     );
     resolve(ret["place_id"]);
   });
