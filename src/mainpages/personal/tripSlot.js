@@ -3,6 +3,24 @@ import React from "react";
 import "./tripSlot.css";
 
 export default class TripSlot extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.viewSummary = this.viewSummary.bind(this);
+    this.goPDF = this.goPDF.bind(this);
+  }
+
+  viewSummary = () => {
+    console.log(this.props.tripID );
+    this.context.router.history.push("/summary/" + this.props.tripID );
+  }
+
+  goPDF(evt) {
+    window.open(
+      "http://localhost:5000/plan-pdf/Trip-" + this.props.tripID
+    );
+  }
+
   render() {
     return (
       <div className="summary-summary-0">
@@ -14,7 +32,7 @@ export default class TripSlot extends React.Component {
           </div>
           <div className="summary-1-">
             <div className="summary-1-2-0">
-              <div className="summary-place_a_-0">Tripname : MySummerTrip</div>
+              <div className="summary-place_a_-0">Tripname : {this.props.name}</div>
             </div>
           </div>
           <div className="summary-1-2">
@@ -30,20 +48,20 @@ export default class TripSlot extends React.Component {
           </div>
           <div className="summary-1-2-">
             <div className="summary-1-2-1">
-              <div className="summary-8">3</div>
+              <div className="summary-8">{this.props.numberofday}</div>
             </div>
             <div className="summary-1-2-2">
-              <div className="summary-086">4</div>
+              <div className="summary-086">{this.props.numberofprovince}</div>
             </div>
             <div className="summary-1-2-3">
-              <div className="summary-086">5</div>
+              <div className="summary-086">{this.props.created}</div>
             </div>
           </div>
           <div className="summary-extra"></div>
           <div className="summary-1-3">
             <div className="summarypage-export-7">
               <div className="summarypage-2-2-0-0-2-0-0-1-0">
-                <div className="summarypage-rectangle_9">
+                <div className="summarypage-rectangle_9" onClick={this.viewSummary}>
                   <div className="summarypage-2-2-0-0-2-0-0-1-0-0-0">
                     <div className="summarypage-export_pdf_-8">
                       View
@@ -56,7 +74,7 @@ export default class TripSlot extends React.Component {
           <div className="summary-1-3">
             <div className="summarypage-export-7">
               <div className="summarypage-2-2-0-0-2-0-0-1-0">
-                <div className="summarypage-rectangle_9">
+                <div className="summarypage-rectangle_9" onClick={this.goPDF}>
                   <div className="summarypage-2-2-0-0-2-0-0-1-0-0-0">
                     <div className="summarypage-export_pdf_-8">
                       Export PDF
