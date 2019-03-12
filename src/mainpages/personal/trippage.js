@@ -2,6 +2,7 @@ import React from "react";
 import "./trippage.css";
 import Header from "../utility/header"
 import TripSlot from "./tripSlot"
+import PropTypes from "prop-types";
 
 function getData(url = ``, data = {}) {
   // Default options are marked with *
@@ -35,7 +36,7 @@ const makeTripRow = reactComponent => {
   var container = [];
   reactComponent.state.trips.forEach(function(trip, index) {
     container.push(
-      <TripSlot tripID={trip["tripID"]} name={trip["tripName"]} created={convertTime(trip["createdTime"])} numberofday={trip["numberOfDay"]} numberofprovince={trip["destinations"].length} />
+      <TripSlot viewSummary={reactComponent.viewSummary} tripID={trip["tripID"]} name={trip["tripName"]} created={convertTime(trip["createdTime"])} numberofday={trip["numberOfDay"]} numberofprovince={trip["destinations"].length} />
     );
   });
   console.log(container);
@@ -48,6 +49,7 @@ export default class Trippage extends React.Component {
     this.state={
       trips : []
     }
+    this.viewSummary = this.viewSummary.bind(this);
   }
 
   componentDidMount() {
@@ -70,6 +72,13 @@ export default class Trippage extends React.Component {
     
   }
 
+  static contextTypes = {
+    router: PropTypes.object
+  };
+  viewSummary = tripID => {
+    console.log(tripID );
+    this.context.router.history.push("/summary/" + tripID );
+  }
 
   render() {
     return (

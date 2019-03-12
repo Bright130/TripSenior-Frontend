@@ -6,13 +6,8 @@ export default class TripSlot extends React.Component {
   constructor(props) {
     super(props);
 
-    this.viewSummary = this.viewSummary.bind(this);
+    this.goSummary = this.goSummary.bind(this)
     this.goPDF = this.goPDF.bind(this);
-  }
-
-  viewSummary = () => {
-    console.log(this.props.tripID );
-    this.context.router.history.push("/summary/" + this.props.tripID );
   }
 
   goPDF(evt) {
@@ -21,7 +16,12 @@ export default class TripSlot extends React.Component {
     );
   }
 
+  goSummary(evt) {
+    this.props.viewSummary(this.props.tripID)
+  }
+
   render() {
+    console.log(this.props)
     return (
       <div className="summary-summary-0">
         <div className="summary-1">
@@ -61,7 +61,7 @@ export default class TripSlot extends React.Component {
           <div className="summary-1-3">
             <div className="summarypage-export-7">
               <div className="summarypage-2-2-0-0-2-0-0-1-0">
-                <div className="summarypage-rectangle_9" onClick={this.viewSummary}>
+                <div className="summarypage-rectangle_9" onClick={this.goSummary} >
                   <div className="summarypage-2-2-0-0-2-0-0-1-0-0-0">
                     <div className="summarypage-export_pdf_-8">
                       View
