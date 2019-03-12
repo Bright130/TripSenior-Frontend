@@ -111,6 +111,7 @@
 }
 
 .header-my_trips_-6 {
+    cursor: pointer;
     flex-shrink: 0;
     font-family: Ikaros-Regular;
     color: #000000;

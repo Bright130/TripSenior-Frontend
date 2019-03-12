@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import { withGoogleMap, GoogleMap, Marker,Polyline, MarkerWithLabel } from "react-google-maps";
 
 const getPin = (trip, indexx) => {
   let container = [];
 
   trip[indexx].forEach((each, index) => {
     // console.log(each.placeID);
-
-    container.push(<Marker position={each} title={"Place " + (index + 1)} />);
+    
+    container.push(<Marker key={index} position={each} title={"Place " + (index + 1)}/>);
   });
   console.log(indexx);
   return container;
@@ -32,9 +32,14 @@ class Map extends Component {
     // console.log(this.props.coor[this.props.selectedDate]);
   }
   render() {
-    if (this.props.coor !== undefined) console.log(this.props.coor[1]);
+
+    if (this.props.coor !== undefined) {
+      console.log(this.props.coor[this.props.selectedDate]);
+    }
 
     if (this.props.trip !== undefined) console.log(this.props.trip[1]);
+
+
     const GoogleMapExample = withGoogleMap(props => (
       <GoogleMap
         defaultCenter={
@@ -44,36 +49,7 @@ class Map extends Component {
         }
         defaultZoom={9}
       >
-        {/* <Marker position = {this.props.coor !== undefined ?
-       this.props.coor[this.props.selectedDate][0] : ""}
-       title= {this.props.trip !== undefined ?
-        "Place 1" : ""}/>
-
-      <Marker position = {this.props.coor !== undefined ?
-       this.props.coor[this.props.selectedDate][1] : ""}
-       title= {this.props.trip !== undefined ?
-        "Place 2" : ""}/>
-
-      <Marker position = {this.props.coor !== undefined ?
-       this.props.coor[this.props.selectedDate][2] : ""}
-       title= {this.props.trip !== undefined ?
-        "Place 3" : ""}/>
-
-      <Marker position = {this.props.coor !== undefined ?
-       this.props.coor[this.props.selectedDate][3] : ""}
-       title= {this.props.trip !== undefined ?
-        "Place 4" : ""}/>
-
-      <Marker position = {this.props.coor !== undefined ?
-       this.props.coor[this.props.selectedDate][4] : ""}
-       title= {this.props.trip !== undefined ?
-        "Place 5" : ""}/>
-
-      <Marker position = {this.props.coor !== undefined ?
-       this.props.coor[this.props.selectedDate][5] : ""}
-       title= {this.props.trip !== undefined ?
-        "Place 6" : ""}/> */}
-
+        <Polyline path={this.props.coor !== undefined ? this.props.coor[this.props.selectedDate] : ""} geodesic={true} options={{strokeColor: '#FF0000',strokeWeight: 6}}/>
         {this.props.coor !== undefined
           ? getPin(this.props.coor, this.props.selectedDate.toString())
           : ""}
