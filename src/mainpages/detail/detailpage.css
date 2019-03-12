@@ -104,6 +104,13 @@
     text-align: center;
 }
 
+.central {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
 .tripad {
     width:150px;
     height:30px;

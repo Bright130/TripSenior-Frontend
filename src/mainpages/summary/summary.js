@@ -34,17 +34,6 @@ export default class Summary extends React.Component {
                 {"Open Time : " + this.props.openTime}
               </div>
             </div>
-            <div className="summary-1-2-2">
-              <div className="summary-tel-4">
-                {"Telephone :  " +
-                  (this.props.phone == null ? " " : this.props.phone)}
-              </div>
-            </div>
-            <div className="summary-1-2-3">
-              <div className="summary-fee-2">
-                {"Entry Fee : " + this.props.fee}
-              </div>
-            </div>
           </div>
           <div className="summary-1-3">
             <div className="summary-1-3-0">
@@ -58,15 +47,6 @@ export default class Summary extends React.Component {
             </div>
           </div>
         </div>
-        <div className="summary-2">
-          <div className="summary-2-0">
-            <div className="summary-2-0-0">
-              <div className="summary-oval_3" />
-            </div>
-          </div>
-          <div className="summary-10">{this.props.time2}</div>
-        </div>
-      </div>
     );
   }
 }

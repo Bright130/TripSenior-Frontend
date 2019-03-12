@@ -103,7 +103,7 @@ export default class Detailpage extends React.Component {
           <div className="detailpage-unnamed_instance-2">
             {/* <Peaktime />  */}
             Images Powered by TripAdvisor
-            <img className="tripad" src="https://developer-tripadvisor.s3.amazonaws.com/uploads/tripadvisor-horz-rgb_newcolor_(1)_(1).svg"/>
+            <img className="tripad central" src="https://developer-tripadvisor.s3.amazonaws.com/uploads/tripadvisor-horz-rgb_newcolor_(1)_(1).svg"/>
           </div>
           <div className="detailpage-2-2" />
           <div className="detailpage-component_2_">
