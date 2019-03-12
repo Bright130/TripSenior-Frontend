@@ -68,7 +68,7 @@ export default class Homepage extends React.Component {
               /> 
               <Radio 
                 className='pad-custom'
-                label="Road Trip"
+                label="One-way Road Trip"
                 name="radioGroup"
                 value="Road Trip"
                 checked={this.state.triptype === "Road Trip"}
