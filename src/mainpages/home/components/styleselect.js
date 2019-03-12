@@ -24,9 +24,7 @@ export default class StylePop extends Component {
       Shopping: false,
       Event: false,
       Mountain: false,
-      Military: false,
       Park: false,
-      Transportation: false,
       Farm: false,
       Zoo: false,
       Educational: false,
@@ -178,22 +176,8 @@ export default class StylePop extends Component {
                 </Grid.Column>
                 <Grid.Column>
                   <Checkbox
-                    label="Military"
-                    checked={this.state.Military}
-                    onChange={this.handleCheck}
-                  />
-                </Grid.Column>
-                <Grid.Column>
-                  <Checkbox
                     label="Park"
                     checked={this.state.Park}
-                    onChange={this.handleCheck}
-                  />
-                </Grid.Column>
-                <Grid.Column>
-                  <Checkbox
-                    label="Transportation"
-                    checked={this.state.Transportation}
                     onChange={this.handleCheck}
                   />
                 </Grid.Column>
