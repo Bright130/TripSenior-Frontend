@@ -1,6 +1,6 @@
 import React from "react";
 import "./startpanel.css";
-import DestinationDrop from "./components/destination";
+import DestinationDrop1 from "./components/destination1";
 import NationDrop from "./components/nationality";
 import StylePop from "./components/styleselect";
 import DatePop from "./components/datepick";
@@ -221,7 +221,7 @@ export default class Startpanel2 extends React.Component {
                       />
                       <div className="startpanel-0-1-0-1-1-0-0-1">
                         <div className="startpanel-destination_-8">
-                          <DestinationDrop
+                          <DestinationDrop1
                             getDestination={this.getStartLocation}
                             placeholder="Start Location"
                           />
@@ -229,7 +229,7 @@ export default class Startpanel2 extends React.Component {
                       </div>
                       <div className="startpanel-0-1-0-1-1-0-0-1">
                         <div className="startpanel-destination_-8">
-                          <DestinationDrop
+                          <DestinationDrop1
                             getDestination={this.getEndLocation}
                             placeholder="End Location"
                           />

@@ -6,14 +6,7 @@ import "./nationality.css";
 const provinceOptions = () => {
   let ret = [];
 
-  [
-    "Chachoengsao",
-    "Chanthaburi",
-    "Prachinburi",
-    "Rayong",
-    "Sakaeo",
-    "Songkhla"
-  ].forEach(function(ele) {
+  ["Bangkok", "Chachoengsao", "Chonburi", "Rayong"].forEach(function(ele) {
     ret.push({
       text: ele,
       value: ele
@@ -24,7 +17,7 @@ const provinceOptions = () => {
   return ret;
 };
 
-class DestinationDrop extends Component {
+class DestinationDrop1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,4 +50,4 @@ class DestinationDrop extends Component {
     );
   }
 }
-export default DestinationDrop;
+export default DestinationDrop1;
