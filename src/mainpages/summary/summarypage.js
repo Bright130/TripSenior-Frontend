@@ -1,4 +1,3 @@
- 
 import React from "react";
 import Header from "../utility/header";
 import Tripname from "./tripname";
@@ -51,6 +50,7 @@ function getTrip(id, reactComponent) {
         tripName: data["tripName"],
         numberOfday: data["numberOfDay"],
         destination: data["destinations"],
+        des: data["des"],
         coor: data["coor"],
         res: data["res"]
       },
