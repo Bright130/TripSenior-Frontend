@@ -206,7 +206,7 @@ export default class Signup extends React.Component {
                       button
                       search
                       options={nationOptions()}
-                      placeholder="Nationality"
+                      placeholder="Home Country"
                       name="nationality"
                       value={this.state.nationality}
                       onChange={this.handleChange}

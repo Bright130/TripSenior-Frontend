@@ -36,7 +36,7 @@ const makeTripRow = reactComponent => {
   var container = [];
   reactComponent.state.trips.forEach(function(trip, index) {
     container.push(
-      <TripSlot viewSummary={reactComponent.viewSummary} tripID={trip["tripID"]} name={trip["tripName"]} created={convertTime(trip["createdTime"])} numberofday={trip["numberOfDay"]} numberofprovince={trip["destinations"].length} />
+      <TripSlot image={reactComponent.state.images[index]} viewSummary={reactComponent.viewSummary} tripID={trip["tripID"]} name={trip["tripName"]} created={convertTime(trip["createdTime"])} numberofday={trip["numberOfDay"]} numberofprovince={trip["destinations"].length} />
     );
   });
   console.log(container);
@@ -47,7 +47,8 @@ export default class Trippage extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      trips : []
+      trips : [],
+      images : []
     }
     this.viewSummary = this.viewSummary.bind(this);
   }
@@ -65,7 +66,8 @@ export default class Trippage extends React.Component {
     console.log(info);
     getData("http://localhost:5000/getMyTrip", info).then(plan => {
       this.setState({
-        trips : plan["myTrips"]
+        trips : plan["myTrips"],
+        images : plan["images"]
       })  
       console.log( plan["myTrips"]);              
     });

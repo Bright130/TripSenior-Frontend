@@ -149,10 +149,10 @@ export default class TimeTable extends React.Component {
   openDetail() {
     loadAPI(
       " http://127.0.0.1:5000/place?place_id=" +
-        this.props.items[this.state.rightClickId]["id"]
+        this.props.items[this.state.rightClickId]["place_id"]
     ).then(result => {
       console.log(
-        this.props.items[this.state.rightClickId]["id"],
+        this.props.items[this.state.rightClickId]["place_id"],
         result["place_id"]
       );
       window.open("http://127.0.0.1:8081/place/" + result["place_id"]);
