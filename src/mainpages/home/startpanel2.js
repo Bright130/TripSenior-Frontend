@@ -68,7 +68,7 @@ function convertstyle(styles) {
 
 function converttime(time) {
   let ret = [];
-  ret.push(moment(time * 1000).format("MMM"));
+  ret.push(moment(time * 1000).format("MMMM"));
   // console.log(ret);
   return ret;
 }
@@ -192,10 +192,8 @@ export default class Startpanel2 extends React.Component {
             this.state.startLocation == ""
               ? "Bangkok"
               : this.state.startLocation),
-              (plan["endprovince"] =
-              this.state.endLocation == ""
-                ? "Rayong"
-                : this.state.endLocation);
+          (plan["endprovince"] =
+            this.state.endLocation == "" ? "Rayong" : this.state.endLocation);
         this.context.router.history.push({
           pathname: "/trip-custom",
           state: plan
@@ -225,7 +223,7 @@ export default class Startpanel2 extends React.Component {
                         <div className="startpanel-destination_-8">
                           <DestinationDrop
                             getDestination={this.getStartLocation}
-                            placeholder= 'Start Location'
+                            placeholder="Start Location"
                           />
                         </div>
                       </div>
@@ -233,7 +231,7 @@ export default class Startpanel2 extends React.Component {
                         <div className="startpanel-destination_-8">
                           <DestinationDrop
                             getDestination={this.getEndLocation}
-                            placeholder= 'End Location'
+                            placeholder="End Location"
                           />
                         </div>
                       </div>
