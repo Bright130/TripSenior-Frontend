@@ -68,7 +68,7 @@ function convertstyle(styles) {
 
 function converttime(time) {
   let ret = [];
-  ret.push(moment(time * 1000).format("MMM"));
+  ret.push(moment(time * 1000).format("MMMM"));
   // console.log(ret);
   return ret;
 }
@@ -212,7 +212,7 @@ export default class Startpanel extends React.Component {
                         <div className="startpanel-destination_-8">
                           <DestinationDrop
                             getDestination={this.getDestination}
-                            placeholder='Destination'
+                            placeholder="Destination"
                           />
                         </div>
                       </div>
