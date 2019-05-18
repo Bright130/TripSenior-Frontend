@@ -7,12 +7,19 @@ const provinceOptions = () => {
   let ret = [];
 
   [
-    "Chachoengsao",
+    "Ayutthaya",
     "Chanthaburi",
+    "Phuket",
+    "SaKaeo",
+    "Bangkok",
+    "Chiangmai",
+    "SamutPrakan",
     "Prachinburi",
+    "Songkhla",
+    "Chachoengsao",
+    "Chonburi",
     "Rayong",
-    "Sakaeo",
-    "Songkhla"
+    "Trat"
   ].forEach(function(ele) {
     ret.push({
       text: ele,
