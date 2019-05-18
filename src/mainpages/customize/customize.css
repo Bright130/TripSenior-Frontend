@@ -501,3 +501,19 @@ a {
 .pd-onactive-parent.pd-onhover-parent:active>.pd-onhover {
     display: none;
 }
+
+.customize-rectangle_x {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background: red;
+}
+p:last-child {
+    text-align: left !important;
+    margin-top: 0 !important;
+    font-size: 14px !important;
+}
+.modals.dimmer .ui.scrolling.modal{
+    top: 30%;
+    width: 30%;
+}
