@@ -307,7 +307,7 @@ export default class Summarypage extends React.Component {
                       {this.state.trip !== undefined
                         ? this.state.trip[this.state.selectedDate].length
                         : ""}
-                      {"Places  "}
+                      {" Places In "}
                       {this.state.des !== undefined
                         ? this.state.des[this.state.selectedDate]
                         : ""}
@@ -319,7 +319,7 @@ export default class Summarypage extends React.Component {
                         zone={this.state.zone}
                         places={
                           countPlace(this.state.trip, this.state.numberOfday) +
-                          "Places"
+                          " Places"
                         }
                         fee={"-"}
                         coor={this.state.coor}

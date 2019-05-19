@@ -336,7 +336,7 @@
     display: flex;
     flex-shrink: 0;
     padding-left: 253px;
-    padding-right: 2px;
+
 }
 
 .summarypage-4 {
@@ -350,7 +350,7 @@
     font-weight: normal;
     font-style: normal;
     text-decoration: none;
-    text-align: left;
+    text-align: right;
     word-wrap: break-word;
 }
 
