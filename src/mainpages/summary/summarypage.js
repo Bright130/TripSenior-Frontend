@@ -185,6 +185,7 @@ export default class Summarypage extends React.Component {
     this.handleEdit = this.handleEdit.bind(this);
     this.goPDF = this.goPDF.bind(this);
     this.goFB = this.goFB.bind(this);
+    this.goEmail = this.goEmail.bind(this);
   }
 
   componentDidMount() {
@@ -206,6 +207,12 @@ export default class Summarypage extends React.Component {
   goPDF(evt) {
     window.open(
       "http://localhost:5000/plan-pdf/Trip-" + this.props.match.params.id
+    );
+  }
+
+  goEmail(evt) {
+    window.open(
+      "http://localhost:5000/email/Trip-" + this.props.match.params.id
     );
   }
 
@@ -366,7 +373,10 @@ export default class Summarypage extends React.Component {
                           <div className="summarypage-2-2-0-0-2-0-0-2-0">
                             <div className="summarypage-rectangle_8">
                               <div className="summarypage-2-2-0-0-2-0-0-2-0-0-0">
-                                <div className="summarypage-send_to_email_-7">
+                                <div
+                                  className="summarypage-send_to_email_-7"
+                                  onClick={this.goEmail}
+                                >
                                   Send to Email
                                 </div>
                               </div>
