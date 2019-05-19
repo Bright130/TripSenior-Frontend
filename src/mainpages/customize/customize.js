@@ -5,12 +5,14 @@ import Component_1 from "./component_1";
 import SuggestCustom from "./suggestcustom";
 import "./customize.css";
 import TimeTable from "./timetable";
-import { Icon, Input, Button } from "semantic-ui-react";
+import { Icon, Modal, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import VisitedPlace from "./visitedPlace";
 import moment from "moment";
 import Basket from "./basket";
 import { loadAPI } from "./util";
+import { black } from "ansi-colors";
+import { red } from "@material-ui/core/colors";
 
 async function asyncForEach(array, callback) {
   for (let index = 0; index < array.length; index++) {
@@ -43,16 +45,23 @@ async function postData1(url = ``, data = {}, callback) {
       body: data // body data type must match "Content-Type" header
     })
       .then(result => {
-        result
-          .json()
-          .then(async json => {
-            await console.log(json);
-            await callback.getTrip([]);
-            resolve(json);
-          })
-          .catch(error => {
-            reject(error);
-          });
+        console.log(result);
+        if(result["status"] === 200){
+          callback.setState({ openSuccess: true})
+          result
+            .json()
+            .then(async json => {
+              await console.log(json);
+              await callback.getTrip([]);
+              resolve(json);
+            })
+            .catch(error => {
+              reject(error);
+            });
+        }
+        else if(result["status"] === 400){
+          callback.setState({ msg: result["msg"],optimizing: "Route Optimize",openFailed: true})
+        }
       })
 
       .catch(error => {
@@ -78,6 +87,7 @@ function postData(url = ``, data = {}) {
       body: data // body data type must match "Content-Type" header
     })
       .then(result => {
+        
         result
           .json()
           .then(json => {
@@ -195,9 +205,23 @@ export default class Customize extends React.Component {
       sugguest: [],
       optimizing: "Route Optimize",
       complete: "Complete",
-      removePlaceID: []
+      removePlaceID: [],
+      openSuccess: false,
+      openFailed: false,
+      closeOnEscape: false,
+      closeOnDimmerClick: false,
+      msg: ""
     };
   }
+
+  showSuccess = () => {
+    this.setState({openSuccess: true, optimizing: "Route Optimize" })
+  }
+  showFailed = () => {
+    this.setState({openFailed: true, optimizing: "Route Optimize" })
+  }
+
+  close = () => this.setState({ openSuccess: false, openFailed: false })
 
   componentDidMount() {
     console.log(this.props.location);
@@ -321,8 +345,67 @@ export default class Customize extends React.Component {
   };
 
   render() {
+
     return (
       <div className="customize-customize-7">
+        <Modal size="tiny" className="scrolling " style={{height: 200}}
+          open={this.state.openSuccess}
+          closeOnEscape={this.state.closeOnEscape}
+          closeOnDimmerClick={this.state.closeOnDimmerClick}
+          onClose={this.close}
+        >
+          <Modal.Header>Optimization Success <Icon name="check circle" color="green"/> </Modal.Header>
+          <Modal.Content style={{height: 100}}>
+            <p>Press OK to continue!</p>
+          </Modal.Content >
+          <Modal.Actions>
+          <div className="customize-1-3-0">
+              <div className="customize-rectangle_2">
+                <div className="customize-1-3-0-0-0">
+                  <div className="customize-routebutton-1">
+                    <Button className="customize-1-3-0-0-0-0-0">
+                      <div
+                        className="customize-route_optimize-9"
+                        onClick={this.close}
+                      >
+                      OK
+                      </div>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Modal.Actions>
+        </Modal>
+        <Modal size="tiny" className="scrolling" style={{height: 200}}
+          open={this.state.openFailed}
+          closeOnEscape={this.state.closeOnEscape}
+          closeOnDimmerClick={this.state.closeOnDimmerClick}
+          onClose={this.close}
+        >
+          <Modal.Header>Optimization Failed <Icon name="remove circle" color="red"/></Modal.Header>
+          <Modal.Content style={{height: 100}}>
+            <p>Not sufficient time to travel to all places.<br/>Please edit places and time spend before click Route Optimization</p>
+          </Modal.Content>
+          <Modal.Actions >
+          <div className="customize-1-3-0">
+              <div className="customize-rectangle_x">
+                <div className="customize-1-3-0-0-0">
+                  <div className="customize-routebutton-1">
+                    <Button className="customize-1-3-0-0-0-0-0">
+                      <div
+                        className="customize-route_optimize-9"
+                        onClick={this.close}
+                      >
+                      Continue
+                      </div>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Modal.Actions>
+        </Modal>
         <div className="customize-0">
           <div className="customize-0-0" />
           <div className="customize-header_instance_2">
