@@ -50,6 +50,8 @@ function getTrip(id, reactComponent) {
         tripName: data["tripName"],
         numberOfday: data["numberOfDay"],
         destination: data["destinations"],
+        zone: data["destinations"].join(", "),
+        provinces: data["destinations"],
         des: data["des"],
         coor: data["coor"],
         res: data["res"]
@@ -305,13 +307,16 @@ export default class Summarypage extends React.Component {
                       {this.state.trip !== undefined
                         ? this.state.trip[this.state.selectedDate].length
                         : ""}
-                      {"Places  " + this.state.destination}
+                      {"Places  "}
+                      {this.state.des !== undefined
+                        ? this.state.des[this.state.selectedDate]
+                        : ""}
                     </div>
                   </div>
                   <div className="summarypage-2-2-0-0-1">
                     <div className="summarypage-map_instance-7">
                       <Maparea
-                        zone={this.state.destination}
+                        zone={this.state.zone}
                         places={
                           countPlace(this.state.trip, this.state.numberOfday) +
                           "Places"
