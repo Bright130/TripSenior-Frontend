@@ -1,4 +1,3 @@
- 
 import React from "react";
 import Header from "../utility/header";
 import Tripname from "./tripname";
@@ -23,9 +22,7 @@ async function asyncForEach(array, callback) {
 
 async function searchPlaceID(name) {
   return new Promise(async function(resolve) {
-    let ret = await loadAPI(
-      " http://127.0.0.1:5000/place?place_id=" + name
-    );
+    let ret = await loadAPI(" http://127.0.0.1:5000/place?place_id=" + name);
     resolve(ret["place_id"]);
   });
 }
@@ -142,7 +139,7 @@ function createDBFormat(props, state, isCreated) {
       endTime: props.location.state.endTime,
       styles: props.location.state.styles,
       speed: "Medium",
-      destinations: [props.location.state.province],
+      destinations: props.location.state.provinces,
       numberOfDay:
         (props.location.state.endTime - props.location.state.startTime) /
           86400000 +
@@ -204,7 +201,6 @@ export default class Customize extends React.Component {
 
       items: [],
       basket: [],
-
       visited: [],
       sugguest: [],
       optimizing: "Route Optimize",

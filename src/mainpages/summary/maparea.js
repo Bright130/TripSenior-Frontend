@@ -1,4 +1,3 @@
- 
 import React from "react";
 import "./maparea.css";
 import Map from "./components/Map";
@@ -37,6 +36,8 @@ export default class Maparea extends React.Component {
         <div className="maparea-1">
           <div className="maparea-tra_zone-1">{"Travel Zone :"}</div>
           <div className="maparea-pro-6">{this.props.zone}</div>
+        </div>
+        <div className="maparea-2">
           <div className="maparea-total_pl-1">{"Total places :"}</div>
           <div className="maparea-08">{this.props.places}</div>
           <div className="maparea-total_f-6">{"Total Fee :"}</div>
