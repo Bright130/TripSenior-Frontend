@@ -130,7 +130,7 @@ export default class Header extends React.Component {
                 <img
                   className="header-tripnotize_-2"
                   onClick={this.changeRoute}
-                  src="https://scontent.fbkk1-5.fna.fbcdn.net/v/t1.0-0/q85/p75x225/58444284_2296402160381997_4864408229200789504_o.jpg?_nc_cat=110&_nc_eui2=AeEmLxrBYx5gIScP8p724ufmjKlGGO4Z4GaM0Urlj_Sm6Yd6ffQvMkrfm1j0i4WQDraFJxPg62NKMInG-P8bKXyzuziBmEoz1hthXgvxiYSyHQ&_nc_ht=scontent.fbkk1-5.fna&oh=1cfac89a0c6591b0c64874b302d773ca&oe=5D6751BE"
+                  src="https://i.imgur.com/EmveM0I.png"
                 />
               </div>
               <div className="header-1-1-2" />

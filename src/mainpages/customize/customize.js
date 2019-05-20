@@ -352,7 +352,7 @@ export default class Customize extends React.Component {
 
     return (
       <div className="customize-customize-7">
-        <Modal size="tiny" className="scrolling " style={{height: 200}}
+        <Modal size="tiny" className="scrolling modal-popup " style={{height: 200}}
           open={this.state.openSuccess}
           closeOnEscape={this.state.closeOnEscape}
           closeOnDimmerClick={this.state.closeOnDimmerClick}
@@ -381,7 +381,7 @@ export default class Customize extends React.Component {
             </div>
           </Modal.Actions>
         </Modal>
-        <Modal size="tiny" className="scrolling" style={{height: 200}}
+        <Modal size="tiny" className="scrolling modal-popup" style={{height: 200}}
           open={this.state.openFailed}
           closeOnEscape={this.state.closeOnEscape}
           closeOnDimmerClick={this.state.closeOnDimmerClick}
