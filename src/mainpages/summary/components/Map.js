@@ -49,7 +49,7 @@ class Map extends Component {
         }
         defaultZoom={9}
       >
-        <Polyline path={this.props.coor !== undefined ? this.props.coor[this.props.selectedDate] : ""} geodesic={true} options={{strokeColor: '#FF0000',strokeWeight: 6}}/>
+        <Polyline /*path={this.props.coor !== undefined ? this.props.coor[this.props.selectedDate] : ""}*/ geodesic={true} options={{strokeColor: '#FF0000',strokeWeight: 6}}/>
         {this.props.coor !== undefined
           ? getPin(this.props.coor, this.props.selectedDate.toString())
           : ""}
